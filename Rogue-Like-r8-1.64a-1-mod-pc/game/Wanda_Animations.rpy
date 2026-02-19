@@ -6888,29 +6888,6 @@ transform Wanda_Hand_2():
         pause 0.1
         repeat
 
-transform Handcock_3():
-    subpixel True
-    rotate_pad False
-    ypos 400
-    rotate 0 #400
-    block:
-        ease .5 ypos 450 rotate -2 #450
-        pause 0.25
-        ease 1.0 ypos 400 rotate 0 #400
-        pause 0.1
-        repeat
-
-transform Handcock_4():
-    subpixel True
-    rotate_pad False
-    ypos 400
-    rotate 0
-    block:
-        ease .2 ypos 430 rotate -3 #410
-        ease .5 ypos 400 rotate 0
-        pause 0.1
-        repeat
-
 transform Handcock_1L():
     subpixel True
     rotate_pad False
