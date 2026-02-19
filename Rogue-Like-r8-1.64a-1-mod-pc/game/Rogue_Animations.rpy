@@ -8386,6 +8386,7 @@ label Girl_Feet_Launch(Girl=0,T = Trigger):
     return
 
 transform Feet_View():
+    subpixel True
     ease 0.5 pos (500,-850) zoom 1.5 offset (0,0) alpha 1
 
 
@@ -9083,6 +9084,7 @@ label Les_Launch(Girl=0,XLoc=0,YLoc=0,XZoom=0,BO=[]): #rkeljsvgbdw
 
 transform Ease_Low():
         # Lowers girl during threesome actions, called from Threesome_Set
+        subpixel True
         ease 1 ypos 200
 
 label Les_Launch_Doggy(Girl=0,XLoc=530,BO=[]): #rkeljs

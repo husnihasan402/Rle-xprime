@@ -6863,28 +6863,6 @@ transform Yana_Hand_2():
         pause 0.1
         repeat
 
-transform Yana_Arm_1():
-    subpixel True
-    pos (200,-100)
-    rotate 5
-    block:
-        ease .5 pos (200,150) rotate -5 #ypos 150 rotate 5 Bottom 90
-        pause 0.25
-        ease 1.0 pos (200,-100) rotate 5 #(-20,-100) #rotate -10#  Top
-        pause 0.1
-        repeat
-
-transform Yana_Arm_2():
-    subpixel True
-    pos (200,-120)
-    rotate 10
-    block:
-        ease 0.2 pos (200,0) rotate 0   #(-15,0) 85
-        pause 0.1
-        ease 0.4 pos (200,-120) rotate 5 #-15,-120)
-        pause 0.1
-        repeat
-
 image Yana_HJ_Animation:
     contains:
         ConditionSwitch(
