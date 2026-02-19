@@ -1,468 +1,412 @@
 ﻿# Basic character Sprites
-image Rogue_Sprite:
-    LiveComposite(
-        (480,960),
-        (0,0), "images/RogueSprite/Rogue_Sprite_Shadow.png",
-#        (0,0), ConditionSwitch(
-#            #Overhsirt backing
-#            "RogueX.Over == 'mesh top' and RogueX.ArmPose == 1", "images/RogueSprite/Rogue_under_mesh1.png",
-#            "RogueX.Over == 'mesh top' and RogueX.ArmPose == 2", "images/RogueSprite/Rogue_under_mesh2.png",
-#            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty1.png"),
-#            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodieB.png"),
-#            "True", Null(),
-#            ),
+layeredimage Rogue_Sprite_Layered:
+    # Shadow - always visible
+    always:
+        "images/RogueSprite/Rogue_Sprite_Shadow.png"
 
-        (185,38),ConditionSwitch(
-            #head
-            "renpy.showing('Rogue_BJ_Animation') or renpy.showing('Rogue_TJ_Animation') or renpy.showing('Rogue_CUN_Animation')", Null(),
-            "True", "Rogue_HairBack",
-            ),
+    # Hair Back layer (behind head, at position 185,38)
+    if not (renpy.showing('Rogue_BJ_Animation') or renpy.showing('Rogue_TJ_Animation') or renpy.showing('Rogue_CUN_Animation')):
+        Fixed(At("Rogue_HairBack", Transform(xpos=185, ypos=38, xanchor=0.0, yanchor=0.0)), xysize=(480, 960))
 
-        (0,0), ConditionSwitch(
-            #shirt layer behind body
-            "not RogueX.Over", Null(),
-            # Modification mode
-            "RogueX.Over == 'cape'", "images/RogueSprite/modification/Rogue_over_cape_back.png",
-            #------------------
-            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodieB.png"),
-            "RogueX.Uptop", ConditionSwitch(
-                    #if the top's down. . .
-                    "RogueX.ArmPose == 1", ConditionSwitch(
-                            #if the arms are down. . .
-                            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh1_Up.png"),
-#                            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink1_Up.png"),
-#                            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie1_Up.png"),
-                            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty_Up.png"),
-#                            "RogueX.Over == 'towel'", Null(),
-                            "True", Null(),
-                            ),
-                    "True", ConditionSwitch(
-                            #if the arms are up. . .
-                            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh2_Up.png"),
-#                            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink2_Up.png"),
-#                            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie2_Up.png"),
-                            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty_Up.png"),
-#                            "RogueX.Over == 'towel'", Null(),
-                            "True", Null(),
-                            ),
-                    ),
-            "True", ConditionSwitch(
-                    #if the top's up. . .
-                    "RogueX.ArmPose == 1", ConditionSwitch(
-                            #if the arms are down. . .
-                            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh1.png"),
-#                            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink1.png"),
-#                            "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_towel1.png"),
-                            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty1.png"),
-#                            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie1.png"),
-                            "True", Null(),
-                            ),
-                    "True", ConditionSwitch(
-                            #if the arms are up. . .
-                            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh2.png"),
-#                            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink2.png"),
-#                            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie2.png"),
-                            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty2.png"),
-#                            "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_towel2.png"),
-                            "True", Null(),
-                            ),
-                    ),
-            ),
+    # Over shirt back (layer behind body)
+    if not RogueX.Over:
+        Null()
+    elif RogueX.Over == 'cape':
+        "images/RogueSprite/modification/Rogue_over_cape_back.png"
+    elif RogueX.Over == 'hoodie':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodieB.png")
+    elif RogueX.Uptop and RogueX.ArmPose == 1 and RogueX.Over == 'mesh top':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh1_Up.png")
+    elif RogueX.Uptop and RogueX.ArmPose == 1 and RogueX.Over == 'nighty':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty_Up.png")
+    elif RogueX.Uptop and RogueX.ArmPose == 1:
+        Null()
+    elif RogueX.Uptop and RogueX.Over == 'mesh top':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh2_Up.png")
+    elif RogueX.Uptop and RogueX.Over == 'nighty':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty_Up.png")
+    elif RogueX.Uptop:
+        Null()
+    elif RogueX.ArmPose == 1 and RogueX.Over == 'mesh top':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh1.png")
+    elif RogueX.ArmPose == 1 and RogueX.Over == 'nighty':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty1.png")
+    elif RogueX.ArmPose == 1:
+        Null()
+    elif RogueX.Over == 'mesh top':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh2.png")
+    elif RogueX.Over == 'nighty':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty2.png")
+    else:
+        Null()
 
-        (0,0), ConditionSwitch(
-            #pants backing
-            "RogueX.Legs == 'pants' and RogueX.Upskirt", Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_pantsback.png"),
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #body
-#            "True", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_test.png",
-            "RogueX.ArmPose == 1", ConditionSwitch(
-                    "RogueX.Pubes and RogueX.Pierce == 'ring'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_haired_ring.png",
-                    "RogueX.Pubes and RogueX.Pierce == 'barbell'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_haired_barbell.png",
-                    "RogueX.Pierce == 'ring'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_ring.png",
-                    "RogueX.Pierce == 'barbell'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_barbell.png",
-                    "RogueX.Pubes", Recolor("Rogue", "Pubes", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_haired.png"),
-                    "True", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_bare.png",
-                    ),
-            "RogueX.Pubes and RogueX.Pierce == 'ring'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_haired_ring.png",
-            "RogueX.Pubes and RogueX.Pierce == 'barbell'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_haired_barbell.png",
-            "RogueX.Pierce == 'ring'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_ring.png",
-            "RogueX.Pierce == 'barbell'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_barbell.png",
-            "RogueX.Pubes", Recolor("Rogue", "Pubes", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_haired.png"),
-            "True", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_bare.png",
-            ),
+    # Pants backing
+    if RogueX.Legs == 'pants' and RogueX.Upskirt:
+        Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_pantsback.png")
 
-#        (0,0), ConditionSwitch(
-#            #Panties
-#            "not RogueX.Panties", Null(),
-#            "RogueX.Legs == 'pants' and not RogueX.Upskirt", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties.png"),
-#            "RogueX.Panties == 'shorts' and RogueX.PantiesDown and RogueX.Wet > 1", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts_down_wet.png"),
-#            "RogueX.Panties == 'shorts' and RogueX.PantiesDown", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts_down.png"),
-#            "RogueX.Panties == 'shorts' and RogueX.Wet > 1", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts_wet.png"),
-#            "RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts.png"),
-#            "RogueX.Panties == 'green panties' and RogueX.PantiesDown and RogueX.Wet > 1", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies_down_wet.png"),
-#            "RogueX.Panties == 'green panties' and RogueX.PantiesDown", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies_down.png"),
-#            "RogueX.Panties == 'green panties' and RogueX.Wet > 1", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies_wet.png"),
-#            "RogueX.Panties == 'green panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies.png"),
-#            "RogueX.Panties and RogueX.PantiesDown", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_down.png"),
-#            "RogueX.Panties == 'lace panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_lacepanties.png"),
-#            "True", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties.png"),
-#            ),
-        (0,0), ConditionSwitch(
-            #panties
-            "not RogueX.Panties", Null(),
-            "RogueX.Legs == 'pants' and not RogueX.Upskirt", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties.png"),
-            "RogueX.PantiesDown", ConditionSwitch(
-                    #if the panties's down. . .
-                    "RogueX.Wet > 1", ConditionSwitch(
-                            #if the panties's are wet. . .
-                            "RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts_down_wet.png"),
-                            "RogueX.Panties == 'green panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies_down_wet.png"),
-                            "RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_bikini_down.png"),
-                            # Modification mode
-                            "RogueX.Panties == 'harness panties'","images/RogueSprite/modification/Rogue_sprite_underwear_panties_harness_down_wet.png",
-                            "RogueX.Panties == 'raven leotard'", "images/RogueSprite/modification/Rogue_panties_Raven_Down.png",
-                            # -----------------
-                            "True", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_down.png"),
-                            ),
-                    "True", ConditionSwitch(
-                            #if the panties's are not wet. . .
-                            "RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts_down.png"),
-                            "RogueX.Panties == 'green panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies_down.png"),
-                            "RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_bikini_down.png"),
-                            # Modification mode
-                            "RogueX.Panties == 'harness panties'","images/RogueSprite/modification/Rogue_sprite_underwear_panties_harness_down.png",
-                            "RogueX.Panties == 'raven leotard'", "images/RogueSprite/modification/Rogue_panties_Raven_Down.png",
-                            # -----------------
-                            "True", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_down.png"),
-                            ),
-                    ),
-            "True", ConditionSwitch(
-                    #if the panties's up. . .
-                    "RogueX.Wet > 1", ConditionSwitch(
-                            #if the panties's are wet. . .
-                            "RogueX.Panties == 'shorts' and RogueX.Wet > 1", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts_wet.png"),
-                            "RogueX.Panties == 'green panties' and RogueX.Wet > 1", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies_wet.png"),
-                            "RogueX.Panties == 'lace panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_lacepanties.png"),
-                            "RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_bikini.png"),
-                            # Modification mode
-                            "RogueX.Panties == 'harness panties'","images/RogueSprite/modification/Rogue_sprite_underwear_panties_harness_wet.png",
-                            "RogueX.Panties == 'raven leotard'", "images/RogueSprite/modification/Rogue_panties_Raven.png",
-                            # -----------------
-                            "True", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties.png"),
-                            ),
-                    "True", ConditionSwitch(
-                            #if the panties's are not wet. . .
-                            "RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts.png"),
-                            "RogueX.Panties == 'green panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies.png"),
-                            "RogueX.Panties == 'lace panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_lacepanties.png"),
-                            "RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_bikini.png"),
-                            # Modification mode
-                            "RogueX.Panties == 'harness panties'","images/RogueSprite/modification/Rogue_sprite_underwear_panties_harness.png",
-                            "RogueX.Panties == 'raven leotard'", "images/RogueSprite/modification/Rogue_panties_Raven.png",
-                            # -----------------
-                            "True", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties.png"),
-                            ),
-                    ),
-            ),
-        (0,0), ConditionSwitch(
-            #hose
-            "RogueX.Hose == 'stockings'", Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Stockings.png"),
-            "RogueX.Hose == 'stockings and garterbelt'", Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_StockingsandGarter.png"),
-            "RogueX.Hose == 'garterbelt'", "images/RogueSprite/Rogue_Hose_Garter.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #full hose/tights
-            "RogueX.Panties and RogueX.PantiesDown", Null(),
-            "RogueX.Hose == 'pantyhose'", Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Pantyhose.png"),
-            "RogueX.Hose == 'tights' and RogueX.Wet", Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Tights_Wet.png"),
-            "RogueX.Hose == 'tights'", Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Tights.png"),
-            "RogueX.Hose == 'ripped pantyhose'", Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Pantyhose_Holed.png"),
-            "RogueX.Hose == 'ripped tights'", Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Tights_Holed.png"),
-            "True", Null(),
-            ),
-        (240,560), ConditionSwitch(
-            #Personal Wetness
-            "not RogueX.Wet and Player.Male", Null(),
-            "RogueX.Legs == 'pants' and not RogueX.Upskirt", Null(),
-            "RogueX.Panties and not RogueX.PantiesDown and RogueX.Wet <= 1", Null(),
-            "RogueX.Wet == 1", ConditionSwitch(
-                    "RogueX.Panties and RogueX.PantiesDown", AlphaMask("Wet_Drip","Rogue_Drip_MaskP"),
-                    "RogueX.Legs == 'pants'", AlphaMask("Wet_Drip","Rogue_Drip_MaskPn"),
-                    "True", AlphaMask("Wet_Drip","Rogue_Drip_Mask"),
-                    ),
-            "True", ConditionSwitch(
-                    "RogueX.Panties and RogueX.PantiesDown", AlphaMask("Wet_Drip2","Rogue_Drip_MaskP"),
-                    "RogueX.Panties and RogueX.Legs == 'pants'", AlphaMask("Wet_Drip","Rogue_Drip_MaskPn"),
-                    "RogueX.Legs == 'pants'", AlphaMask("Wet_Drip2","Rogue_Drip_MaskPn"),
-                    "RogueX.Panties", AlphaMask("Wet_Drip","Rogue_Drip_Mask"),
-                    "True", AlphaMask("Wet_Drip2","Rogue_Drip_Mask"),
-                    ),
-            ),
-        (0,0), ConditionSwitch(
-            #Personal Wetness
-            "not RogueX.Wet", Null(),
-            "RogueX.Legs and RogueX.Wet <= 1", Null(),
-            "RogueX.Legs", "images/RogueSprite/Rogue_wet.png",
-            "RogueX.Wet == 1", "images/RogueSprite/Rogue_wet.png",
-            "True", "images/RogueSprite/Rogue_wet2.png",       #RogueX.Wet >1
-            ),
-        (240,560), ConditionSwitch(
-            #Spunk nethers
-            "('in' not in RogueX.Spunk and 'anal' not in RogueX.Spunk) or not Player.Male", Null(),
-            "RogueX.Legs == 'pants' and not RogueX.Upskirt", Null(),
-            "True", ConditionSwitch( #Wet = 2+
-                    "RogueX.Panties and RogueX.PantiesDown", AlphaMask("Spunk_Drip2","Rogue_Drip_MaskP"), #"Wet_Drip2",#
-                    "RogueX.Panties and RogueX.Legs == 'pants'", AlphaMask("Spunk_Drip","Rogue_Drip_MaskPn"), #"Wet_Drip2",#
-                    "RogueX.Legs == 'pants'", AlphaMask("Spunk_Drip2","Rogue_Drip_MaskPn"),
-                    "True", AlphaMask("Spunk_Drip2","Rogue_Drip_Mask"), #only plays if nothing is in the way
-                    ),
-            ),
-#        (0,0), ConditionSwitch(
-#            #Spunk Nethers over
-#            "'in' not in RogueX.Spunk and 'anal' not in RogueX.Spunk", Null(),
-#            "RogueX.Legs == 'pants' and not RogueX.Upskirt", Null(),
-#            "RogueX.Panties and not RogueX.PantiesDown", Null(),
-#            "True", "images/RogueSprite/Rogue_wet2.png",       #RogueX.Wet >1
-#            ),
-        (0,0), ConditionSwitch(
-            #boots
-            "RogueX.Boots == 'sneaks'", "images/RogueSprite/Rogue_boots_sneaks.png",
-            # Modification mode
-            "RogueX.Boots == 'boots high shoes'", "images/RogueSprite/modification/Rogue_sprite_boots_high_shoes.png",
-            # -----------------
-            "RogueX.Boots", "images/RogueSprite/Rogue_boots.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Pants and Skirts
-            "RogueX.Legs == 'pants' and RogueX.Upskirt", Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_pants_down.png"),
-            "RogueX.Legs == 'pants' and RogueX.Wet > 1", Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_pants_wet.png"),
-            "RogueX.Legs == 'pants'", Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_pants.png"),
-            "RogueX.Legs == 'skirt' and RogueX.Upskirt", Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_skirt_up.png"),
-            "RogueX.Legs == 'skirt'", Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_skirt.png"),
-            # Modification mode
-            "RogueX.Legs == 'short skirt' and RogueX.Upskirt", "images/RogueSprite/modification/Rogue_Sprite_legs_short_skirt_up.png",
-            "RogueX.Legs == 'short skirt'", "images/RogueSprite/modification/Rogue_Sprite_legs_short_skirt.png",
-            "RogueX.Legs == 'SR7 skirt' and RogueX.Upskirt", "images/RogueSprite/modification/Rogue_Sprite_legs_SR7_skirt_up.png",
-            "RogueX.Legs == 'SR7 skirt'", "images/RogueSprite/modification/Rogue_Sprite_legs_SR7_skirt.png",
-            "RogueX.Legs == 'bottom harem' and RogueX.Upskirt", "images/RogueSprite/modification/Rogue_sprite_skirt_harem_bottom_up.png",
-            "RogueX.Legs == 'bottom harem' and RogueX.Wet > 1", "images/RogueSprite/modification/Rogue_sprite_skirt_harem_bottom_wet.png",
-            "RogueX.Legs == 'bottom harem'", "images/RogueSprite/modification/Rogue_sprite_skirt_harem_bottom.png",
-            # ----------------
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Arms and gloves
-            "RogueX.ArmPose == 1 and RogueX.Arms == 'gloves' and RogueX.Neck == 'spiked collar'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms1a_gloved.png",       #Gloves and collar
-            "RogueX.ArmPose == 1 and RogueX.Arms == 'gloves'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms1b_gloved.png",                                     #Gloves, no collar
-            "RogueX.ArmPose == 1 and RogueX.Neck == 'spiked collar'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms1a_bare.png",                                #No Gloves, collar
-            "RogueX.ArmPose == 1", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms1b_bare.png",                                                              #No gloves, no collar
-            "RogueX.Arms == 'gloves' and RogueX.Neck == 'spiked collar'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms2_gloved.png",                           #Gloves and collar
-            "RogueX.Arms == 'gloves'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms2b_gloved.png",                                                         #Gloved, no collar
-            "RogueX.Neck == 'spiked collar'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms2_bare.png",                                                    #No gloves, collar
-            "True", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms2b_bare.png",
-            ),
-#        (0,0), ConditionSwitch(
-#            #chest layer
-#            "RogueX.Pierce == 'barbell'", Recolor("Rogue", "Chest", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_chest_barbell.png"),
-#            "RogueX.Pierce == 'ring'", Recolor("Rogue", "Chest", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_chest_rings.png"),
-#            "True", Recolor("Rogue", "Chest", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_chest_bare.png"),
-#            ),
-#        (0,0), ConditionSwitch(
-#            #chest clothes layer
-#            "RogueX.Chest == 'tank'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank.png"),
-#            "RogueX.Chest == 'buttoned tank'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank2.png"),
-#            "RogueX.Chest == 'bra'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_bra.png"),
-#            "RogueX.Chest == 'sports bra'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_sportsbra.png"),
-#            "RogueX.Chest == 'lace bra'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_lacebra.png"),
-#            "True", Null(),
-#            ),
-        (0,0), ConditionSwitch(
-            #bra layer
-            "not RogueX.Chest", Null(),
-            "RogueX.Uptop", ConditionSwitch(
-                    #if the top's down. . .
-                    "RogueX.Chest == 'tank'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank_Up.png"),
-                    "RogueX.Chest == 'tube top'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tube_Up.png"),
-                    "RogueX.Chest == 'buttoned tank'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank2_Up.png"),
-                    "RogueX.Chest == 'bra'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_bra_Up.png"),
-                    "RogueX.Chest == 'sports bra'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_sportsbra_Up.png"),
-                    "RogueX.Chest == 'lace bra'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_lacebra_Up.png"),
-                    "RogueX.Chest == 'bikini top'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_bikini_Up.png"),
-                    # Modification mode
-                    "RogueX.Chest == 'SR7 tank top'", "images/RogueSprite/modification/Rogue_Sprite_chest_SR7_tank_top_Up.png",
-                    "RogueX.Chest == 'raven leotard'", "images/RogueSprite/modification/Rogue_chest_Raven_Up.png",
-                    "RogueX.Chest == 'harness bra'", "images/RogueSprite/modification/Rogue_sprite_underwear_bra_harness_up.png",
-                    # ----------------
-                    ),
-            "True", ConditionSwitch(
-                    #if the top's up. . .
-                    "RogueX.Chest == 'tank'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank.png"),
-                    "RogueX.Chest == 'tube top'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tube.png"),
-                    "RogueX.Chest == 'buttoned tank'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank2.png"),
-                    "RogueX.Chest == 'bra'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_bra.png"),
-                    "RogueX.Chest == 'sports bra'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_sportsbra.png"),
-                    "RogueX.Chest == 'lace bra'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_lacebra.png"),
-                    "RogueX.Chest == 'bikini top'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_bikini.png"),
-                    # Modification mode
-                    "RogueX.Chest == 'SR7 tank top'", "images/RogueSprite/modification/Rogue_Sprite_Chest_SR7_tank_top.png",
-                    "RogueX.Chest == 'harness bra'", "images/RogueSprite/modification/Rogue_sprite_underwear_bra_harness.png",
-                    "RogueX.Chest == 'raven leotard' and RogueX.ArmPose == 1", "images/RogueSprite/modification/Rogue_chest_Raven1.png",
-                    "RogueX.Chest == 'raven leotard' and RogueX.ArmPose == 2", "images/RogueSprite/modification/Rogue_chest_Raven2.png",
-                    # ----------------
-                    "True", Null(),
-                    ),
-            ),
-        (0,0), ConditionSwitch(
-            #water
-            "RogueX.Water and RogueX.ArmPose == 1", "images/RogueSprite/Rogue_body_wet1.png",
-            "RogueX.Water", "images/RogueSprite/Rogue_body_wet2.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #soap
-            "RogueX.Water == 3", "images/RogueSprite/Rogue_body_wet3.png",
-            "True", Null(),
-            ),
-#        (0,0), ConditionSwitch(
-#            #Overshirt layer
-#            "RogueX.ArmPose == 1 and RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh1.png"),
-#            "RogueX.ArmPose == 1 and RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink1.png"),
-#            "RogueX.ArmPose == 1 and RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_towel1.png"),
-#            "RogueX.ArmPose == 1 and RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty1.png"),
-#            "RogueX.ArmPose == 1 and RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie1.png"),
-#            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh2.png"),
-#            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink2.png"),
-#            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie2.png"),
-#            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty2.png"),
-#            "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_towel2.png"),
-#            "True", Null(),
-#            ),
+    # Body
+    if RogueX.ArmPose == 1 and RogueX.Pubes and RogueX.Pierce == 'ring':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_haired_ring.png"
+    elif RogueX.ArmPose == 1 and RogueX.Pubes and RogueX.Pierce == 'barbell':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_haired_barbell.png"
+    elif RogueX.ArmPose == 1 and RogueX.Pierce == 'ring':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_ring.png"
+    elif RogueX.ArmPose == 1 and RogueX.Pierce == 'barbell':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_barbell.png"
+    elif RogueX.ArmPose == 1 and RogueX.Pubes:
+        Recolor("Rogue", "Pubes", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_haired.png")
+    elif RogueX.ArmPose == 1:
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_bare.png"
+    elif RogueX.Pubes and RogueX.Pierce == 'ring':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_haired_ring.png"
+    elif RogueX.Pubes and RogueX.Pierce == 'barbell':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_haired_barbell.png"
+    elif RogueX.Pierce == 'ring':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_ring.png"
+    elif RogueX.Pierce == 'barbell':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_barbell.png"
+    elif RogueX.Pubes:
+        Recolor("Rogue", "Pubes", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_haired.png")
+    else:
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_bare.png"
 
-        (0,0), ConditionSwitch(
-            #shirt layer
-            "not RogueX.Over", Null(),
-            "RogueX.Uptop", ConditionSwitch(
-                    #if the top's down. . .
-                    "RogueX.ArmPose == 1", ConditionSwitch(
-                            #if the arms are down. . .
-                            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh1_Up.png"),
-                            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink1_Up.png"),
-                            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie1_Up.png"),
-                            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty_Up.png"),
-#                            "RogueX.Over == 'towel'", Null(),
-                            # Modification mode
-                            "RogueX.Over == 'cape'", "images/RogueSprite/modification/Rogue_over_cape_front1.png",
-                            "RogueX.Over == 'top harem'", "images/RogueSprite/modification/Rogue_sprite_over_harem_arms1_top_up.png",
-                            # ----------------
-                            "True", Null(),
-                            ),
-                    "True", ConditionSwitch(
-                            #if the arms are up. . .
-                            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh2_Up.png"),
-                            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink2_Up.png"),
-                            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie2_Up.png"),
-                            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty_Up.png"),
-#                            "RogueX.Over == 'towel'", Null(),
-                            # Modification mode
-                            "RogueX.Over == 'cape'", "images/RogueSprite/modification/Rogue_over_cape_front2.png",
-                            "RogueX.Over == 'top harem'", "images/RogueSprite/modification/Rogue_sprite_over_harem_arms2_top_up.png",
-                            # ----------------
-                            "True", Null(),
-                            ),
-                    ),
-            "True", ConditionSwitch(
-                    #if the top's up. . .
-                    "RogueX.ArmPose == 1", ConditionSwitch(
-                            #if the arms are down. . .
-                            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh1.png"),
-                            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink1.png"),
-                            "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_towel1.png"),
-                            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty1.png"),
-                            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie1.png"),
-                            # Modification mode
-                            "RogueX.Over == 'cape'", "images/RogueSprite/modification/Rogue_over_cape_front1.png",
-                            "RogueX.Over == 'dress blue' and RogueX.Upskirt", "images/RogueSprite/modification/Rogue_sprite_over_dress_blue_arms1_bottom_up.png",
-                            "RogueX.Over == 'dress blue'", "images/RogueSprite/modification/Rogue_sprite_over_dress_blue_arms1.png",
-                            "RogueX.Over == 'dress red' and RogueX.Upskirt", "images/RogueSprite/modification/Rogue_sprite_over_dress_red_arms1_bottom_up.png",
-                            "RogueX.Over == 'dress red'", "images/RogueSprite/modification/Rogue_sprite_over_dress_red_arms1.png",
-                            "RogueX.Over == 'top harem'", "images/RogueSprite/modification/Rogue_sprite_over_harem_arms1_top.png",
-                            # ----------------
-                            "True", Null(),
-                            ),
-                    "True", ConditionSwitch(
-                            #if the arms are up. . .
-                            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh2.png"),
-                            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink2.png"),
-                            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie2.png"),
-                            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty2.png"),
-                            "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_towel2.png"),
-                            # Modification mode
-                            "RogueX.Over == 'cape'", "images/RogueSprite/modification/Rogue_over_cape_front2.png",
-                            "RogueX.Over == 'dress blue' and RogueX.Upskirt", "images/RogueSprite/modification/Rogue_sprite_over_dress_blue_arms2_bottom_up.png",
-                            "RogueX.Over == 'dress blue'", "images/RogueSprite/modification/Rogue_sprite_over_dress_blue_arms2.png",
-                            "RogueX.Over == 'dress red' and RogueX.Upskirt", "images/RogueSprite/modification/Rogue_sprite_over_dress_red_arms2_bottom_up.png",
-                            "RogueX.Over == 'dress red'", "images/RogueSprite/modification/Rogue_sprite_over_dress_red_arms2.png",
-                            "RogueX.Over == 'top harem'", "images/RogueSprite/modification/Rogue_sprite_over_harem_arms2_top.png",
-                            # ----------------
-                            "True", Null(),
-                            ),
-                    ),
-            ),
-        (0,0), ConditionSwitch(
-            #Sweater
-            # Modification mode
-            "RogueX.Acc == 'belt'", "images/RogueSprite/modification/Rogue_acc_belt.png",
-            # -----------------
-            "RogueX.Acc == 'sweater' and RogueX.ArmPose != 1", "images/RogueSprite/Rogue_acc_sweater2.png",
-            "RogueX.Acc == 'sweater'", "images/RogueSprite/Rogue_acc_sweater.png",
-            "True", Null(),
-            ),
-        (185,38),ConditionSwitch(
-            #head
-            "renpy.showing('Rogue_BJ_Animation') or renpy.showing('Rogue_TJ_Animation') or renpy.showing('Rogue_CUN_Animation')", Null(),
-            "True", "Rogue_Head",
-            ),
+    # Panties
+    if not RogueX.Panties:
+        Null()
+    elif RogueX.Legs == 'pants' and not RogueX.Upskirt:
+        Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties.png")
+    elif RogueX.PantiesDown:
+        ConditionSwitch(
+            "RogueX.Wet > 1 and RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts_down_wet.png"),
+            "RogueX.Wet > 1 and RogueX.Panties == 'green panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies_down_wet.png"),
+            "RogueX.Wet > 1 and RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_bikini_down.png"),
+            "RogueX.Wet > 1 and RogueX.Panties == 'harness panties'", "images/RogueSprite/modification/Rogue_sprite_underwear_panties_harness_down_wet.png",
+            "RogueX.Wet > 1 and RogueX.Panties == 'raven leotard'", "images/RogueSprite/modification/Rogue_panties_Raven_Down.png",
+            "RogueX.Wet > 1", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_down.png"),
+            "RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts_down.png"),
+            "RogueX.Panties == 'green panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies_down.png"),
+            "RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_bikini_down.png"),
+            "RogueX.Panties == 'harness panties'", "images/RogueSprite/modification/Rogue_sprite_underwear_panties_harness_down.png",
+            "RogueX.Panties == 'raven leotard'", "images/RogueSprite/modification/Rogue_panties_Raven_Down.png",
+            "True", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_down.png"),
+        )
+    else:
+        ConditionSwitch(
+            "RogueX.Wet > 1 and RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts_wet.png"),
+            "RogueX.Wet > 1 and RogueX.Panties == 'green panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies_wet.png"),
+            "RogueX.Wet > 1 and RogueX.Panties == 'lace panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_lacepanties.png"),
+            "RogueX.Wet > 1 and RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_bikini.png"),
+            "RogueX.Wet > 1 and RogueX.Panties == 'harness panties'", "images/RogueSprite/modification/Rogue_sprite_underwear_panties_harness_wet.png",
+            "RogueX.Wet > 1 and RogueX.Panties == 'raven leotard'", "images/RogueSprite/modification/Rogue_panties_Raven.png",
+            "RogueX.Wet > 1", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties.png"),
+            "RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts.png"),
+            "RogueX.Panties == 'green panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies.png"),
+            "RogueX.Panties == 'lace panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_lacepanties.png"),
+            "RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_bikini.png"),
+            "RogueX.Panties == 'harness panties'", "images/RogueSprite/modification/Rogue_sprite_underwear_panties_harness.png",
+            "RogueX.Panties == 'raven leotard'", "images/RogueSprite/modification/Rogue_panties_Raven.png",
+            "True", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties.png"),
+        )
 
-        (0,0), ConditionSwitch(
-            #hand spunk
-            "'hand' in RogueX.Spunk and RogueX.ArmPose != 1 and Player.Male", "images/RogueSprite/Rogue_spunkhand.png",
-            "True", Null(),
+    # Hose - partial coverage (stockings/garters)
+    if RogueX.Hose == 'stockings':
+        Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Stockings.png")
+    elif RogueX.Hose == 'stockings and garterbelt':
+        Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_StockingsandGarter.png")
+    elif RogueX.Hose == 'garterbelt':
+        "images/RogueSprite/Rogue_Hose_Garter.png"
+
+    # Hose - full coverage (pantyhose/tights, hidden when panties are down)
+    if not (RogueX.Panties and RogueX.PantiesDown) and RogueX.Hose == 'pantyhose':
+        Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Pantyhose.png")
+    elif not (RogueX.Panties and RogueX.PantiesDown) and RogueX.Hose == 'tights' and RogueX.Wet:
+        Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Tights_Wet.png")
+    elif not (RogueX.Panties and RogueX.PantiesDown) and RogueX.Hose == 'tights':
+        Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Tights.png")
+    elif not (RogueX.Panties and RogueX.PantiesDown) and RogueX.Hose == 'ripped pantyhose':
+        Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Pantyhose_Holed.png")
+    elif not (RogueX.Panties and RogueX.PantiesDown) and RogueX.Hose == 'ripped tights':
+        Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Tights_Holed.png")
+
+    # Personal wetness drip (at position 240, 560)
+    if RogueX.Wet and not (RogueX.Legs == 'pants' and not RogueX.Upskirt) and not (RogueX.Panties and not RogueX.PantiesDown and RogueX.Wet <= 1):
+        Fixed(
+            At(
+                ConditionSwitch(
+                    "RogueX.Wet == 1 and RogueX.Panties and RogueX.PantiesDown", AlphaMask("Wet_Drip", "Rogue_Drip_MaskP"),
+                    "RogueX.Wet == 1 and RogueX.Legs == 'pants'", AlphaMask("Wet_Drip", "Rogue_Drip_MaskPn"),
+                    "RogueX.Wet == 1", AlphaMask("Wet_Drip", "Rogue_Drip_Mask"),
+                    "RogueX.Panties and RogueX.PantiesDown", AlphaMask("Wet_Drip2", "Rogue_Drip_MaskP"),
+                    "RogueX.Panties and RogueX.Legs == 'pants'", AlphaMask("Wet_Drip", "Rogue_Drip_MaskPn"),
+                    "RogueX.Legs == 'pants'", AlphaMask("Wet_Drip2", "Rogue_Drip_MaskPn"),
+                    "RogueX.Panties", AlphaMask("Wet_Drip", "Rogue_Drip_Mask"),
+                    "True", AlphaMask("Wet_Drip2", "Rogue_Drip_Mask"),
+                ),
+                Transform(xpos=240, ypos=560, xanchor=0.0, yanchor=0.0)
             ),
-        (0,0), ConditionSwitch(
-            #belly spunk
-            "'belly' in RogueX.Spunk and Player.Male", "images/RogueSprite/Rogue_spunkbelly.png",
-            "True", Null(),
+            xysize=(480, 960)
+        )
+
+    # Personal wetness overlay
+    if not RogueX.Wet:
+        Null()
+    elif RogueX.Legs and RogueX.Wet <= 1:
+        Null()
+    elif RogueX.Legs:
+        "images/RogueSprite/Rogue_wet.png"
+    elif RogueX.Wet == 1:
+        "images/RogueSprite/Rogue_wet.png"
+    else:
+        "images/RogueSprite/Rogue_wet2.png"
+
+    # Spunk drip (at position 240, 560)
+    if ('in' in RogueX.Spunk or 'anal' in RogueX.Spunk) and Player.Male and not (RogueX.Legs == 'pants' and not RogueX.Upskirt):
+        Fixed(
+            At(
+                ConditionSwitch(
+                    "RogueX.Panties and RogueX.PantiesDown", AlphaMask("Spunk_Drip2", "Rogue_Drip_MaskP"),
+                    "RogueX.Panties and RogueX.Legs == 'pants'", AlphaMask("Spunk_Drip", "Rogue_Drip_MaskPn"),
+                    "RogueX.Legs == 'pants'", AlphaMask("Spunk_Drip2", "Rogue_Drip_MaskPn"),
+                    "True", AlphaMask("Spunk_Drip2", "Rogue_Drip_Mask"),
+                ),
+                Transform(xpos=240, ypos=560, xanchor=0.0, yanchor=0.0)
             ),
-        (0,0), ConditionSwitch(
-            #tits spunk
-            "'tits' in RogueX.Spunk and Player.Male", "images/RogueSprite/Rogue_spunktits.png",
-            "True", Null(),
-            ),
-        (230,600), ConditionSwitch(
-            #steam
-            "RogueX.Lust > 70", "Steam",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Props
-            "not RogueX.Held or RogueX.ArmPose == 1", Null(),
-            "RogueX.ArmPose != 1 and RogueX.Held == 'phone'", "images/RogueSprite/Rogue_held_phone.png",
-            "RogueX.ArmPose != 1 and RogueX.Held == 'dildo'", "images/RogueSprite/Rogue_held_dildo.png",
-            "RogueX.ArmPose != 1 and RogueX.Held == 'vibrator'", "images/RogueSprite/Rogue_held_vibrator.png",
-            "RogueX.ArmPose != 1 and RogueX.Held == 'panties'", "images/RogueSprite/Rogue_held_panties.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #UI tool for When Rogue is masturbating using RogueX.Offhand actions while lead
-            "Trigger == 'lesbian' or not RogueX.Offhand",Null(),# or Ch_Focus is not RogueX", Null(),
+            xysize=(480, 960)
+        )
+
+    # Boots
+    if RogueX.Boots == 'sneaks':
+        "images/RogueSprite/Rogue_boots_sneaks.png"
+    elif RogueX.Boots == 'boots high shoes':
+        "images/RogueSprite/modification/Rogue_sprite_boots_high_shoes.png"
+    elif RogueX.Boots:
+        "images/RogueSprite/Rogue_boots.png"
+
+    # Pants and Skirts
+    if RogueX.Legs == 'pants' and RogueX.Upskirt:
+        Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_pants_down.png")
+    elif RogueX.Legs == 'pants' and RogueX.Wet > 1:
+        Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_pants_wet.png")
+    elif RogueX.Legs == 'pants':
+        Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_pants.png")
+    elif RogueX.Legs == 'skirt' and RogueX.Upskirt:
+        Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_skirt_up.png")
+    elif RogueX.Legs == 'skirt':
+        Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_skirt.png")
+    elif RogueX.Legs == 'short skirt' and RogueX.Upskirt:
+        "images/RogueSprite/modification/Rogue_Sprite_legs_short_skirt_up.png"
+    elif RogueX.Legs == 'short skirt':
+        "images/RogueSprite/modification/Rogue_Sprite_legs_short_skirt.png"
+    elif RogueX.Legs == 'SR7 skirt' and RogueX.Upskirt:
+        "images/RogueSprite/modification/Rogue_Sprite_legs_SR7_skirt_up.png"
+    elif RogueX.Legs == 'SR7 skirt':
+        "images/RogueSprite/modification/Rogue_Sprite_legs_SR7_skirt.png"
+    elif RogueX.Legs == 'bottom harem' and RogueX.Upskirt:
+        "images/RogueSprite/modification/Rogue_sprite_skirt_harem_bottom_up.png"
+    elif RogueX.Legs == 'bottom harem' and RogueX.Wet > 1:
+        "images/RogueSprite/modification/Rogue_sprite_skirt_harem_bottom_wet.png"
+    elif RogueX.Legs == 'bottom harem':
+        "images/RogueSprite/modification/Rogue_sprite_skirt_harem_bottom.png"
+
+    # Arms and gloves
+    if RogueX.ArmPose == 1 and RogueX.Arms == 'gloves' and RogueX.Neck == 'spiked collar':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms1a_gloved.png"
+    elif RogueX.ArmPose == 1 and RogueX.Arms == 'gloves':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms1b_gloved.png"
+    elif RogueX.ArmPose == 1 and RogueX.Neck == 'spiked collar':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms1a_bare.png"
+    elif RogueX.ArmPose == 1:
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms1b_bare.png"
+    elif RogueX.Arms == 'gloves' and RogueX.Neck == 'spiked collar':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms2_gloved.png"
+    elif RogueX.Arms == 'gloves':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms2b_gloved.png"
+    elif RogueX.Neck == 'spiked collar':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms2_bare.png"
+    else:
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms2b_bare.png"
+
+    # Chest / Bra layer
+    if not RogueX.Chest:
+        Null()
+    elif RogueX.Uptop and RogueX.Chest == 'tank':
+        Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank_Up.png")
+    elif RogueX.Uptop and RogueX.Chest == 'tube top':
+        Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tube_Up.png")
+    elif RogueX.Uptop and RogueX.Chest == 'buttoned tank':
+        Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank2_Up.png")
+    elif RogueX.Uptop and RogueX.Chest == 'bra':
+        Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_bra_Up.png")
+    elif RogueX.Uptop and RogueX.Chest == 'sports bra':
+        Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_sportsbra_Up.png")
+    elif RogueX.Uptop and RogueX.Chest == 'lace bra':
+        Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_lacebra_Up.png")
+    elif RogueX.Uptop and RogueX.Chest == 'bikini top':
+        Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_bikini_Up.png")
+    elif RogueX.Uptop and RogueX.Chest == 'SR7 tank top':
+        "images/RogueSprite/modification/Rogue_Sprite_chest_SR7_tank_top_Up.png"
+    elif RogueX.Uptop and RogueX.Chest == 'raven leotard':
+        "images/RogueSprite/modification/Rogue_chest_Raven_Up.png"
+    elif RogueX.Uptop and RogueX.Chest == 'harness bra':
+        "images/RogueSprite/modification/Rogue_sprite_underwear_bra_harness_up.png"
+    elif RogueX.Chest == 'tank':
+        Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank.png")
+    elif RogueX.Chest == 'tube top':
+        Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tube.png")
+    elif RogueX.Chest == 'buttoned tank':
+        Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank2.png")
+    elif RogueX.Chest == 'bra':
+        Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_bra.png")
+    elif RogueX.Chest == 'sports bra':
+        Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_sportsbra.png")
+    elif RogueX.Chest == 'lace bra':
+        Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_lacebra.png")
+    elif RogueX.Chest == 'bikini top':
+        Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_bikini.png")
+    elif RogueX.Chest == 'SR7 tank top':
+        "images/RogueSprite/modification/Rogue_Sprite_Chest_SR7_tank_top.png"
+    elif RogueX.Chest == 'harness bra':
+        "images/RogueSprite/modification/Rogue_sprite_underwear_bra_harness.png"
+    elif RogueX.Chest == 'raven leotard' and RogueX.ArmPose == 1:
+        "images/RogueSprite/modification/Rogue_chest_Raven1.png"
+    elif RogueX.Chest == 'raven leotard' and RogueX.ArmPose == 2:
+        "images/RogueSprite/modification/Rogue_chest_Raven2.png"
+
+    # Water overlay
+    if RogueX.Water and RogueX.ArmPose == 1:
+        "images/RogueSprite/Rogue_body_wet1.png"
+    elif RogueX.Water:
+        "images/RogueSprite/Rogue_body_wet2.png"
+
+    # Soap/steam overlay
+    if RogueX.Water == 3:
+        "images/RogueSprite/Rogue_body_wet3.png"
+
+    # Over shirt front layer
+    if not RogueX.Over:
+        Null()
+    elif RogueX.Uptop and RogueX.ArmPose == 1 and RogueX.Over == 'mesh top':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh1_Up.png")
+    elif RogueX.Uptop and RogueX.ArmPose == 1 and RogueX.Over == 'pink top':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink1_Up.png")
+    elif RogueX.Uptop and RogueX.ArmPose == 1 and RogueX.Over == 'hoodie':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie1_Up.png")
+    elif RogueX.Uptop and RogueX.ArmPose == 1 and RogueX.Over == 'nighty':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty_Up.png")
+    elif RogueX.Uptop and RogueX.ArmPose == 1 and RogueX.Over == 'cape':
+        "images/RogueSprite/modification/Rogue_over_cape_front1.png"
+    elif RogueX.Uptop and RogueX.ArmPose == 1 and RogueX.Over == 'top harem':
+        "images/RogueSprite/modification/Rogue_sprite_over_harem_arms1_top_up.png"
+    elif RogueX.Uptop and RogueX.ArmPose == 1:
+        Null()
+    elif RogueX.Uptop and RogueX.Over == 'mesh top':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh2_Up.png")
+    elif RogueX.Uptop and RogueX.Over == 'pink top':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink2_Up.png")
+    elif RogueX.Uptop and RogueX.Over == 'hoodie':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie2_Up.png")
+    elif RogueX.Uptop and RogueX.Over == 'nighty':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty_Up.png")
+    elif RogueX.Uptop and RogueX.Over == 'cape':
+        "images/RogueSprite/modification/Rogue_over_cape_front2.png"
+    elif RogueX.Uptop and RogueX.Over == 'top harem':
+        "images/RogueSprite/modification/Rogue_sprite_over_harem_arms2_top_up.png"
+    elif RogueX.Uptop:
+        Null()
+    elif RogueX.ArmPose == 1 and RogueX.Over == 'mesh top':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh1.png")
+    elif RogueX.ArmPose == 1 and RogueX.Over == 'pink top':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink1.png")
+    elif RogueX.ArmPose == 1 and RogueX.Over == 'towel':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_towel1.png")
+    elif RogueX.ArmPose == 1 and RogueX.Over == 'nighty':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty1.png")
+    elif RogueX.ArmPose == 1 and RogueX.Over == 'hoodie':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie1.png")
+    elif RogueX.ArmPose == 1 and RogueX.Over == 'cape':
+        "images/RogueSprite/modification/Rogue_over_cape_front1.png"
+    elif RogueX.ArmPose == 1 and RogueX.Over == 'dress blue' and RogueX.Upskirt:
+        "images/RogueSprite/modification/Rogue_sprite_over_dress_blue_arms1_bottom_up.png"
+    elif RogueX.ArmPose == 1 and RogueX.Over == 'dress blue':
+        "images/RogueSprite/modification/Rogue_sprite_over_dress_blue_arms1.png"
+    elif RogueX.ArmPose == 1 and RogueX.Over == 'dress red' and RogueX.Upskirt:
+        "images/RogueSprite/modification/Rogue_sprite_over_dress_red_arms1_bottom_up.png"
+    elif RogueX.ArmPose == 1 and RogueX.Over == 'dress red':
+        "images/RogueSprite/modification/Rogue_sprite_over_dress_red_arms1.png"
+    elif RogueX.ArmPose == 1 and RogueX.Over == 'top harem':
+        "images/RogueSprite/modification/Rogue_sprite_over_harem_arms1_top.png"
+    elif RogueX.ArmPose == 1:
+        Null()
+    elif RogueX.Over == 'mesh top':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh2.png")
+    elif RogueX.Over == 'pink top':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink2.png")
+    elif RogueX.Over == 'hoodie':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie2.png")
+    elif RogueX.Over == 'nighty':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty2.png")
+    elif RogueX.Over == 'towel':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_towel2.png")
+    elif RogueX.Over == 'cape':
+        "images/RogueSprite/modification/Rogue_over_cape_front2.png"
+    elif RogueX.Over == 'dress blue' and RogueX.Upskirt:
+        "images/RogueSprite/modification/Rogue_sprite_over_dress_blue_arms2_bottom_up.png"
+    elif RogueX.Over == 'dress blue':
+        "images/RogueSprite/modification/Rogue_sprite_over_dress_blue_arms2.png"
+    elif RogueX.Over == 'dress red' and RogueX.Upskirt:
+        "images/RogueSprite/modification/Rogue_sprite_over_dress_red_arms2_bottom_up.png"
+    elif RogueX.Over == 'dress red':
+        "images/RogueSprite/modification/Rogue_sprite_over_dress_red_arms2.png"
+    elif RogueX.Over == 'top harem':
+        "images/RogueSprite/modification/Rogue_sprite_over_harem_arms2_top.png"
+    else:
+        Null()
+
+    # Accessories (sweater / belt)
+    if RogueX.Acc == 'belt':
+        "images/RogueSprite/modification/Rogue_acc_belt.png"
+    elif RogueX.Acc == 'sweater' and RogueX.ArmPose != 1:
+        "images/RogueSprite/Rogue_acc_sweater2.png"
+    elif RogueX.Acc == 'sweater':
+        "images/RogueSprite/Rogue_acc_sweater.png"
+
+    # Head layer (at position 185, 38)
+    if not (renpy.showing('Rogue_BJ_Animation') or renpy.showing('Rogue_TJ_Animation') or renpy.showing('Rogue_CUN_Animation')):
+        Fixed(At("Rogue_Head", Transform(xpos=185, ypos=38, xanchor=0.0, yanchor=0.0)), xysize=(480, 960))
+
+    # Hand spunk
+    if 'hand' in RogueX.Spunk and RogueX.ArmPose != 1 and Player.Male:
+        "images/RogueSprite/Rogue_spunkhand.png"
+
+    # Belly spunk
+    if 'belly' in RogueX.Spunk and Player.Male:
+        "images/RogueSprite/Rogue_spunkbelly.png"
+
+    # Tits spunk
+    if 'tits' in RogueX.Spunk and Player.Male:
+        "images/RogueSprite/Rogue_spunktits.png"
+
+    # Steam (at position 230, 600)
+    if RogueX.Lust > 70:
+        Fixed(At("Steam", Transform(xpos=230, ypos=600, xanchor=0.0, yanchor=0.0)), xysize=(480, 960))
+
+    # Props
+    if RogueX.Held and RogueX.ArmPose != 1 and RogueX.Held == 'phone':
+        "images/RogueSprite/Rogue_held_phone.png"
+    elif RogueX.Held and RogueX.ArmPose != 1 and RogueX.Held == 'dildo':
+        "images/RogueSprite/Rogue_held_dildo.png"
+    elif RogueX.Held and RogueX.ArmPose != 1 and RogueX.Held == 'vibrator':
+        "images/RogueSprite/Rogue_held_vibrator.png"
+    elif RogueX.Held and RogueX.ArmPose != 1 and RogueX.Held == 'panties':
+        "images/RogueSprite/Rogue_held_panties.png"
+
+    # Offhand actions (Rogue masturbating while lead)
+    if not (Trigger == 'lesbian' or not RogueX.Offhand):
+        ConditionSwitch(
             "RogueX.Offhand == 'fondle pussy' and Trigger != 'sex' and RogueX.Lust >= 70", "GirlFingerPussy",
             "RogueX.Offhand == 'fondle pussy'", "GirlGropePussy",
-            "RogueX.Offhand == 'fondle breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeRightBreast",    #When zero is working the right breast, fondle left
-            "RogueX.Offhand == 'fondle breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast", #When zero is working the left breast, fondle right
+            "RogueX.Offhand == 'fondle breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeRightBreast",
+            "RogueX.Offhand == 'fondle breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast",
             "RogueX.Offhand == 'fondle breasts'", "GirlGropeRightBreast",
             "RogueX.Offhand == 'vibrator breasts'", "VibratorRightBreast",
             "RogueX.Offhand == 'vibrator pussy'", "VibratorPussy",
@@ -470,19 +414,18 @@ image Rogue_Sprite:
             "RogueX.Offhand == 'vibrator anal'", "VibratorAnal",
             "RogueX.Offhand == 'vibrator anal insert'", "VibratorPussy",
             "True", Null(),
-            ),
+        )
 
-        (0,0), ConditionSwitch(
-            #UI tool for RogueX.Offhand(lesbian) actions (ie Kitty's hand on her when Rogue is secondary)
-            "not Partner or Partner is RogueX or RogueX in Nearby", Null(),
-#            "not Partner or Partner is RogueX or (Trigger != 'lesbian' and not Partner.Offhand)", Null(),
+    # Partner offhand actions (partner touching Rogue when she is secondary)
+    if Partner and Partner is not RogueX and RogueX not in Nearby:
+        ConditionSwitch(
             "Partner.Offhand == 'fondle girl pussy' and Trigger != 'sex' and RogueX.Lust >= 70", "GirlFingerPussy",
             "Partner.Offhand == 'fondle girl pussy'", "GirlGropePussy",
             "Partner.Offhand == 'lick girl pussy'", "Lickpussy",
             "Partner.Offhand == 'suck girl breasts' and (Trigger2 != 'suck breasts' or Trigger == 'suck breasts')", "LickLeftBreast",
             "Partner.Offhand == 'suck girl breasts'", "LickRightBreast",
-            "Partner.Offhand == 'fondle girl breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast",    #When zero is working the right breast, fondle left
-            "Partner.Offhand == 'fondle girl breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeRightBreast", #When zero is working the left breast, fondle right
+            "Partner.Offhand == 'fondle girl breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast",
+            "Partner.Offhand == 'fondle girl breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeRightBreast",
             "Partner.Offhand == 'fondle girl breasts'", "GirlGropeRightBreast",
             "Partner.Offhand == 'vibrator girl breasts'", "VibratorRightBreast",
             "Partner.Offhand == 'vibrator girl pussy'", "VibratorPussy",
@@ -490,17 +433,18 @@ image Rogue_Sprite:
             "Partner.Offhand == 'vibrator girl anal'", "VibratorAnal",
             "Partner.Offhand == 'vibrator girl anal insert'", "VibratorPussy",
             "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #UI tool for when RogueX is the partner in the scene, and the lead is working on her
-            "not Partner or Partner is not RogueX", Null(),
+        )
+
+    # Ch_Focus offhand (lead working on Rogue as partner)
+    if Partner and Partner is RogueX:
+        ConditionSwitch(
             "Ch_Focus.Offhand == 'fondle girl pussy' and Trigger != 'sex' and RogueX.Lust >= 70", "GirlFingerPussy",
             "Ch_Focus.Offhand == 'fondle girl pussy'", "GirlGropePussy",
             "Ch_Focus.Offhand == 'lick girl pussy'", "Lickpussy",
             "Ch_Focus.Offhand == 'suck girl breasts' and (Trigger2 != 'suck breasts' or Trigger == 'suck breasts')", "LickLeftBreast",
             "Ch_Focus.Offhand == 'suck girl breasts'", "LickRightBreast",
-            "Ch_Focus.Offhand == 'fondle girl breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast",    #When zero is working the right breast, fondle left
-            "Ch_Focus.Offhand == 'fondle girl breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeRightBreast", #When zero is working the left breast, fondle right
+            "Ch_Focus.Offhand == 'fondle girl breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast",
+            "Ch_Focus.Offhand == 'fondle girl breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeRightBreast",
             "Ch_Focus.Offhand == 'fondle girl breasts'", "GirlGropeRightBreast",
             "Ch_Focus.Offhand == 'vibrator girl breasts'", "VibratorRightBreast",
             "Ch_Focus.Offhand == 'vibrator girl pussy'", "VibratorPussy",
@@ -508,10 +452,11 @@ image Rogue_Sprite:
             "Ch_Focus.Offhand == 'vibrator girl anal'", "VibratorAnal",
             "Ch_Focus.Offhand == 'vibrator girl anal insert'", "VibratorPussy",
             "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #UI tool for Trigger1(primary) actions
-            "not Trigger or Ch_Focus is not RogueX", Null(),
+        )
+
+    # Trigger1 (primary) actions
+    if Trigger and Ch_Focus is RogueX:
+        ConditionSwitch(
             "Trigger == 'vibrator breasts'", "VibratorLeftBreast",
             "Trigger == 'fondle thighs'", "GropeThigh",
             "Trigger == 'fondle breasts'", "GropeRightBreast",
@@ -524,19 +469,15 @@ image Rogue_Sprite:
             "Trigger == 'fondle pussy'", "GropePussy",
             "Trigger == 'lick pussy'", "Lickpussy",
             "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #UI tool for Trigger2(secondary) actions
-            "not Trigger2 or Ch_Focus is not RogueX", Null(),
-#            "Trigger == 'fondle breasts' and not RogueX.Offhand", "GropeRightBreast",  #"Trigger == 'fondle breasts' and not RogueX.Offhand",
-            #When doing nothing offhand, use both hands on breasts.
+        )
+
+    # Trigger2 (secondary) actions
+    if Trigger2 and Ch_Focus is RogueX:
+        ConditionSwitch(
             "Trigger2 == 'fondle breasts' and Trigger == 'suck breasts'", "GropeLeftBreast",
-            #When sucking right breast, fondle left
             "Trigger2 == 'fondle breasts'", "GropeLeftBreast",
             "Trigger2 == 'vibrator breasts' and Trigger == 'suck breasts'", "VibratorLeftBreast",
-            #When sucking right breast, vibrator left
             "Trigger2 == Trigger", Null(),
-            #When both triggers are the same, do nothing
             "Trigger2 == 'vibrator breasts'", "VibratorRightBreast",
             "Trigger2 == 'suck breasts'", "LickLeftBreast",
             "Trigger2 == 'vibrator pussy'", "VibratorPussy",
@@ -547,60 +488,9 @@ image Rogue_Sprite:
             "Trigger2 == 'lick pussy'", "Lickpussy",
             "Trigger2 == 'fondle thighs'", "GropeThigh",
             "True", Null(),
-            ),
-#        (0,0), ConditionSwitch(
-#            #UI tool for Trigger5(Threesome masutrbation) actions
-#            "not Trigger5 or Trigger4 != 'masturbation' or Ch_Focus == RogueX", Null(),
-#            #this doesn't activate unless Rogue is not primary, and is actively masturbating
-#            "Trigger5 == 'fondle pussy' and Trigger != 'sex' and RogueX.Lust >= 70", "GirlFingerPussy",
-#            "Trigger5 == 'fondle pussy'", "GirlGropePussy",
-#            "Trigger5 == 'fondle breasts'", "GirlGropeRightBreast",
-#            "Trigger5 == 'vibrator breasts'", "VibratorRightBreast",
-#            "Trigger5 == 'vibrator pussy'", "VibratorPussy",
-#            "Trigger5 == 'vibrator pussy insert'", "VibratorPussy",
-#            "Trigger5 == 'vibrator anal'", "VibratorAnal",
-#            "Trigger5 == 'vibrator anal insert'", "VibratorPussy",
-#            "True", Null(),
-#            ),
-#        (0,0), ConditionSwitch(
-#            #UI tool for Trigger4(Threesome) actions (ie Kitty's hand on her)
-#            "not Trigger4 or Ch_Focus != RogueX", Null(),
-#            "Trigger4 == 'fondle pussy' and Trigger != 'sex' and RogueX.Lust >= 70", "GirlFingerPussy",
-#            "Trigger4 == 'fondle pussy'", "GirlGropePussy",
-#            "Trigger4 == 'lick pussy'", "Lickpussy",
-#            "Trigger4 == 'suck breasts' and (Trigger2 != 'suck breasts' or Trigger == 'suck breasts')", "LickLeftBreast",
-#            "Trigger4 == 'suck breasts'", "LickRightBreast",
-#            "Trigger4 == 'vibrator breasts'", "VibratorRightBreast",
-#            "Trigger4 == 'vibrator pussy'", "VibratorPussy",
-#            "Trigger4 == 'vibrator pussy insert'", "VibratorPussy",
-#            "Trigger4 == 'vibrator anal'", "VibratorAnal",
-#            "Trigger4 == 'vibrator anal insert'", "VibratorPussy",
-#            "Trigger4 == 'fondle breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast",    #When zero is working the right breast, fondle left
-#            "Trigger4 == 'fondle breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeRightBreast", #When zero is working the left breast, fondle right
-#            "Trigger4 == 'fondle breasts'", "GirlGropeRightBreast",
-#            "True", Null(),
-#            ),
-#        (0,0), ConditionSwitch(
-#            #UI tool for Trigger3(lesbian) actions (ie Kitty's hand on her when Rogue is secondary)
-#            "Trigger != 'lesbian' or not Trigger3 or Ch_Focus == RogueX", Null(),
-#            "Trigger3 == 'fondle pussy' and Trigger != 'sex' and RogueX.Lust >= 70", "GirlFingerPussy",
-#            "Trigger3 == 'fondle pussy'", "GirlGropePussy",
-#            "Trigger3 == 'lick pussy'", "Lickpussy",
-#            "Trigger3 == 'suck breasts' and (Trigger2 != 'suck breasts' or Trigger == 'suck breasts')", "LickLeftBreast",
-#            "Trigger3 == 'suck breasts'", "LickRightBreast",
-#            "Trigger3 == 'fondle breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast",    #When zero is working the right breast, fondle left
-#            "Trigger3 == 'fondle breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeRightBreast", #When zero is working the left breast, fondle right
-#            "Trigger3 == 'fondle breasts'", "GirlGropeRightBreast",
-#            "Trigger3 == 'vibrator breasts'", "VibratorRightBreast",
-#            "Trigger3 == 'vibrator pussy'", "VibratorPussy",
-#            "Trigger3 == 'vibrator pussy insert'", "VibratorPussy",
-#            "Trigger3 == 'vibrator anal'", "VibratorAnal",
-#            "Trigger3 == 'vibrator anal insert'", "VibratorPussy",
-#            "True", Null(),
-#            ),
         )
-    anchor (0.5, 0.0)
-    zoom .75
+
+image Rogue_Sprite = At("Rogue_Sprite_Layered", Transform(zoom=0.75, xanchor=0.5, yanchor=0.0))
 
 
 image Rogue_Head:                                                                            #These are all the details of the face
