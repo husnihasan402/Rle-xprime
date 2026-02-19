@@ -19,9 +19,9 @@ init -1 python hide:
 
     config.screen_width = 1024 #1600
     config.screen_height = 768 #900
-    config.image_cache_size = 200
+    config.image_cache_size = 200 #64 previously; increased for better animation performance
     config.cache_surfaces = False #True #defaults to false, If True, the underlying data of an image is stored in RAM, allowing image manipulators to be applied to that image without reloading it from disk. If False, the data is dropped from the cache, but kept as a texture in video memory, reducing RAM usage.
-    config.image_cache_size_mb = 300
+    config.image_cache_size_mb = 300 #enabled to support the increased image_cache_size above
 
     ## This controls the title of the window, when Ren'Py is
     ## running in a window.
