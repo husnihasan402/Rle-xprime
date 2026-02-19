@@ -2436,6 +2436,7 @@ image Doreen_Doggy_Foot2_Ass:
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #Doggy Launch/Reset
 label Doreen_Doggy_Launch(Line = Trigger):
+    $ renpy.start_predict("images/DoreenDoggy/*.*")
 ###    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
 #    return
 ###    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
@@ -4820,6 +4821,7 @@ image Doreen_Sex_FJ_Speed2:
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                                     Sex Launch/Reset
 label Doreen_Sex_Launch(Line = Trigger):
+    $ renpy.start_predict("images/DoreenSex/*.*")
     $ DoreenX.Offhand = 0 if DoreenX.Offhand == "hand" else DoreenX.Offhand
 
 ###    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
@@ -6257,6 +6259,7 @@ image Doreen_BJ_Anim6:
 ##<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Doreen_BJ_Launch(Line = Trigger):    # The sequence to launch the Doreen BJ animations
+    $ renpy.start_predict("images/DoreenBJFace/*.*")
 
 ##    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
 #    return
@@ -7606,6 +7609,7 @@ image Doreen_TJ_5:
 
 
 label Doreen_TJ_Launch(Line = Trigger):    # The sequence to launch the Doreen Titfuck animations
+    $ renpy.start_predict("images/DoreenBJFace/*.*")
 ###    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
 #    return
 ###    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
@@ -7833,6 +7837,7 @@ image Doreen_HJ_Animation:
 
 
 label Doreen_HJ_Launch(Line = Trigger):
+    $ renpy.start_predict("images/DoreenBJFace/*.*")
     if renpy.showing("Doreen_HJ_Animation"):
         $ Trigger = "hand"
         return
@@ -8147,6 +8152,7 @@ image Doreen_CUN_Anim_Licking3:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Doreen_CUN_Launch(Line = Trigger):
+    $ renpy.start_predict("images/DoreenBJFace/*.*")
     # The sequence to launch the Doreen CUN animations
 ###    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
 #    return
@@ -8378,6 +8384,7 @@ image Doreen_Finger_2:
     # end Animation for Fingering Zero's pussy, fast < < < < < < < < < < < < < < < < < < < < < < < <
 
 label Doreen_Finger_Launch(Line = Trigger):
+    $ renpy.start_predict("images/DoreenBJFace/*.*")
     if renpy.showing("Doreen_Finger_Animation"):
         $ Trigger = "finger"
         return

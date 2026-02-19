@@ -2400,6 +2400,7 @@ image Betsy_Doggy_Foot2_Ass:
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #Doggy Launch/Reset
 label Betsy_Doggy_Launch(Line = Trigger):
+    $ renpy.start_predict("images/BetsyDoggy/*.*")
 #    #temporary, remove / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 #    return
 #    #temporary, remove / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -4367,6 +4368,7 @@ image Betsy_Sex_FJ_Speed2:
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                                     Sex Launch/Reset
 label Betsy_Sex_Launch(Line = Trigger):
+    $ renpy.start_predict("images/BetsySex/*.*")
     $ BetsyX.Offhand = 0 if BetsyX.Offhand == "hand" else BetsyX.Offhand
 
 #    #temporary, remove / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -5603,6 +5605,7 @@ image Betsy_BJ_Anim6:
 ##<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Betsy_BJ_Launch(Line = Trigger):    # The sequence to launch the Betsy BJ animations
+    $ renpy.start_predict("images/BetsyBJFace/*.*")
 
 ##    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
 #    return
@@ -7015,6 +7018,7 @@ image Betsy_TJ_5:
 
 
 label Betsy_TJ_Launch(Line = Trigger):    # The sequence to launch the Betsy Titfuck animations
+    $ renpy.start_predict("images/BetsyBJFace/*.*")
 
 #    #temporary, remove / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 #    return
@@ -7256,6 +7260,7 @@ image Betsy_HJ_Animation:
 
 
 label Betsy_HJ_Launch(Line = Trigger):
+    $ renpy.start_predict("images/BetsyBJFace/*.*")
     if renpy.showing("Betsy_HJ_Animation"):
         $ Trigger = "hand"
         return
@@ -7568,6 +7573,7 @@ image Betsy_CUN_Anim_Licking3:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Betsy_CUN_Launch(Line = Trigger):
+    $ renpy.start_predict("images/BetsyBJFace/*.*")
     # The sequence to launch the Betsy CUN animations
 ###    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
 #    return
@@ -7795,6 +7801,7 @@ image Betsy_Finger_2:
     # end Animation for Fingering Zero's pussy, fast < < < < < < < < < < < < < < < < < < < < < < < <
 
 label Betsy_Finger_Launch(Line = Trigger):
+    $ renpy.start_predict("images/BetsyBJFace/*.*")
     if renpy.showing("Betsy_Finger_Animation"):
         $ Trigger = "finger"
         return

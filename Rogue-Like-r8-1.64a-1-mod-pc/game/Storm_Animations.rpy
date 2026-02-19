@@ -2721,6 +2721,7 @@ image Storm_Doggy_Feet2:
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #Doggy Launch/Reset
 label Storm_Doggy_Launch(Line = Trigger):
+    $ renpy.start_predict("images/StormDoggy/*.*")
     if renpy.showing("Storm_Doggy_Animation"):
         return
     $ Speed = 0
@@ -4541,6 +4542,7 @@ image Storm_Sex_FJ_Speed2:
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                                     Sex Launch/Reset
 label Storm_Sex_Launch(Line = Trigger):
+    $ renpy.start_predict("images/StormSex/*.*")
 
 ##    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
 #    $ StormX.Pose = "sex"
@@ -5536,6 +5538,7 @@ image Storm_BJ_Anim6:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Storm_BJ_Launch(Line = Trigger):    # The sequence to launch the Storm BJ animations
+    $ renpy.start_predict("images/StormBJFace/*.*")
     if renpy.showing("Storm_BJ_Animation") and StormX.Pose != "69":
         return
     elif renpy.showing("Storm_69_Animation") and StormX.Pose == "69":
@@ -6799,6 +6802,7 @@ image Storm_TJ_5:
 # Storm's TJ animations end / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
 label Storm_TJ_Launch(Line = Trigger):    # The sequence to launch the Storm Titfuck animations
+    $ renpy.start_predict("images/StormBJFace/*.*")
     if renpy.showing("Storm_TJ_Animation"):
         return
 
@@ -7019,6 +7023,7 @@ image Storm_HJ_Animation:
 
 
 label Storm_HJ_Launch(Line = Trigger):
+    $ renpy.start_predict("images/StormBJFace/*.*")
     $ StormX.ArmPose = 1
     if renpy.showing("Storm_HJ_Animation"):
         $ Trigger = "hand"
@@ -7313,6 +7318,7 @@ image Storm_CUN_Anim_Licking3:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Storm_CUN_Launch(Line = Trigger):
+    $ renpy.start_predict("images/StormBJFace/*.*")
     # The sequence to launch the Storm CUN animations
     if renpy.showing("Storm_CUN_Animation") and StormX.Pose != "69":
         return
@@ -7542,6 +7548,7 @@ image Storm_Finger_2:
     # end Animation for Fingering Zero's pussy, fast < < < < < < < < < < < < < < < < < < < < < < < <
 
 label Storm_Finger_Launch(Line = Trigger):
+    $ renpy.start_predict("images/StormBJFace/*.*")
     if renpy.showing("Storm_Finger_Animation"):
         $ Trigger = "finger"
         return

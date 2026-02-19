@@ -2312,6 +2312,7 @@ image Laura_Doggy_Foot2_Ass:
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #Doggy Launch/Reset
 label Laura_Doggy_Launch(Line = Trigger):
+    $ renpy.start_predict("images/LauraDoggy/*.*")
     if renpy.showing("Laura_Doggy_Animation"):
         return
     $ Speed = 0
@@ -4251,6 +4252,7 @@ image Laura_Mega_Mask2:
 
 
 label Laura_Sex_Launch(Line = Trigger):
+    $ renpy.start_predict("images/LauraSex/*.*")
         $ LauraX.Offhand = 0 if LauraX.Offhand == "hand" else LauraX.Offhand
         $ Line = "solo" if not Line else Line
         if Line == "sex":
@@ -5826,6 +5828,7 @@ image Laura_BJ_Body_6:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Laura_BJ_Launch(Line = Trigger):
+    $ renpy.start_predict("images/LauraSprite/*.*")
     # The sequence to launch the Laura BJ animations
     $ LauraX.ArmPose = 1
     if renpy.showing("Laura_BJ_Animation") and LauraX.Pose != "69":
@@ -6970,6 +6973,7 @@ image Laura_TJ_5:
 # Laura's TJ animations end / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
 label Laura_TJ_Launch(Line = Trigger):    # The sequence to launch the Laura Titfuck animations
+    $ renpy.start_predict("images/LauraSprite/*.*")
     if renpy.showing("Laura_TJ_Animation"):
         return
     call Girl_Hide(LauraX)
@@ -7181,6 +7185,7 @@ image Laura_HJ_Animation:
 
 
 label Laura_HJ_Launch(Line = Trigger):
+    $ renpy.start_predict("images/LauraSprite/*.*")
     if renpy.showing("Laura_HJ_Animation"):
         $ Trigger = "hand"
         return
@@ -7466,6 +7471,7 @@ image Laura_CUN_Anim_Licking3:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Laura_CUN_Launch(Line = Trigger):
+    $ renpy.start_predict("images/LauraSprite/*.*")
     # The sequence to launch the Laura CUN animations
 
     if renpy.showing("Laura_CUN_Animation") and LauraX.Pose != "69":
@@ -7689,6 +7695,7 @@ image Laura_Finger_2:
     # end Animation for Fingering Zero's pussy, fast < < < < < < < < < < < < < < < < < < < < < < < <
 
 label Laura_Finger_Launch(Line = Trigger):
+    $ renpy.start_predict("images/LauraSprite/*.*")
     if renpy.showing("Laura_Finger_Animation"):
         $ Trigger = "finger"
         return

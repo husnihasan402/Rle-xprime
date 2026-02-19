@@ -2377,6 +2377,7 @@ image Gwen_Doggy_Foot2_Ass:
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #Doggy Launch/Reset
 label Gwen_Doggy_Launch(Line = Trigger):
+    $ renpy.start_predict("images/GwenDoggy/*.*")
     if renpy.showing("Gwen_Doggy_Animation"):
         return
     $ Speed = 0
@@ -4034,6 +4035,7 @@ image Gwen_Sex_FJ_Speed2:
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                                     Sex Launch/Reset
 label Gwen_Sex_Launch(Line = Trigger):
+    $ renpy.start_predict("images/GwenSex/*.*")
     $ GwenX.Offhand = 0 if GwenX.Offhand == "hand" else GwenX.Offhand
 
 ##    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
@@ -5551,6 +5553,7 @@ image Gwen_BJ_Anim6:
 ##<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Gwen_BJ_Launch(Line = Trigger):    # The sequence to launch the Gwen BJ animations
+    $ renpy.start_predict("images/GwenBJFace/*.*")
 
 ##    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
 #    return
@@ -7007,6 +7010,7 @@ image Gwen_TJ_5:
 
 
 label Gwen_TJ_Launch(Line = Trigger):    # The sequence to launch the Gwen Titfuck animations
+    $ renpy.start_predict("images/GwenBJFace/*.*")
     if renpy.showing("Gwen_TJ_Animation"):
         return
 
@@ -7229,6 +7233,7 @@ image Gwen_HJ_Animation:
 
 
 label Gwen_HJ_Launch(Line = Trigger):
+    $ renpy.start_predict("images/GwenBJFace/*.*")
     if renpy.showing("Gwen_HJ_Animation"):
         $ Trigger = "hand"
         return
@@ -7541,6 +7546,7 @@ image Gwen_CUN_Anim_Licking3:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Gwen_CUN_Launch(Line = Trigger):
+    $ renpy.start_predict("images/GwenBJFace/*.*")
     # The sequence to launch the Gwen CUN animations
 ###    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
 #    return
@@ -7762,6 +7768,7 @@ image Gwen_Finger_2:
     # end Animation for Fingering Zero's pussy, fast < < < < < < < < < < < < < < < < < < < < < < < <
 
 label Gwen_Finger_Launch(Line = Trigger):
+    $ renpy.start_predict("images/GwenBJFace/*.*")
     if renpy.showing("Gwen_Finger_Animation"):
         $ Trigger = "finger"
         return

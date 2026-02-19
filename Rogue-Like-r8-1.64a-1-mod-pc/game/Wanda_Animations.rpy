@@ -2435,6 +2435,7 @@ image Wanda_Doggy_Foot2_Ass:
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #Doggy Launch/Reset
 label Wanda_Doggy_Launch(Line = Trigger):
+    $ renpy.start_predict("images/WandaDoggy/*.*")
 ###    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
 #    return
 ###    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
@@ -4318,6 +4319,7 @@ image Wanda_Sex_FJ_Speed2:
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                                     Sex Launch/Reset
 label Wanda_Sex_Launch(Line = Trigger):
+    $ renpy.start_predict("images/WandaSex/*.*")
     $ WandaX.Offhand = 0 if WandaX.Offhand == "hand" else WandaX.Offhand
 
 ###    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
@@ -5375,6 +5377,7 @@ image Wanda_BJ_Anim6:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Wanda_BJ_Launch(Line = Trigger):    # The sequence to launch the Wanda BJ animations
+    $ renpy.start_predict("images/WandaBJFace/*.*")
     if renpy.showing("Wanda_BJ_Animation") and WandaX.Pose != "69":
         return
     elif renpy.showing("Wanda_69_Animation") and WandaX.Pose == "69":
@@ -6722,6 +6725,7 @@ image Wanda_TJ_5:
 
 
 label Wanda_TJ_Launch(Line = Trigger):    # The sequence to launch the Wanda Titfuck animations
+    $ renpy.start_predict("images/WandaBJFace/*.*")
 ##    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
 #    return
 ##    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
@@ -6974,6 +6978,7 @@ image Wanda_HJ_Animation:
 
 
 label Wanda_HJ_Launch(Line = Trigger):
+    $ renpy.start_predict("images/WandaBJFace/*.*")
     if renpy.showing("Wanda_HJ_Animation"):
         $ Trigger = "hand"
         return
@@ -7287,6 +7292,7 @@ image Wanda_CUN_Anim_Licking3:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Wanda_CUN_Launch(Line = Trigger):
+    $ renpy.start_predict("images/WandaBJFace/*.*")
     # The sequence to launch the Wanda CUN animations
 ###    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
 #    return
@@ -7520,6 +7526,7 @@ image Wanda_Finger_2:
     # end Animation for Fingering Zero's pussy, fast < < < < < < < < < < < < < < < < < < < < < < < <
 
 label Wanda_Finger_Launch(Line = Trigger):
+    $ renpy.start_predict("images/WandaBJFace/*.*")
     if renpy.showing("Wanda_Finger_Animation"):
         $ Trigger = "finger"
         return

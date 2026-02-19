@@ -2269,6 +2269,7 @@ image Jean_Doggy_Feet2:
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #Doggy Launch/Reset
 label Jean_Doggy_Launch(Line = Trigger):
+    $ renpy.start_predict("images/JeanDoggy/*.*")
     if renpy.showing("Jean_Doggy_Animation"):
         return
     $ Speed = 0
@@ -3487,6 +3488,7 @@ image Jean_Sex_Hotdog_Speed2:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Jean_Sex_Launch(Line = Trigger):
+    $ renpy.start_predict("images/JeanSex/*.*")
         $ JeanX.Offhand = 0 if JeanX.Offhand == "hand" else JeanX.Offhand
 #        #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
 #        $ JeanX.Pose = "doggy"
@@ -4244,6 +4246,7 @@ transform Jean_BJ_Body_6():
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Jean_BJ_Launch(Line = Trigger):    # The sequence to launch the Jean BJ animations
+    $ renpy.start_predict("images/JeanBJFace/*.*")
     if renpy.showing("Jean_BJ_Animation"):
         return
 
@@ -5218,6 +5221,7 @@ image Jean_TJ_5:
 # Jean's TJ animations end / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
 label Jean_TJ_Launch(Line = Trigger):    # The sequence to launch the Jean Titfuck animations
+    $ renpy.start_predict("images/JeanBJFace/*.*")
     if renpy.showing("Jean_TJ_Animation"):
         return
 
@@ -5416,6 +5420,7 @@ image Jean_HJ_Animation:
 
 
 label Jean_HJ_Launch(Line = Trigger):
+    $ renpy.start_predict("images/JeanBJFace/*.*")
     if renpy.showing("Jean_HJ_Animation"):
         $ Trigger = "hand"
         return
@@ -5533,6 +5538,7 @@ image Jean_PJ_Animation_F:
 
 
 label Jean_PJ_Launch(Line = Trigger):
+    $ renpy.start_predict("images/JeanBJFace/*.*")
     if renpy.showing("Jean_PJ_Animation"):
         $ Trigger = "psy"
         return
@@ -5797,6 +5803,7 @@ image Jean_CUN_Anim_Licking3:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Jean_CUN_Launch(Line = Trigger):
+    $ renpy.start_predict("images/JeanBJFace/*.*")
     # The sequence to launch the Jean CUN animations
     if renpy.showing("Jean_CUN_Animation"):
         return
@@ -6096,6 +6103,7 @@ image Jean_Psy_Finger_2:
     # end Animation for Psy Fingering Zero's pussy, fast < < < < < < < < < < < < < < < < < < < < < < < <
 
 label Jean_Finger_Launch(Line = Trigger):
+    $ renpy.start_predict("images/JeanBJFace/*.*")
     if renpy.showing("Jean_Finger_Animation"):
         $ Trigger = "finger"
         return

@@ -2451,6 +2451,7 @@ image Emma_Doggy_Feet2:
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #Doggy Launch/Reset
 label Emma_Doggy_Launch(Line = Trigger):
+    $ renpy.start_predict("images/EmmaDoggy/*.*")
     if renpy.showing("Emma_Doggy_Animation"):
         return
     $ Speed = 0
@@ -3985,6 +3986,7 @@ image Emma_Sex_Anus_A2:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Emma_Sex_Launch(Line = Trigger):
+    $ renpy.start_predict("images/EmmaSex/*.*")
         $ EmmaX.Offhand = 0 if EmmaX.Offhand == "hand" else EmmaX.Offhand
 #        #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
 #        $ EmmaX.Pose = 0
@@ -4532,6 +4534,7 @@ image Emma_TJ_Body_5:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Emma_TJ_Launch(Line = Trigger):    # The sequence to launch the Emma Titfuck animations
+    $ renpy.start_predict("images/EmmaBJFace/*.*")
     if renpy.showing("Emma_TJ_Animation"):
         return
     call Girl_Hide(EmmaX)
@@ -5206,6 +5209,7 @@ transform Emma_BJ_Body_6():
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Emma_BJ_Launch(Line = Trigger):    # The sequence to launch the Emma BJ animations
+    $ renpy.start_predict("images/EmmaBJFace/*.*")
     if renpy.showing("Emma_BJ_Animation") and EmmaX.Pose != "69":
         return
     elif renpy.showing("Emma_69_Animation") and EmmaX.Pose == "69":
@@ -5427,6 +5431,7 @@ image Emma_HJ_Animation:
 
 
 label Emma_HJ_Launch(Line = Trigger):
+    $ renpy.start_predict("images/EmmaBJFace/*.*")
     if renpy.showing("Emma_HJ_Animation"):
         $ Trigger = "hand"
         return
@@ -6185,6 +6190,7 @@ image Emma_FJ_Calf:
 # End footjob animations / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
 label Emma_FJ_Launch(Line = Trigger):    # The sequence to launch the Emma footjob animations
+    $ renpy.start_predict("images/EmmaBJFace/*.*")
     $ Trigger = "foot"
     $ Player.Sprite = 1
     $ ShowFeet = 1
@@ -6472,6 +6478,7 @@ image Emma_CUN_Anim_Licking3:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Emma_CUN_Launch(Line = Trigger):
+    $ renpy.start_predict("images/EmmaBJFace/*.*")
     # The sequence to launch the Emma CUN animations
     if renpy.showing("Emma_CUN_Animation") and EmmaX.Pose != "69":
         return
@@ -6692,6 +6699,7 @@ image Emma_Finger_2:
     # end Animation for Fingering Zero's pussy, fast < < < < < < < < < < < < < < < < < < < < < < < <
 
 label Emma_Finger_Launch(Line = Trigger):
+    $ renpy.start_predict("images/EmmaBJFace/*.*")
     if renpy.showing("Emma_Finger_Animation"):
         $ Trigger = "finger"
         return
