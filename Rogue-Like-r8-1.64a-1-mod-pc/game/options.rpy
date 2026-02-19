@@ -19,9 +19,11 @@ init -1 python hide:
 
     config.screen_width = 1024 #1600
     config.screen_height = 768 #900
-    config.image_cache_size = 64#100
-    config.cache_surfaces = False #True #defaults to false, If True, the underlying data of an image is stored in RAM, allowing image manipulators to be applied to that image without reloading it from disk. If False, the data is dropped from the cache, but kept as a texture in video memory, reducing RAM usage.
-#    config.image_cache_size_mb = 800
+    config.image_cache_size = 300 # increased from 64 for 12+ characters with many sprite state combinations
+    # cache_surfaces: keeps underlying image data in RAM so Recolor() and other manipulators
+    # don't need to reload from disk on cache miss (used 400-560 times per character file)
+    config.cache_surfaces = True
+    config.image_cache_size_mb = 800
 
     ## This controls the title of the window, when Ren'Py is
     ## running in a window.
