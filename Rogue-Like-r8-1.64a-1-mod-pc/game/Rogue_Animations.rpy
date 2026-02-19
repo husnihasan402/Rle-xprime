@@ -1,746 +1,632 @@
-﻿# Basic character Sprites
-image Rogue_Sprite:
-    LiveComposite(
-        (480,960),
-        (0,0), "images/RogueSprite/Rogue_Sprite_Shadow.png",
-#        (0,0), ConditionSwitch(
-#            #Overhsirt backing
-#            "RogueX.Over == 'mesh top' and RogueX.ArmPose == 1", "images/RogueSprite/Rogue_under_mesh1.png",
-#            "RogueX.Over == 'mesh top' and RogueX.ArmPose == 2", "images/RogueSprite/Rogue_under_mesh2.png",
-#            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty1.png"),
-#            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodieB.png"),
-#            "True", Null(),
-#            ),
-
-        (185,38),ConditionSwitch(
-            #head
-            "renpy.showing('Rogue_BJ_Animation') or renpy.showing('Rogue_TJ_Animation') or renpy.showing('Rogue_CUN_Animation')", Null(),
-            "True", "Rogue_HairBack",
-            ),
-
-        (0,0), ConditionSwitch(
-            #shirt layer behind body
-            "not RogueX.Over", Null(),
-            # Modification mode
-            "RogueX.Over == 'cape'", "images/RogueSprite/modification/Rogue_over_cape_back.png",
-            #------------------
-            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodieB.png"),
-            "RogueX.Uptop", ConditionSwitch(
-                    #if the top's down. . .
-                    "RogueX.ArmPose == 1", ConditionSwitch(
-                            #if the arms are down. . .
-                            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh1_Up.png"),
-#                            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink1_Up.png"),
-#                            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie1_Up.png"),
-                            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty_Up.png"),
-#                            "RogueX.Over == 'towel'", Null(),
-                            "True", Null(),
-                            ),
-                    "True", ConditionSwitch(
-                            #if the arms are up. . .
-                            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh2_Up.png"),
-#                            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink2_Up.png"),
-#                            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie2_Up.png"),
-                            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty_Up.png"),
-#                            "RogueX.Over == 'towel'", Null(),
-                            "True", Null(),
-                            ),
-                    ),
-            "True", ConditionSwitch(
-                    #if the top's up. . .
-                    "RogueX.ArmPose == 1", ConditionSwitch(
-                            #if the arms are down. . .
-                            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh1.png"),
-#                            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink1.png"),
-#                            "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_towel1.png"),
-                            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty1.png"),
-#                            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie1.png"),
-                            "True", Null(),
-                            ),
-                    "True", ConditionSwitch(
-                            #if the arms are up. . .
-                            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh2.png"),
-#                            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink2.png"),
-#                            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie2.png"),
-                            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty2.png"),
-#                            "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_towel2.png"),
-                            "True", Null(),
-                            ),
-                    ),
-            ),
-
-        (0,0), ConditionSwitch(
-            #pants backing
-            "RogueX.Legs == 'pants' and RogueX.Upskirt", Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_pantsback.png"),
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #body
-#            "True", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_test.png",
-            "RogueX.ArmPose == 1", ConditionSwitch(
-                    "RogueX.Pubes and RogueX.Pierce == 'ring'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_haired_ring.png",
-                    "RogueX.Pubes and RogueX.Pierce == 'barbell'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_haired_barbell.png",
-                    "RogueX.Pierce == 'ring'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_ring.png",
-                    "RogueX.Pierce == 'barbell'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_barbell.png",
-                    "RogueX.Pubes", Recolor("Rogue", "Pubes", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_haired.png"),
-                    "True", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_bare.png",
-                    ),
-            "RogueX.Pubes and RogueX.Pierce == 'ring'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_haired_ring.png",
-            "RogueX.Pubes and RogueX.Pierce == 'barbell'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_haired_barbell.png",
-            "RogueX.Pierce == 'ring'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_ring.png",
-            "RogueX.Pierce == 'barbell'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_barbell.png",
-            "RogueX.Pubes", Recolor("Rogue", "Pubes", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_haired.png"),
-            "True", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_bare.png",
-            ),
-
-#        (0,0), ConditionSwitch(
-#            #Panties
-#            "not RogueX.Panties", Null(),
-#            "RogueX.Legs == 'pants' and not RogueX.Upskirt", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties.png"),
-#            "RogueX.Panties == 'shorts' and RogueX.PantiesDown and RogueX.Wet > 1", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts_down_wet.png"),
-#            "RogueX.Panties == 'shorts' and RogueX.PantiesDown", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts_down.png"),
-#            "RogueX.Panties == 'shorts' and RogueX.Wet > 1", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts_wet.png"),
-#            "RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts.png"),
-#            "RogueX.Panties == 'green panties' and RogueX.PantiesDown and RogueX.Wet > 1", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies_down_wet.png"),
-#            "RogueX.Panties == 'green panties' and RogueX.PantiesDown", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies_down.png"),
-#            "RogueX.Panties == 'green panties' and RogueX.Wet > 1", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies_wet.png"),
-#            "RogueX.Panties == 'green panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies.png"),
-#            "RogueX.Panties and RogueX.PantiesDown", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_down.png"),
-#            "RogueX.Panties == 'lace panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_lacepanties.png"),
-#            "True", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties.png"),
-#            ),
-        (0,0), ConditionSwitch(
-            #panties
-            "not RogueX.Panties", Null(),
-            "RogueX.Legs == 'pants' and not RogueX.Upskirt", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties.png"),
-            "RogueX.PantiesDown", ConditionSwitch(
-                    #if the panties's down. . .
-                    "RogueX.Wet > 1", ConditionSwitch(
-                            #if the panties's are wet. . .
-                            "RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts_down_wet.png"),
-                            "RogueX.Panties == 'green panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies_down_wet.png"),
-                            "RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_bikini_down.png"),
-                            # Modification mode
-                            "RogueX.Panties == 'harness panties'","images/RogueSprite/modification/Rogue_sprite_underwear_panties_harness_down_wet.png",
-                            "RogueX.Panties == 'raven leotard'", "images/RogueSprite/modification/Rogue_panties_Raven_Down.png",
-                            # -----------------
-                            "True", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_down.png"),
-                            ),
-                    "True", ConditionSwitch(
-                            #if the panties's are not wet. . .
-                            "RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts_down.png"),
-                            "RogueX.Panties == 'green panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies_down.png"),
-                            "RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_bikini_down.png"),
-                            # Modification mode
-                            "RogueX.Panties == 'harness panties'","images/RogueSprite/modification/Rogue_sprite_underwear_panties_harness_down.png",
-                            "RogueX.Panties == 'raven leotard'", "images/RogueSprite/modification/Rogue_panties_Raven_Down.png",
-                            # -----------------
-                            "True", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_down.png"),
-                            ),
-                    ),
-            "True", ConditionSwitch(
-                    #if the panties's up. . .
-                    "RogueX.Wet > 1", ConditionSwitch(
-                            #if the panties's are wet. . .
-                            "RogueX.Panties == 'shorts' and RogueX.Wet > 1", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts_wet.png"),
-                            "RogueX.Panties == 'green panties' and RogueX.Wet > 1", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies_wet.png"),
-                            "RogueX.Panties == 'lace panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_lacepanties.png"),
-                            "RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_bikini.png"),
-                            # Modification mode
-                            "RogueX.Panties == 'harness panties'","images/RogueSprite/modification/Rogue_sprite_underwear_panties_harness_wet.png",
-                            "RogueX.Panties == 'raven leotard'", "images/RogueSprite/modification/Rogue_panties_Raven.png",
-                            # -----------------
-                            "True", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties.png"),
-                            ),
-                    "True", ConditionSwitch(
-                            #if the panties's are not wet. . .
-                            "RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts.png"),
-                            "RogueX.Panties == 'green panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies.png"),
-                            "RogueX.Panties == 'lace panties'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_lacepanties.png"),
-                            "RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_bikini.png"),
-                            # Modification mode
-                            "RogueX.Panties == 'harness panties'","images/RogueSprite/modification/Rogue_sprite_underwear_panties_harness.png",
-                            "RogueX.Panties == 'raven leotard'", "images/RogueSprite/modification/Rogue_panties_Raven.png",
-                            # -----------------
-                            "True", Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties.png"),
-                            ),
-                    ),
-            ),
-        (0,0), ConditionSwitch(
-            #hose
-            "RogueX.Hose == 'stockings'", Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Stockings.png"),
-            "RogueX.Hose == 'stockings and garterbelt'", Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_StockingsandGarter.png"),
-            "RogueX.Hose == 'garterbelt'", "images/RogueSprite/Rogue_Hose_Garter.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #full hose/tights
-            "RogueX.Panties and RogueX.PantiesDown", Null(),
-            "RogueX.Hose == 'pantyhose'", Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Pantyhose.png"),
-            "RogueX.Hose == 'tights' and RogueX.Wet", Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Tights_Wet.png"),
-            "RogueX.Hose == 'tights'", Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Tights.png"),
-            "RogueX.Hose == 'ripped pantyhose'", Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Pantyhose_Holed.png"),
-            "RogueX.Hose == 'ripped tights'", Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Tights_Holed.png"),
-            "True", Null(),
-            ),
-        (240,560), ConditionSwitch(
-            #Personal Wetness
-            "not RogueX.Wet and Player.Male", Null(),
-            "RogueX.Legs == 'pants' and not RogueX.Upskirt", Null(),
-            "RogueX.Panties and not RogueX.PantiesDown and RogueX.Wet <= 1", Null(),
-            "RogueX.Wet == 1", ConditionSwitch(
-                    "RogueX.Panties and RogueX.PantiesDown", AlphaMask("Wet_Drip","Rogue_Drip_MaskP"),
-                    "RogueX.Legs == 'pants'", AlphaMask("Wet_Drip","Rogue_Drip_MaskPn"),
-                    "True", AlphaMask("Wet_Drip","Rogue_Drip_Mask"),
-                    ),
-            "True", ConditionSwitch(
-                    "RogueX.Panties and RogueX.PantiesDown", AlphaMask("Wet_Drip2","Rogue_Drip_MaskP"),
-                    "RogueX.Panties and RogueX.Legs == 'pants'", AlphaMask("Wet_Drip","Rogue_Drip_MaskPn"),
-                    "RogueX.Legs == 'pants'", AlphaMask("Wet_Drip2","Rogue_Drip_MaskPn"),
-                    "RogueX.Panties", AlphaMask("Wet_Drip","Rogue_Drip_Mask"),
-                    "True", AlphaMask("Wet_Drip2","Rogue_Drip_Mask"),
-                    ),
-            ),
-        (0,0), ConditionSwitch(
-            #Personal Wetness
-            "not RogueX.Wet", Null(),
-            "RogueX.Legs and RogueX.Wet <= 1", Null(),
-            "RogueX.Legs", "images/RogueSprite/Rogue_wet.png",
-            "RogueX.Wet == 1", "images/RogueSprite/Rogue_wet.png",
-            "True", "images/RogueSprite/Rogue_wet2.png",       #RogueX.Wet >1
-            ),
-        (240,560), ConditionSwitch(
-            #Spunk nethers
-            "('in' not in RogueX.Spunk and 'anal' not in RogueX.Spunk) or not Player.Male", Null(),
-            "RogueX.Legs == 'pants' and not RogueX.Upskirt", Null(),
-            "True", ConditionSwitch( #Wet = 2+
-                    "RogueX.Panties and RogueX.PantiesDown", AlphaMask("Spunk_Drip2","Rogue_Drip_MaskP"), #"Wet_Drip2",#
-                    "RogueX.Panties and RogueX.Legs == 'pants'", AlphaMask("Spunk_Drip","Rogue_Drip_MaskPn"), #"Wet_Drip2",#
-                    "RogueX.Legs == 'pants'", AlphaMask("Spunk_Drip2","Rogue_Drip_MaskPn"),
-                    "True", AlphaMask("Spunk_Drip2","Rogue_Drip_Mask"), #only plays if nothing is in the way
-                    ),
-            ),
-#        (0,0), ConditionSwitch(
-#            #Spunk Nethers over
-#            "'in' not in RogueX.Spunk and 'anal' not in RogueX.Spunk", Null(),
-#            "RogueX.Legs == 'pants' and not RogueX.Upskirt", Null(),
-#            "RogueX.Panties and not RogueX.PantiesDown", Null(),
-#            "True", "images/RogueSprite/Rogue_wet2.png",       #RogueX.Wet >1
-#            ),
-        (0,0), ConditionSwitch(
-            #boots
-            "RogueX.Boots == 'sneaks'", "images/RogueSprite/Rogue_boots_sneaks.png",
-            # Modification mode
-            "RogueX.Boots == 'boots high shoes'", "images/RogueSprite/modification/Rogue_sprite_boots_high_shoes.png",
-            # -----------------
-            "RogueX.Boots", "images/RogueSprite/Rogue_boots.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Pants and Skirts
-            "RogueX.Legs == 'pants' and RogueX.Upskirt", Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_pants_down.png"),
-            "RogueX.Legs == 'pants' and RogueX.Wet > 1", Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_pants_wet.png"),
-            "RogueX.Legs == 'pants'", Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_pants.png"),
-            "RogueX.Legs == 'skirt' and RogueX.Upskirt", Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_skirt_up.png"),
-            "RogueX.Legs == 'skirt'", Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_skirt.png"),
-            # Modification mode
-            "RogueX.Legs == 'short skirt' and RogueX.Upskirt", "images/RogueSprite/modification/Rogue_Sprite_legs_short_skirt_up.png",
-            "RogueX.Legs == 'short skirt'", "images/RogueSprite/modification/Rogue_Sprite_legs_short_skirt.png",
-            "RogueX.Legs == 'SR7 skirt' and RogueX.Upskirt", "images/RogueSprite/modification/Rogue_Sprite_legs_SR7_skirt_up.png",
-            "RogueX.Legs == 'SR7 skirt'", "images/RogueSprite/modification/Rogue_Sprite_legs_SR7_skirt.png",
-            "RogueX.Legs == 'bottom harem' and RogueX.Upskirt", "images/RogueSprite/modification/Rogue_sprite_skirt_harem_bottom_up.png",
-            "RogueX.Legs == 'bottom harem' and RogueX.Wet > 1", "images/RogueSprite/modification/Rogue_sprite_skirt_harem_bottom_wet.png",
-            "RogueX.Legs == 'bottom harem'", "images/RogueSprite/modification/Rogue_sprite_skirt_harem_bottom.png",
-            # ----------------
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Arms and gloves
-            "RogueX.ArmPose == 1 and RogueX.Arms == 'gloves' and RogueX.Neck == 'spiked collar'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms1a_gloved.png",       #Gloves and collar
-            "RogueX.ArmPose == 1 and RogueX.Arms == 'gloves'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms1b_gloved.png",                                     #Gloves, no collar
-            "RogueX.ArmPose == 1 and RogueX.Neck == 'spiked collar'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms1a_bare.png",                                #No Gloves, collar
-            "RogueX.ArmPose == 1", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms1b_bare.png",                                                              #No gloves, no collar
-            "RogueX.Arms == 'gloves' and RogueX.Neck == 'spiked collar'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms2_gloved.png",                           #Gloves and collar
-            "RogueX.Arms == 'gloves'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms2b_gloved.png",                                                         #Gloved, no collar
-            "RogueX.Neck == 'spiked collar'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms2_bare.png",                                                    #No gloves, collar
-            "True", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms2b_bare.png",
-            ),
-#        (0,0), ConditionSwitch(
-#            #chest layer
-#            "RogueX.Pierce == 'barbell'", Recolor("Rogue", "Chest", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_chest_barbell.png"),
-#            "RogueX.Pierce == 'ring'", Recolor("Rogue", "Chest", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_chest_rings.png"),
-#            "True", Recolor("Rogue", "Chest", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_chest_bare.png"),
-#            ),
-#        (0,0), ConditionSwitch(
-#            #chest clothes layer
-#            "RogueX.Chest == 'tank'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank.png"),
-#            "RogueX.Chest == 'buttoned tank'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank2.png"),
-#            "RogueX.Chest == 'bra'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_bra.png"),
-#            "RogueX.Chest == 'sports bra'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_sportsbra.png"),
-#            "RogueX.Chest == 'lace bra'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_lacebra.png"),
-#            "True", Null(),
-#            ),
-        (0,0), ConditionSwitch(
-            #bra layer
-            "not RogueX.Chest", Null(),
-            "RogueX.Uptop", ConditionSwitch(
-                    #if the top's down. . .
-                    "RogueX.Chest == 'tank'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank_Up.png"),
-                    "RogueX.Chest == 'tube top'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tube_Up.png"),
-                    "RogueX.Chest == 'buttoned tank'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank2_Up.png"),
-                    "RogueX.Chest == 'bra'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_bra_Up.png"),
-                    "RogueX.Chest == 'sports bra'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_sportsbra_Up.png"),
-                    "RogueX.Chest == 'lace bra'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_lacebra_Up.png"),
-                    "RogueX.Chest == 'bikini top'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_bikini_Up.png"),
-                    # Modification mode
-                    "RogueX.Chest == 'SR7 tank top'", "images/RogueSprite/modification/Rogue_Sprite_chest_SR7_tank_top_Up.png",
-                    "RogueX.Chest == 'raven leotard'", "images/RogueSprite/modification/Rogue_chest_Raven_Up.png",
-                    "RogueX.Chest == 'harness bra'", "images/RogueSprite/modification/Rogue_sprite_underwear_bra_harness_up.png",
-                    # ----------------
-                    ),
-            "True", ConditionSwitch(
-                    #if the top's up. . .
-                    "RogueX.Chest == 'tank'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank.png"),
-                    "RogueX.Chest == 'tube top'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tube.png"),
-                    "RogueX.Chest == 'buttoned tank'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank2.png"),
-                    "RogueX.Chest == 'bra'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_bra.png"),
-                    "RogueX.Chest == 'sports bra'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_sportsbra.png"),
-                    "RogueX.Chest == 'lace bra'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_lacebra.png"),
-                    "RogueX.Chest == 'bikini top'", Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_bikini.png"),
-                    # Modification mode
-                    "RogueX.Chest == 'SR7 tank top'", "images/RogueSprite/modification/Rogue_Sprite_Chest_SR7_tank_top.png",
-                    "RogueX.Chest == 'harness bra'", "images/RogueSprite/modification/Rogue_sprite_underwear_bra_harness.png",
-                    "RogueX.Chest == 'raven leotard' and RogueX.ArmPose == 1", "images/RogueSprite/modification/Rogue_chest_Raven1.png",
-                    "RogueX.Chest == 'raven leotard' and RogueX.ArmPose == 2", "images/RogueSprite/modification/Rogue_chest_Raven2.png",
-                    # ----------------
-                    "True", Null(),
-                    ),
-            ),
-        (0,0), ConditionSwitch(
-            #water
-            "RogueX.Water and RogueX.ArmPose == 1", "images/RogueSprite/Rogue_body_wet1.png",
-            "RogueX.Water", "images/RogueSprite/Rogue_body_wet2.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #soap
-            "RogueX.Water == 3", "images/RogueSprite/Rogue_body_wet3.png",
-            "True", Null(),
-            ),
-#        (0,0), ConditionSwitch(
-#            #Overshirt layer
-#            "RogueX.ArmPose == 1 and RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh1.png"),
-#            "RogueX.ArmPose == 1 and RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink1.png"),
-#            "RogueX.ArmPose == 1 and RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_towel1.png"),
-#            "RogueX.ArmPose == 1 and RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty1.png"),
-#            "RogueX.ArmPose == 1 and RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie1.png"),
-#            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh2.png"),
-#            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink2.png"),
-#            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie2.png"),
-#            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty2.png"),
-#            "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_towel2.png"),
-#            "True", Null(),
-#            ),
-
-        (0,0), ConditionSwitch(
-            #shirt layer
-            "not RogueX.Over", Null(),
-            "RogueX.Uptop", ConditionSwitch(
-                    #if the top's down. . .
-                    "RogueX.ArmPose == 1", ConditionSwitch(
-                            #if the arms are down. . .
-                            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh1_Up.png"),
-                            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink1_Up.png"),
-                            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie1_Up.png"),
-                            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty_Up.png"),
-#                            "RogueX.Over == 'towel'", Null(),
-                            # Modification mode
-                            "RogueX.Over == 'cape'", "images/RogueSprite/modification/Rogue_over_cape_front1.png",
-                            "RogueX.Over == 'top harem'", "images/RogueSprite/modification/Rogue_sprite_over_harem_arms1_top_up.png",
-                            # ----------------
-                            "True", Null(),
-                            ),
-                    "True", ConditionSwitch(
-                            #if the arms are up. . .
-                            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh2_Up.png"),
-                            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink2_Up.png"),
-                            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie2_Up.png"),
-                            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty_Up.png"),
-#                            "RogueX.Over == 'towel'", Null(),
-                            # Modification mode
-                            "RogueX.Over == 'cape'", "images/RogueSprite/modification/Rogue_over_cape_front2.png",
-                            "RogueX.Over == 'top harem'", "images/RogueSprite/modification/Rogue_sprite_over_harem_arms2_top_up.png",
-                            # ----------------
-                            "True", Null(),
-                            ),
-                    ),
-            "True", ConditionSwitch(
-                    #if the top's up. . .
-                    "RogueX.ArmPose == 1", ConditionSwitch(
-                            #if the arms are down. . .
-                            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh1.png"),
-                            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink1.png"),
-                            "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_towel1.png"),
-                            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty1.png"),
-                            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie1.png"),
-                            # Modification mode
-                            "RogueX.Over == 'cape'", "images/RogueSprite/modification/Rogue_over_cape_front1.png",
-                            "RogueX.Over == 'dress blue' and RogueX.Upskirt", "images/RogueSprite/modification/Rogue_sprite_over_dress_blue_arms1_bottom_up.png",
-                            "RogueX.Over == 'dress blue'", "images/RogueSprite/modification/Rogue_sprite_over_dress_blue_arms1.png",
-                            "RogueX.Over == 'dress red' and RogueX.Upskirt", "images/RogueSprite/modification/Rogue_sprite_over_dress_red_arms1_bottom_up.png",
-                            "RogueX.Over == 'dress red'", "images/RogueSprite/modification/Rogue_sprite_over_dress_red_arms1.png",
-                            "RogueX.Over == 'top harem'", "images/RogueSprite/modification/Rogue_sprite_over_harem_arms1_top.png",
-                            # ----------------
-                            "True", Null(),
-                            ),
-                    "True", ConditionSwitch(
-                            #if the arms are up. . .
-                            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh2.png"),
-                            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink2.png"),
-                            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie2.png"),
-                            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty2.png"),
-                            "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_towel2.png"),
-                            # Modification mode
-                            "RogueX.Over == 'cape'", "images/RogueSprite/modification/Rogue_over_cape_front2.png",
-                            "RogueX.Over == 'dress blue' and RogueX.Upskirt", "images/RogueSprite/modification/Rogue_sprite_over_dress_blue_arms2_bottom_up.png",
-                            "RogueX.Over == 'dress blue'", "images/RogueSprite/modification/Rogue_sprite_over_dress_blue_arms2.png",
-                            "RogueX.Over == 'dress red' and RogueX.Upskirt", "images/RogueSprite/modification/Rogue_sprite_over_dress_red_arms2_bottom_up.png",
-                            "RogueX.Over == 'dress red'", "images/RogueSprite/modification/Rogue_sprite_over_dress_red_arms2.png",
-                            "RogueX.Over == 'top harem'", "images/RogueSprite/modification/Rogue_sprite_over_harem_arms2_top.png",
-                            # ----------------
-                            "True", Null(),
-                            ),
-                    ),
-            ),
-        (0,0), ConditionSwitch(
-            #Sweater
-            # Modification mode
-            "RogueX.Acc == 'belt'", "images/RogueSprite/modification/Rogue_acc_belt.png",
-            # -----------------
-            "RogueX.Acc == 'sweater' and RogueX.ArmPose != 1", "images/RogueSprite/Rogue_acc_sweater2.png",
-            "RogueX.Acc == 'sweater'", "images/RogueSprite/Rogue_acc_sweater.png",
-            "True", Null(),
-            ),
-        (185,38),ConditionSwitch(
-            #head
-            "renpy.showing('Rogue_BJ_Animation') or renpy.showing('Rogue_TJ_Animation') or renpy.showing('Rogue_CUN_Animation')", Null(),
-            "True", "Rogue_Head",
-            ),
-
-        (0,0), ConditionSwitch(
-            #hand spunk
-            "'hand' in RogueX.Spunk and RogueX.ArmPose != 1 and Player.Male", "images/RogueSprite/Rogue_spunkhand.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #belly spunk
-            "'belly' in RogueX.Spunk and Player.Male", "images/RogueSprite/Rogue_spunkbelly.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #tits spunk
-            "'tits' in RogueX.Spunk and Player.Male", "images/RogueSprite/Rogue_spunktits.png",
-            "True", Null(),
-            ),
-        (230,600), ConditionSwitch(
-            #steam
-            "RogueX.Lust > 70", "Steam",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Props
-            "not RogueX.Held or RogueX.ArmPose == 1", Null(),
-            "RogueX.ArmPose != 1 and RogueX.Held == 'phone'", "images/RogueSprite/Rogue_held_phone.png",
-            "RogueX.ArmPose != 1 and RogueX.Held == 'dildo'", "images/RogueSprite/Rogue_held_dildo.png",
-            "RogueX.ArmPose != 1 and RogueX.Held == 'vibrator'", "images/RogueSprite/Rogue_held_vibrator.png",
-            "RogueX.ArmPose != 1 and RogueX.Held == 'panties'", "images/RogueSprite/Rogue_held_panties.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #UI tool for When Rogue is masturbating using RogueX.Offhand actions while lead
-            "Trigger == 'lesbian' or not RogueX.Offhand",Null(),# or Ch_Focus is not RogueX", Null(),
-            "RogueX.Offhand == 'fondle pussy' and Trigger != 'sex' and RogueX.Lust >= 70", "GirlFingerPussy",
-            "RogueX.Offhand == 'fondle pussy'", "GirlGropePussy",
-            "RogueX.Offhand == 'fondle breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeRightBreast",    #When zero is working the right breast, fondle left
-            "RogueX.Offhand == 'fondle breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast", #When zero is working the left breast, fondle right
-            "RogueX.Offhand == 'fondle breasts'", "GirlGropeRightBreast",
-            "RogueX.Offhand == 'vibrator breasts'", "VibratorRightBreast",
-            "RogueX.Offhand == 'vibrator pussy'", "VibratorPussy",
-            "RogueX.Offhand == 'vibrator pussy insert'", "VibratorPussy",
-            "RogueX.Offhand == 'vibrator anal'", "VibratorAnal",
-            "RogueX.Offhand == 'vibrator anal insert'", "VibratorPussy",
-            "True", Null(),
-            ),
-
-        (0,0), ConditionSwitch(
-            #UI tool for RogueX.Offhand(lesbian) actions (ie Kitty's hand on her when Rogue is secondary)
-            "not Partner or Partner is RogueX or RogueX in Nearby", Null(),
-#            "not Partner or Partner is RogueX or (Trigger != 'lesbian' and not Partner.Offhand)", Null(),
-            "Partner.Offhand == 'fondle girl pussy' and Trigger != 'sex' and RogueX.Lust >= 70", "GirlFingerPussy",
-            "Partner.Offhand == 'fondle girl pussy'", "GirlGropePussy",
-            "Partner.Offhand == 'lick girl pussy'", "Lickpussy",
-            "Partner.Offhand == 'suck girl breasts' and (Trigger2 != 'suck breasts' or Trigger == 'suck breasts')", "LickLeftBreast",
-            "Partner.Offhand == 'suck girl breasts'", "LickRightBreast",
-            "Partner.Offhand == 'fondle girl breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast",    #When zero is working the right breast, fondle left
-            "Partner.Offhand == 'fondle girl breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeRightBreast", #When zero is working the left breast, fondle right
-            "Partner.Offhand == 'fondle girl breasts'", "GirlGropeRightBreast",
-            "Partner.Offhand == 'vibrator girl breasts'", "VibratorRightBreast",
-            "Partner.Offhand == 'vibrator girl pussy'", "VibratorPussy",
-            "Partner.Offhand == 'vibrator girl pussy insert'", "VibratorPussy",
-            "Partner.Offhand == 'vibrator girl anal'", "VibratorAnal",
-            "Partner.Offhand == 'vibrator girl anal insert'", "VibratorPussy",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #UI tool for when RogueX is the partner in the scene, and the lead is working on her
-            "not Partner or Partner is not RogueX", Null(),
-            "Ch_Focus.Offhand == 'fondle girl pussy' and Trigger != 'sex' and RogueX.Lust >= 70", "GirlFingerPussy",
-            "Ch_Focus.Offhand == 'fondle girl pussy'", "GirlGropePussy",
-            "Ch_Focus.Offhand == 'lick girl pussy'", "Lickpussy",
-            "Ch_Focus.Offhand == 'suck girl breasts' and (Trigger2 != 'suck breasts' or Trigger == 'suck breasts')", "LickLeftBreast",
-            "Ch_Focus.Offhand == 'suck girl breasts'", "LickRightBreast",
-            "Ch_Focus.Offhand == 'fondle girl breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast",    #When zero is working the right breast, fondle left
-            "Ch_Focus.Offhand == 'fondle girl breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeRightBreast", #When zero is working the left breast, fondle right
-            "Ch_Focus.Offhand == 'fondle girl breasts'", "GirlGropeRightBreast",
-            "Ch_Focus.Offhand == 'vibrator girl breasts'", "VibratorRightBreast",
-            "Ch_Focus.Offhand == 'vibrator girl pussy'", "VibratorPussy",
-            "Ch_Focus.Offhand == 'vibrator girl pussy insert'", "VibratorPussy",
-            "Ch_Focus.Offhand == 'vibrator girl anal'", "VibratorAnal",
-            "Ch_Focus.Offhand == 'vibrator girl anal insert'", "VibratorPussy",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #UI tool for Trigger1(primary) actions
-            "not Trigger or Ch_Focus is not RogueX", Null(),
-            "Trigger == 'vibrator breasts'", "VibratorLeftBreast",
-            "Trigger == 'fondle thighs'", "GropeThigh",
-            "Trigger == 'fondle breasts'", "GropeRightBreast",
-            "Trigger == 'suck breasts'", "LickRightBreast",
-            "Trigger == 'vibrator pussy'", "VibratorPussy",
-            "Trigger == 'vibrator pussy insert'", "VibratorPussy",
-            "Trigger == 'vibrator anal'", "VibratorAnal",
-            "Trigger == 'vibrator anal insert'", "VibratorPussy",
-            "Trigger == 'fondle pussy' and Speed == 2", "FingerPussy",
-            "Trigger == 'fondle pussy'", "GropePussy",
-            "Trigger == 'lick pussy'", "Lickpussy",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #UI tool for Trigger2(secondary) actions
-            "not Trigger2 or Ch_Focus is not RogueX", Null(),
-#            "Trigger == 'fondle breasts' and not RogueX.Offhand", "GropeRightBreast",  #"Trigger == 'fondle breasts' and not RogueX.Offhand",
-            #When doing nothing offhand, use both hands on breasts.
-            "Trigger2 == 'fondle breasts' and Trigger == 'suck breasts'", "GropeLeftBreast",
-            #When sucking right breast, fondle left
-            "Trigger2 == 'fondle breasts'", "GropeLeftBreast",
-            "Trigger2 == 'vibrator breasts' and Trigger == 'suck breasts'", "VibratorLeftBreast",
-            #When sucking right breast, vibrator left
-            "Trigger2 == Trigger", Null(),
-            #When both triggers are the same, do nothing
-            "Trigger2 == 'vibrator breasts'", "VibratorRightBreast",
-            "Trigger2 == 'suck breasts'", "LickLeftBreast",
-            "Trigger2 == 'vibrator pussy'", "VibratorPussy",
-            "Trigger2 == 'vibrator pussy insert'", "VibratorPussy",
-            "Trigger2 == 'vibrator anal'", "VibratorAnal",
-            "Trigger2 == 'vibrator anal insert'", "VibratorPussy",
-            "Trigger2 == 'fondle pussy'", "GropePussy",
-            "Trigger2 == 'lick pussy'", "Lickpussy",
-            "Trigger2 == 'fondle thighs'", "GropeThigh",
-            "True", Null(),
-            ),
-#        (0,0), ConditionSwitch(
-#            #UI tool for Trigger5(Threesome masutrbation) actions
-#            "not Trigger5 or Trigger4 != 'masturbation' or Ch_Focus == RogueX", Null(),
-#            #this doesn't activate unless Rogue is not primary, and is actively masturbating
-#            "Trigger5 == 'fondle pussy' and Trigger != 'sex' and RogueX.Lust >= 70", "GirlFingerPussy",
-#            "Trigger5 == 'fondle pussy'", "GirlGropePussy",
-#            "Trigger5 == 'fondle breasts'", "GirlGropeRightBreast",
-#            "Trigger5 == 'vibrator breasts'", "VibratorRightBreast",
-#            "Trigger5 == 'vibrator pussy'", "VibratorPussy",
-#            "Trigger5 == 'vibrator pussy insert'", "VibratorPussy",
-#            "Trigger5 == 'vibrator anal'", "VibratorAnal",
-#            "Trigger5 == 'vibrator anal insert'", "VibratorPussy",
-#            "True", Null(),
-#            ),
-#        (0,0), ConditionSwitch(
-#            #UI tool for Trigger4(Threesome) actions (ie Kitty's hand on her)
-#            "not Trigger4 or Ch_Focus != RogueX", Null(),
-#            "Trigger4 == 'fondle pussy' and Trigger != 'sex' and RogueX.Lust >= 70", "GirlFingerPussy",
-#            "Trigger4 == 'fondle pussy'", "GirlGropePussy",
-#            "Trigger4 == 'lick pussy'", "Lickpussy",
-#            "Trigger4 == 'suck breasts' and (Trigger2 != 'suck breasts' or Trigger == 'suck breasts')", "LickLeftBreast",
-#            "Trigger4 == 'suck breasts'", "LickRightBreast",
-#            "Trigger4 == 'vibrator breasts'", "VibratorRightBreast",
-#            "Trigger4 == 'vibrator pussy'", "VibratorPussy",
-#            "Trigger4 == 'vibrator pussy insert'", "VibratorPussy",
-#            "Trigger4 == 'vibrator anal'", "VibratorAnal",
-#            "Trigger4 == 'vibrator anal insert'", "VibratorPussy",
-#            "Trigger4 == 'fondle breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast",    #When zero is working the right breast, fondle left
-#            "Trigger4 == 'fondle breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeRightBreast", #When zero is working the left breast, fondle right
-#            "Trigger4 == 'fondle breasts'", "GirlGropeRightBreast",
-#            "True", Null(),
-#            ),
-#        (0,0), ConditionSwitch(
-#            #UI tool for Trigger3(lesbian) actions (ie Kitty's hand on her when Rogue is secondary)
-#            "Trigger != 'lesbian' or not Trigger3 or Ch_Focus == RogueX", Null(),
-#            "Trigger3 == 'fondle pussy' and Trigger != 'sex' and RogueX.Lust >= 70", "GirlFingerPussy",
-#            "Trigger3 == 'fondle pussy'", "GirlGropePussy",
-#            "Trigger3 == 'lick pussy'", "Lickpussy",
-#            "Trigger3 == 'suck breasts' and (Trigger2 != 'suck breasts' or Trigger == 'suck breasts')", "LickLeftBreast",
-#            "Trigger3 == 'suck breasts'", "LickRightBreast",
-#            "Trigger3 == 'fondle breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts')", "GirlGropeLeftBreast",    #When zero is working the right breast, fondle left
-#            "Trigger3 == 'fondle breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts')", "GirlGropeRightBreast", #When zero is working the left breast, fondle right
-#            "Trigger3 == 'fondle breasts'", "GirlGropeRightBreast",
-#            "Trigger3 == 'vibrator breasts'", "VibratorRightBreast",
-#            "Trigger3 == 'vibrator pussy'", "VibratorPussy",
-#            "Trigger3 == 'vibrator pussy insert'", "VibratorPussy",
-#            "Trigger3 == 'vibrator anal'", "VibratorAnal",
-#            "Trigger3 == 'vibrator anal insert'", "VibratorPussy",
-#            "True", Null(),
-#            ),
-        )
+# Basic character Sprites
+layeredimage Rogue_Sprite:
+    always:
+        "images/RogueSprite/Rogue_Sprite_Shadow.png"
+    if renpy.showing('Rogue_BJ_Animation') or renpy.showing('Rogue_TJ_Animation') or renpy.showing('Rogue_CUN_Animation'):
+        Null()
+    else:
+        "Rogue_HairBack" offset (185, 38)
+    if not RogueX.Over:
+        Null()
+    elif RogueX.Over == 'cape':
+        "images/RogueSprite/modification/Rogue_over_cape_back.png"
+    elif RogueX.Over == 'hoodie':
+        Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodieB.png")
+    elif RogueX.Uptop:
+        if RogueX.ArmPose == 1:
+            if RogueX.Over == 'mesh top':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh1_Up.png")
+            elif RogueX.Over == 'nighty':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty_Up.png")
+        else:
+            if RogueX.Over == 'mesh top':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh2_Up.png")
+            elif RogueX.Over == 'nighty':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty_Up.png")
+    else:
+        if RogueX.ArmPose == 1:
+            if RogueX.Over == 'mesh top':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh1.png")
+            elif RogueX.Over == 'nighty':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty1.png")
+        else:
+            if RogueX.Over == 'mesh top':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh2.png")
+            elif RogueX.Over == 'nighty':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty2.png")
+    if RogueX.Legs == 'pants' and RogueX.Upskirt:
+        Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_pantsback.png")
+    if RogueX.ArmPose == 1:
+        if RogueX.Pubes and RogueX.Pierce == 'ring':
+            "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_haired_ring.png"
+        elif RogueX.Pubes and RogueX.Pierce == 'barbell':
+            "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_haired_barbell.png"
+        elif RogueX.Pierce == 'ring':
+            "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_ring.png"
+        elif RogueX.Pierce == 'barbell':
+            "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_barbell.png"
+        elif RogueX.Pubes:
+            Recolor("Rogue", "Pubes", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_haired.png")
+        else:
+            "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_1_bare.png"
+    elif RogueX.Pubes and RogueX.Pierce == 'ring':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_haired_ring.png"
+    elif RogueX.Pubes and RogueX.Pierce == 'barbell':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_haired_barbell.png"
+    elif RogueX.Pierce == 'ring':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_ring.png"
+    elif RogueX.Pierce == 'barbell':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_barbell.png"
+    elif RogueX.Pubes:
+        Recolor("Rogue", "Pubes", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_haired.png")
+    else:
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_body_2_bare.png"
+    if not RogueX.Panties:
+        Null()
+    elif RogueX.Legs == 'pants' and not RogueX.Upskirt:
+        Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties.png")
+    elif RogueX.PantiesDown:
+        if RogueX.Wet > 1:
+            if RogueX.Panties == 'shorts':
+                Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts_down_wet.png")
+            elif RogueX.Panties == 'green panties':
+                Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies_down_wet.png")
+            elif RogueX.Panties == 'bikini bottoms':
+                Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_bikini_down.png")
+            elif RogueX.Panties == 'harness panties':
+                "images/RogueSprite/modification/Rogue_sprite_underwear_panties_harness_down_wet.png"
+            elif RogueX.Panties == 'raven leotard':
+                "images/RogueSprite/modification/Rogue_panties_Raven_Down.png"
+            else:
+                Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_down.png")
+        else:
+            if RogueX.Panties == 'shorts':
+                Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts_down.png")
+            elif RogueX.Panties == 'green panties':
+                Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies_down.png")
+            elif RogueX.Panties == 'bikini bottoms':
+                Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_bikini_down.png")
+            elif RogueX.Panties == 'harness panties':
+                "images/RogueSprite/modification/Rogue_sprite_underwear_panties_harness_down.png"
+            elif RogueX.Panties == 'raven leotard':
+                "images/RogueSprite/modification/Rogue_panties_Raven_Down.png"
+            else:
+                Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_down.png")
+    else:
+        if RogueX.Wet > 1:
+            if RogueX.Panties == 'shorts' and RogueX.Wet > 1:
+                Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts_wet.png")
+            elif RogueX.Panties == 'green panties' and RogueX.Wet > 1:
+                Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies_wet.png")
+            elif RogueX.Panties == 'lace panties':
+                Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_lacepanties.png")
+            elif RogueX.Panties == 'bikini bottoms':
+                Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_bikini.png")
+            elif RogueX.Panties == 'harness panties':
+                "images/RogueSprite/modification/Rogue_sprite_underwear_panties_harness_wet.png"
+            elif RogueX.Panties == 'raven leotard':
+                "images/RogueSprite/modification/Rogue_panties_Raven.png"
+            else:
+                Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties.png")
+        else:
+            if RogueX.Panties == 'shorts':
+                Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_shorts.png")
+            elif RogueX.Panties == 'green panties':
+                Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_undies.png")
+            elif RogueX.Panties == 'lace panties':
+                Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_lacepanties.png")
+            elif RogueX.Panties == 'bikini bottoms':
+                Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties_bikini.png")
+            elif RogueX.Panties == 'harness panties':
+                "images/RogueSprite/modification/Rogue_sprite_underwear_panties_harness.png"
+            elif RogueX.Panties == 'raven leotard':
+                "images/RogueSprite/modification/Rogue_panties_Raven.png"
+            else:
+                Recolor("Rogue", "Panties", "images/RogueSprite/Rogue_panties.png")
+    if RogueX.Hose == 'stockings':
+        Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Stockings.png")
+    elif RogueX.Hose == 'stockings and garterbelt':
+        Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_StockingsandGarter.png")
+    elif RogueX.Hose == 'garterbelt':
+        "images/RogueSprite/Rogue_Hose_Garter.png"
+    if RogueX.Panties and RogueX.PantiesDown:
+        Null()
+    elif RogueX.Hose == 'pantyhose':
+        Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Pantyhose.png")
+    elif RogueX.Hose == 'tights' and RogueX.Wet:
+        Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Tights_Wet.png")
+    elif RogueX.Hose == 'tights':
+        Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Tights.png")
+    elif RogueX.Hose == 'ripped pantyhose':
+        Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Pantyhose_Holed.png")
+    elif RogueX.Hose == 'ripped tights':
+        Recolor("Rogue", "Hose", "images/RogueSprite/Rogue_Hose_Tights_Holed.png")
+    if not RogueX.Wet and Player.Male:
+        Null()
+    elif RogueX.Legs == 'pants' and not RogueX.Upskirt:
+        Null()
+    elif RogueX.Panties and not RogueX.PantiesDown and RogueX.Wet <= 1:
+        Null()
+    elif RogueX.Wet == 1:
+        if RogueX.Panties and RogueX.PantiesDown:
+            AlphaMask("Wet_Drip","Rogue_Drip_MaskP") offset (240, 560)
+        elif RogueX.Legs == 'pants':
+            AlphaMask("Wet_Drip","Rogue_Drip_MaskPn") offset (240, 560)
+        else:
+            AlphaMask("Wet_Drip","Rogue_Drip_Mask") offset (240, 560)
+    else:
+        if RogueX.Panties and RogueX.PantiesDown:
+            AlphaMask("Wet_Drip2","Rogue_Drip_MaskP") offset (240, 560)
+        elif RogueX.Panties and RogueX.Legs == 'pants':
+            AlphaMask("Wet_Drip","Rogue_Drip_MaskPn") offset (240, 560)
+        elif RogueX.Legs == 'pants':
+            AlphaMask("Wet_Drip2","Rogue_Drip_MaskPn") offset (240, 560)
+        elif RogueX.Panties:
+            AlphaMask("Wet_Drip","Rogue_Drip_Mask") offset (240, 560)
+        else:
+            AlphaMask("Wet_Drip2","Rogue_Drip_Mask") offset (240, 560)
+    if not RogueX.Wet:
+        Null()
+    elif RogueX.Legs and RogueX.Wet <= 1:
+        Null()
+    elif RogueX.Legs:
+        "images/RogueSprite/Rogue_wet.png"
+    elif RogueX.Wet == 1:
+        "images/RogueSprite/Rogue_wet.png"
+    else:
+        "images/RogueSprite/Rogue_wet2.png"
+    if ('in' not in RogueX.Spunk and 'anal' not in RogueX.Spunk) or not Player.Male:
+        Null()
+    elif RogueX.Legs == 'pants' and not RogueX.Upskirt:
+        Null()
+    else:
+        if RogueX.Panties and RogueX.PantiesDown:
+            AlphaMask("Spunk_Drip2","Rogue_Drip_MaskP") offset (240, 560)
+        elif RogueX.Panties and RogueX.Legs == 'pants':
+            AlphaMask("Spunk_Drip","Rogue_Drip_MaskPn") offset (240, 560)
+        elif RogueX.Legs == 'pants':
+            AlphaMask("Spunk_Drip2","Rogue_Drip_MaskPn") offset (240, 560)
+        else:
+            AlphaMask("Spunk_Drip2","Rogue_Drip_Mask") offset (240, 560)
+    if RogueX.Boots == 'sneaks':
+        "images/RogueSprite/Rogue_boots_sneaks.png"
+    elif RogueX.Boots == 'boots high shoes':
+        "images/RogueSprite/modification/Rogue_sprite_boots_high_shoes.png"
+    elif RogueX.Boots:
+        "images/RogueSprite/Rogue_boots.png"
+    if RogueX.Legs == 'pants' and RogueX.Upskirt:
+        Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_pants_down.png")
+    elif RogueX.Legs == 'pants' and RogueX.Wet > 1:
+        Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_pants_wet.png")
+    elif RogueX.Legs == 'pants':
+        Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_pants.png")
+    elif RogueX.Legs == 'skirt' and RogueX.Upskirt:
+        Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_skirt_up.png")
+    elif RogueX.Legs == 'skirt':
+        Recolor("Rogue", "Legs", "images/RogueSprite/Rogue_legs_skirt.png")
+    elif RogueX.Legs == 'short skirt' and RogueX.Upskirt:
+        "images/RogueSprite/modification/Rogue_Sprite_legs_short_skirt_up.png"
+    elif RogueX.Legs == 'short skirt':
+        "images/RogueSprite/modification/Rogue_Sprite_legs_short_skirt.png"
+    elif RogueX.Legs == 'SR7 skirt' and RogueX.Upskirt:
+        "images/RogueSprite/modification/Rogue_Sprite_legs_SR7_skirt_up.png"
+    elif RogueX.Legs == 'SR7 skirt':
+        "images/RogueSprite/modification/Rogue_Sprite_legs_SR7_skirt.png"
+    elif RogueX.Legs == 'bottom harem' and RogueX.Upskirt:
+        "images/RogueSprite/modification/Rogue_sprite_skirt_harem_bottom_up.png"
+    elif RogueX.Legs == 'bottom harem' and RogueX.Wet > 1:
+        "images/RogueSprite/modification/Rogue_sprite_skirt_harem_bottom_wet.png"
+    elif RogueX.Legs == 'bottom harem':
+        "images/RogueSprite/modification/Rogue_sprite_skirt_harem_bottom.png"
+    if RogueX.ArmPose == 1 and RogueX.Arms == 'gloves' and RogueX.Neck == 'spiked collar':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms1a_gloved.png"
+    elif RogueX.ArmPose == 1 and RogueX.Arms == 'gloves':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms1b_gloved.png"
+    elif RogueX.ArmPose == 1 and RogueX.Neck == 'spiked collar':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms1a_bare.png"
+    elif RogueX.ArmPose == 1:
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms1b_bare.png"
+    elif RogueX.Arms == 'gloves' and RogueX.Neck == 'spiked collar':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms2_gloved.png"
+    elif RogueX.Arms == 'gloves':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms2b_gloved.png"
+    elif RogueX.Neck == 'spiked collar':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms2_bare.png"
+    else:
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_arms2b_bare.png"
+    if not RogueX.Chest:
+        Null()
+    elif RogueX.Uptop:
+        if RogueX.Chest == 'tank':
+            Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank_Up.png")
+        elif RogueX.Chest == 'tube top':
+            Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tube_Up.png")
+        elif RogueX.Chest == 'buttoned tank':
+            Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank2_Up.png")
+        elif RogueX.Chest == 'bra':
+            Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_bra_Up.png")
+        elif RogueX.Chest == 'sports bra':
+            Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_sportsbra_Up.png")
+        elif RogueX.Chest == 'lace bra':
+            Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_lacebra_Up.png")
+        elif RogueX.Chest == 'bikini top':
+            Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_bikini_Up.png")
+        elif RogueX.Chest == 'SR7 tank top':
+            "images/RogueSprite/modification/Rogue_Sprite_chest_SR7_tank_top_Up.png"
+        elif RogueX.Chest == 'raven leotard':
+            "images/RogueSprite/modification/Rogue_chest_Raven_Up.png"
+        elif RogueX.Chest == 'harness bra':
+            "images/RogueSprite/modification/Rogue_sprite_underwear_bra_harness_up.png"
+    else:
+        if RogueX.Chest == 'tank':
+            Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank.png")
+        elif RogueX.Chest == 'tube top':
+            Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tube.png")
+        elif RogueX.Chest == 'buttoned tank':
+            Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_tank2.png")
+        elif RogueX.Chest == 'bra':
+            Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_bra.png")
+        elif RogueX.Chest == 'sports bra':
+            Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_sportsbra.png")
+        elif RogueX.Chest == 'lace bra':
+            Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_lacebra.png")
+        elif RogueX.Chest == 'bikini top':
+            Recolor("Rogue", "Chest", "images/RogueSprite/Rogue_chest_bikini.png")
+        elif RogueX.Chest == 'SR7 tank top':
+            "images/RogueSprite/modification/Rogue_Sprite_Chest_SR7_tank_top.png"
+        elif RogueX.Chest == 'harness bra':
+            "images/RogueSprite/modification/Rogue_sprite_underwear_bra_harness.png"
+        elif RogueX.Chest == 'raven leotard' and RogueX.ArmPose == 1:
+            "images/RogueSprite/modification/Rogue_chest_Raven1.png"
+        elif RogueX.Chest == 'raven leotard' and RogueX.ArmPose == 2:
+            "images/RogueSprite/modification/Rogue_chest_Raven2.png"
+    if RogueX.Water and RogueX.ArmPose == 1:
+        "images/RogueSprite/Rogue_body_wet1.png"
+    elif RogueX.Water:
+        "images/RogueSprite/Rogue_body_wet2.png"
+    if RogueX.Water == 3:
+        "images/RogueSprite/Rogue_body_wet3.png"
+    if not RogueX.Over:
+        Null()
+    elif RogueX.Uptop:
+        if RogueX.ArmPose == 1:
+            if RogueX.Over == 'mesh top':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh1_Up.png")
+            elif RogueX.Over == 'pink top':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink1_Up.png")
+            elif RogueX.Over == 'hoodie':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie1_Up.png")
+            elif RogueX.Over == 'nighty':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty_Up.png")
+            elif RogueX.Over == 'cape':
+                "images/RogueSprite/modification/Rogue_over_cape_front1.png"
+            elif RogueX.Over == 'top harem':
+                "images/RogueSprite/modification/Rogue_sprite_over_harem_arms1_top_up.png"
+        else:
+            if RogueX.Over == 'mesh top':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh2_Up.png")
+            elif RogueX.Over == 'pink top':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink2_Up.png")
+            elif RogueX.Over == 'hoodie':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie2_Up.png")
+            elif RogueX.Over == 'nighty':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty_Up.png")
+            elif RogueX.Over == 'cape':
+                "images/RogueSprite/modification/Rogue_over_cape_front2.png"
+            elif RogueX.Over == 'top harem':
+                "images/RogueSprite/modification/Rogue_sprite_over_harem_arms2_top_up.png"
+    else:
+        if RogueX.ArmPose == 1:
+            if RogueX.Over == 'mesh top':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh1.png")
+            elif RogueX.Over == 'pink top':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink1.png")
+            elif RogueX.Over == 'towel':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_towel1.png")
+            elif RogueX.Over == 'nighty':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty1.png")
+            elif RogueX.Over == 'hoodie':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie1.png")
+            elif RogueX.Over == 'cape':
+                "images/RogueSprite/modification/Rogue_over_cape_front1.png"
+            elif RogueX.Over == 'dress blue' and RogueX.Upskirt:
+                "images/RogueSprite/modification/Rogue_sprite_over_dress_blue_arms1_bottom_up.png"
+            elif RogueX.Over == 'dress blue':
+                "images/RogueSprite/modification/Rogue_sprite_over_dress_blue_arms1.png"
+            elif RogueX.Over == 'dress red' and RogueX.Upskirt:
+                "images/RogueSprite/modification/Rogue_sprite_over_dress_red_arms1_bottom_up.png"
+            elif RogueX.Over == 'dress red':
+                "images/RogueSprite/modification/Rogue_sprite_over_dress_red_arms1.png"
+            elif RogueX.Over == 'top harem':
+                "images/RogueSprite/modification/Rogue_sprite_over_harem_arms1_top.png"
+        else:
+            if RogueX.Over == 'mesh top':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_mesh2.png")
+            elif RogueX.Over == 'pink top':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_pink2.png")
+            elif RogueX.Over == 'hoodie':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_hoodie2.png")
+            elif RogueX.Over == 'nighty':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_nighty2.png")
+            elif RogueX.Over == 'towel':
+                Recolor("Rogue", "Over", "images/RogueSprite/Rogue_over_towel2.png")
+            elif RogueX.Over == 'cape':
+                "images/RogueSprite/modification/Rogue_over_cape_front2.png"
+            elif RogueX.Over == 'dress blue' and RogueX.Upskirt:
+                "images/RogueSprite/modification/Rogue_sprite_over_dress_blue_arms2_bottom_up.png"
+            elif RogueX.Over == 'dress blue':
+                "images/RogueSprite/modification/Rogue_sprite_over_dress_blue_arms2.png"
+            elif RogueX.Over == 'dress red' and RogueX.Upskirt:
+                "images/RogueSprite/modification/Rogue_sprite_over_dress_red_arms2_bottom_up.png"
+            elif RogueX.Over == 'dress red':
+                "images/RogueSprite/modification/Rogue_sprite_over_dress_red_arms2.png"
+            elif RogueX.Over == 'top harem':
+                "images/RogueSprite/modification/Rogue_sprite_over_harem_arms2_top.png"
+    if RogueX.Acc == 'belt':
+        "images/RogueSprite/modification/Rogue_acc_belt.png"
+    elif RogueX.Acc == 'sweater' and RogueX.ArmPose != 1:
+        "images/RogueSprite/Rogue_acc_sweater2.png"
+    elif RogueX.Acc == 'sweater':
+        "images/RogueSprite/Rogue_acc_sweater.png"
+    if renpy.showing('Rogue_BJ_Animation') or renpy.showing('Rogue_TJ_Animation') or renpy.showing('Rogue_CUN_Animation'):
+        Null()
+    else:
+        "Rogue_Head" offset (185, 38)
+    if 'hand' in RogueX.Spunk and RogueX.ArmPose != 1 and Player.Male:
+        "images/RogueSprite/Rogue_spunkhand.png"
+    if 'belly' in RogueX.Spunk and Player.Male:
+        "images/RogueSprite/Rogue_spunkbelly.png"
+    if 'tits' in RogueX.Spunk and Player.Male:
+        "images/RogueSprite/Rogue_spunktits.png"
+    if RogueX.Lust > 70:
+        "Steam" offset (230, 600)
+    if not RogueX.Held or RogueX.ArmPose == 1:
+        Null()
+    elif RogueX.ArmPose != 1 and RogueX.Held == 'phone':
+        "images/RogueSprite/Rogue_held_phone.png"
+    elif RogueX.ArmPose != 1 and RogueX.Held == 'dildo':
+        "images/RogueSprite/Rogue_held_dildo.png"
+    elif RogueX.ArmPose != 1 and RogueX.Held == 'vibrator':
+        "images/RogueSprite/Rogue_held_vibrator.png"
+    elif RogueX.ArmPose != 1 and RogueX.Held == 'panties':
+        "images/RogueSprite/Rogue_held_panties.png"
+    if Trigger == 'lesbian' or not RogueX.Offhand:
+        Null()
+    elif RogueX.Offhand == 'fondle pussy' and Trigger != 'sex' and RogueX.Lust >= 70:
+        "GirlFingerPussy"
+    elif RogueX.Offhand == 'fondle pussy':
+        "GirlGropePussy"
+    elif RogueX.Offhand == 'fondle breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts'):
+        "GirlGropeRightBreast"
+    elif RogueX.Offhand == 'fondle breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts'):
+        "GirlGropeLeftBreast"
+    elif RogueX.Offhand == 'fondle breasts':
+        "GirlGropeRightBreast"
+    elif RogueX.Offhand == 'vibrator breasts':
+        "VibratorRightBreast"
+    elif RogueX.Offhand == 'vibrator pussy':
+        "VibratorPussy"
+    elif RogueX.Offhand == 'vibrator pussy insert':
+        "VibratorPussy"
+    elif RogueX.Offhand == 'vibrator anal':
+        "VibratorAnal"
+    elif RogueX.Offhand == 'vibrator anal insert':
+        "VibratorPussy"
+    if not Partner or Partner is RogueX or RogueX in Nearby:
+        Null()
+    elif Partner.Offhand == 'fondle girl pussy' and Trigger != 'sex' and RogueX.Lust >= 70:
+        "GirlFingerPussy"
+    elif Partner.Offhand == 'fondle girl pussy':
+        "GirlGropePussy"
+    elif Partner.Offhand == 'lick girl pussy':
+        "Lickpussy"
+    elif Partner.Offhand == 'suck girl breasts' and (Trigger2 != 'suck breasts' or Trigger == 'suck breasts'):
+        "LickLeftBreast"
+    elif Partner.Offhand == 'suck girl breasts':
+        "LickRightBreast"
+    elif Partner.Offhand == 'fondle girl breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts'):
+        "GirlGropeLeftBreast"
+    elif Partner.Offhand == 'fondle girl breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts'):
+        "GirlGropeRightBreast"
+    elif Partner.Offhand == 'fondle girl breasts':
+        "GirlGropeRightBreast"
+    elif Partner.Offhand == 'vibrator girl breasts':
+        "VibratorRightBreast"
+    elif Partner.Offhand == 'vibrator girl pussy':
+        "VibratorPussy"
+    elif Partner.Offhand == 'vibrator girl pussy insert':
+        "VibratorPussy"
+    elif Partner.Offhand == 'vibrator girl anal':
+        "VibratorAnal"
+    elif Partner.Offhand == 'vibrator girl anal insert':
+        "VibratorPussy"
+    if not Partner or Partner is not RogueX:
+        Null()
+    elif Ch_Focus.Offhand == 'fondle girl pussy' and Trigger != 'sex' and RogueX.Lust >= 70:
+        "GirlFingerPussy"
+    elif Ch_Focus.Offhand == 'fondle girl pussy':
+        "GirlGropePussy"
+    elif Ch_Focus.Offhand == 'lick girl pussy':
+        "Lickpussy"
+    elif Ch_Focus.Offhand == 'suck girl breasts' and (Trigger2 != 'suck breasts' or Trigger == 'suck breasts'):
+        "LickLeftBreast"
+    elif Ch_Focus.Offhand == 'suck girl breasts':
+        "LickRightBreast"
+    elif Ch_Focus.Offhand == 'fondle girl breasts' and (Trigger == 'fondle breasts' or Trigger == 'suck breasts'):
+        "GirlGropeLeftBreast"
+    elif Ch_Focus.Offhand == 'fondle girl breasts' and (Trigger2 == 'fondle breasts' or Trigger2 == 'suck breasts'):
+        "GirlGropeRightBreast"
+    elif Ch_Focus.Offhand == 'fondle girl breasts':
+        "GirlGropeRightBreast"
+    elif Ch_Focus.Offhand == 'vibrator girl breasts':
+        "VibratorRightBreast"
+    elif Ch_Focus.Offhand == 'vibrator girl pussy':
+        "VibratorPussy"
+    elif Ch_Focus.Offhand == 'vibrator girl pussy insert':
+        "VibratorPussy"
+    elif Ch_Focus.Offhand == 'vibrator girl anal':
+        "VibratorAnal"
+    elif Ch_Focus.Offhand == 'vibrator girl anal insert':
+        "VibratorPussy"
+    if not Trigger or Ch_Focus is not RogueX:
+        Null()
+    elif Trigger == 'vibrator breasts':
+        "VibratorLeftBreast"
+    elif Trigger == 'fondle thighs':
+        "GropeThigh"
+    elif Trigger == 'fondle breasts':
+        "GropeRightBreast"
+    elif Trigger == 'suck breasts':
+        "LickRightBreast"
+    elif Trigger == 'vibrator pussy':
+        "VibratorPussy"
+    elif Trigger == 'vibrator pussy insert':
+        "VibratorPussy"
+    elif Trigger == 'vibrator anal':
+        "VibratorAnal"
+    elif Trigger == 'vibrator anal insert':
+        "VibratorPussy"
+    elif Trigger == 'fondle pussy' and Speed == 2:
+        "FingerPussy"
+    elif Trigger == 'fondle pussy':
+        "GropePussy"
+    elif Trigger == 'lick pussy':
+        "Lickpussy"
+    if not Trigger2 or Ch_Focus is not RogueX:
+        Null()
+    elif Trigger2 == 'fondle breasts' and Trigger == 'suck breasts':
+        "GropeLeftBreast"
+    elif Trigger2 == 'fondle breasts':
+        "GropeLeftBreast"
+    elif Trigger2 == 'vibrator breasts' and Trigger == 'suck breasts':
+        "VibratorLeftBreast"
+    elif Trigger2 == Trigger:
+        Null()
+    elif Trigger2 == 'vibrator breasts':
+        "VibratorRightBreast"
+    elif Trigger2 == 'suck breasts':
+        "LickLeftBreast"
+    elif Trigger2 == 'vibrator pussy':
+        "VibratorPussy"
+    elif Trigger2 == 'vibrator pussy insert':
+        "VibratorPussy"
+    elif Trigger2 == 'vibrator anal':
+        "VibratorAnal"
+    elif Trigger2 == 'vibrator anal insert':
+        "VibratorPussy"
+    elif Trigger2 == 'fondle pussy':
+        "GropePussy"
+    elif Trigger2 == 'lick pussy':
+        "Lickpussy"
+    elif Trigger2 == 'fondle thighs':
+        "GropeThigh"
     anchor (0.5, 0.0)
     zoom .75
-
-
-image Rogue_Head:                                                                            #These are all the details of the face
-    LiveComposite(
-        (787,913),
-        (0,0), ConditionSwitch(
-            #base face
-#            "not Speed or (not renpy.showing('Rogue_BJ_Animation') and not renpy.showing('Rogue_CUN_Animation'))", ConditionSwitch(
-#                    #not the sucking version
-#                    "RogueX.Blush > 1", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_base_blush2.png",
-#                    "RogueX.Blush", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_base_blush.png",
-#                    "True", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_base.png",
-#                    ),
-            "RogueX.Blush > 1", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_base_blush2.png",
-            "RogueX.Blush", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_base_blush.png",
-            "True", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_base.png"
-            ),
-        # Modification mode
-        (0,0), ConditionSwitch(
-            #base face
-            "RogueX.HeadAcc == 'jewel'", "images/RogueSprite/modification/Rogue_sprite_face_jewel.png",
-            "True", Null(),
-            ),
-        # ----------------
-        (0,0), ConditionSwitch(
-            #Mouth for under layer
-#            "renpy.showing('Rogue_CUN_Animation') and Speed", Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_licking.png"),
-#            "renpy.showing('Rogue_BJ_Animation') and Speed", ConditionSwitch(
-#                    #if the BJface is happening
-##                    "Speed == 1 and 'mouth' in RogueX.Spunk", Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_lickingS.png"),
-#                    "Speed == 1", Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_licking.png"), #licking
-#                    "Speed == 2", Null(),                                               #heading Rogue_BJ_HeadingMouth()
-#                    "Speed == 3", Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_sucking.png"), #sucking
-#                    "Speed >= 4", Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_sucking.png"), #deepthroat
-#                    "True", Null(),
-#                    ),
-#            "True", ConditionSwitch(
-                    #if no Spunk
-                    "RogueX.Mouth == 'normal'", Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_normal.png"),
-                    "RogueX.Mouth == 'lipbite'", Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_lipbite.png"),
-                    "RogueX.Mouth == 'sucking' or RogueX.Mouth == 'open'", Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_surprised.png"),
-                    "RogueX.Mouth == 'kiss'", Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_kiss.png"),
-                    "RogueX.Mouth == 'sad'", Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_sad.png"),
-                    "RogueX.Mouth == 'smile'", Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_smile.png"),
-                    "RogueX.Mouth == 'grimace'", Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_smile.png"),
-                    "RogueX.Mouth == 'surprised'", Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_surprised.png"),
-                    "RogueX.Mouth == 'tongue'", Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_licking.png"),
-                    "True", Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_normal.png"),
-#                    ),
-            ),
-        (0,0), ConditionSwitch(
-            #cum on the face
-                "'chin' in RogueX.Spunk and Player.Male", "images/RogueSprite/Rogue_Sprite_spunk_chin.png",
-                "True", Null(),
-                ),
-        (0,0), ConditionSwitch(
-            #Mouth spunk
-            "'mouth' not in RogueX.Spunk or not Player.Male", Null(),
-#            "renpy.showing('Rogue_BJ_Animation') and Speed == 2",  Null(),
-#            "renpy.showing('Rogue_BJ_Animation') and Speed == 1",  "images/RogueSprite/Rogue_Sprite_spunk_licking.png",
-#            "renpy.showing('Rogue_BJ_Animation') and Speed",  "images/RogueSprite/Rogue_Sprite_spunk_sucking.png",
-#            "True", ConditionSwitch(
-                    #if no Spunk
-                    "RogueX.Mouth == 'normal'", "images/RogueSprite/Rogue_Sprite_spunk_normal.png",
-                    "RogueX.Mouth == 'lipbite'", "images/RogueSprite/Rogue_Sprite_spunk_lipbite.png",
-                    "RogueX.Mouth == 'sucking'", "images/RogueSprite/Rogue_Sprite_spunk_licking.png",
-                    "RogueX.Mouth == 'kiss'", "images/RogueSprite/Rogue_Sprite_spunk_kiss.png",
-                    "RogueX.Mouth == 'sad'", "images/RogueSprite/Rogue_Sprite_spunk_sad.png",
-                    "RogueX.Mouth == 'smile'", "images/RogueSprite/Rogue_Sprite_spunk_smile.png",
-                    "RogueX.Mouth == 'grimace'", "images/RogueSprite/Rogue_Sprite_spunk_smile.png",
-                    "RogueX.Mouth == 'surprised' or RogueX.Mouth == 'open'", "images/RogueSprite/Rogue_Sprite_spunk_licking.png",
-                    "RogueX.Mouth == 'tongue'", "images/RogueSprite/Rogue_Sprite_spunk_licking.png",
-                    "True", "images/RogueSprite/Rogue_Sprite_spunk_normal.png",
-#                    ),
-            ),
-#        (316,590), ConditionSwitch(      #600
-#            "renpy.showing('Rogue_BJ_Animation') and Speed == 2", At("Rogue_BJ_MouthHeading", Rogue_BJ_MouthAnim()),
-#            "True", Null(),
-#            ),
-#        (0,0), ConditionSwitch(                                                                                 #cum for under layer
-#            "'facial' in RogueX.Spunk", "images/RogueSprite/Rogue_Sprite_facial_under.png",
-#            "not RogueX.Spunk or Trigger != 'blow' or 'mouth' not in RogueX.Spunk", Null(),
-##            "Speed == 2", "images/RogueSprite/Rogue_Sprite_face_under_heading_cum.png",
-#            "Speed == 3", "images/RogueSprite/Rogue_Sprite_face_under_sucking_cum.png",
-#            "Speed == 4", "images/RogueSprite/Rogue_Sprite_face_under_sucking_cum.png",
-#            "True", Null(),
-#            ),
-        (0,0), ConditionSwitch(                                                                 #Brows
-            "RogueX.Blush > 1", ConditionSwitch(
-                    #blushing version
-                    "RogueX.Brows == 'angry'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_angry_b.png",
-                    "RogueX.Brows == 'sad'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_sad_b.png",
-                    "RogueX.Brows == 'surprised'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_surprised_b.png",
-                    "RogueX.Brows == 'confused'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_confused_b.png",
-                    "True", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_normal_b.png",
-                    ),
-            "RogueX.Brows == 'angry'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_angry.png",
-            "RogueX.Brows == 'sad'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_sad.png",
-            "RogueX.Brows == 'surprised'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_surprised.png",
-            "RogueX.Brows == 'confused'", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_confused.png",
-            "True", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_normal.png",
-            ),
-        (0,0), "Rogue Blink",                                                                #Eyes
-        (0,0), ConditionSwitch(
-            #cum on mouth
-                "'chin' in RogueX.Spunk and not Player.Male", "images/RogueSprite/Rogue_Sprite_face_wet.png", #wet look for female
-                "Trigger != 'blow' or 'mouth' not in RogueX.Spunk or not Player.Male", Null(),
-#                "Speed == 2", "images/RogueSprite/Rogue_Sprite_face_over_heading_cum.png",
-                "Speed == 3", "images/RogueSprite/Rogue_Sprite_face_over_sucking_cum.png",
-                "Speed == 4", "images/RogueSprite/Rogue_Sprite_face_over_sucking_cum.png",
-                "True", Null(),
-                ),
-        (0,0), ConditionSwitch(                                                                 #Hair overlay
-            "RogueX.Water", Recolor("Rogue", "Hair", "images/RogueSprite/Rogue_Sprite_hair_wet.png"),
-            "RogueX.Hair == 'cosplay'", Recolor("Rogue", "Hair", "images/RogueSprite/Rogue_Sprite_hair_cos.png"),
-            "RogueX.Hair == 'wet'", Recolor("Rogue", "Hair", "images/RogueSprite/Rogue_Sprite_hair_wet.png"),
-            "not Player.Male and ('hair' in RogueX.Spunk or 'facial' in RogueX.Spunk)", Recolor("Rogue", "Hair", "images/RogueSprite/Rogue_Sprite_hair_wet.png"),
-            "True", Recolor("Rogue", "Hair", "images/RogueSprite/Rogue_Sprite_hair_evo.png"),
-            ),
-        (0,0), ConditionSwitch(
-            #soap
-            "RogueX.Water", "images/RogueSprite/Rogue_Sprite_wet.png",
-            "not Player.Male and ('hair' in RogueX.Spunk or 'facial' in RogueX.Spunk)", "images/RogueSprite/Rogue_Sprite_wet.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #cum on the face
-                "'hair' in RogueX.Spunk and Player.Male", "images/RogueSprite/Rogue_Sprite_spunk_hair.png",
-                "'facial' in RogueX.Spunk and Player.Male", "images/RogueSprite/Rogue_Sprite_spunk_facial.png",
-                "True", Null(),
-                ),
-        # Modification mode
-        (0,0), ConditionSwitch(
-            "RogueX.Mask == 'mask harem'", "images/RogueSprite/modification/Rogue_sprite_mask_harem.png",
-            "True", Null(),
-        ),
-        # ----------------
-        )
+layeredimage Rogue_Head:
+    if RogueX.Blush > 1:
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_base_blush2.png"
+    elif RogueX.Blush:
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_base_blush.png"
+    else:
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_base.png"
+    if RogueX.HeadAcc == 'jewel':
+        "images/RogueSprite/modification/Rogue_sprite_face_jewel.png"
+    if RogueX.Mouth == 'normal':
+        Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_normal.png")
+    elif RogueX.Mouth == 'lipbite':
+        Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_lipbite.png")
+    elif RogueX.Mouth == 'sucking' or RogueX.Mouth == 'open':
+        Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_surprised.png")
+    elif RogueX.Mouth == 'kiss':
+        Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_kiss.png")
+    elif RogueX.Mouth == 'sad':
+        Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_sad.png")
+    elif RogueX.Mouth == 'smile':
+        Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_smile.png")
+    elif RogueX.Mouth == 'grimace':
+        Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_smile.png")
+    elif RogueX.Mouth == 'surprised':
+        Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_surprised.png")
+    elif RogueX.Mouth == 'tongue':
+        Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_licking.png")
+    else:
+        Recolor("Rogue", "Lips", "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_mouth_normal.png")
+    if 'chin' in RogueX.Spunk and Player.Male:
+        "images/RogueSprite/Rogue_Sprite_spunk_chin.png"
+    if 'mouth' not in RogueX.Spunk or not Player.Male:
+        Null()
+    elif RogueX.Mouth == 'normal':
+        "images/RogueSprite/Rogue_Sprite_spunk_normal.png"
+    elif RogueX.Mouth == 'lipbite':
+        "images/RogueSprite/Rogue_Sprite_spunk_lipbite.png"
+    elif RogueX.Mouth == 'sucking':
+        "images/RogueSprite/Rogue_Sprite_spunk_licking.png"
+    elif RogueX.Mouth == 'kiss':
+        "images/RogueSprite/Rogue_Sprite_spunk_kiss.png"
+    elif RogueX.Mouth == 'sad':
+        "images/RogueSprite/Rogue_Sprite_spunk_sad.png"
+    elif RogueX.Mouth == 'smile':
+        "images/RogueSprite/Rogue_Sprite_spunk_smile.png"
+    elif RogueX.Mouth == 'grimace':
+        "images/RogueSprite/Rogue_Sprite_spunk_smile.png"
+    elif RogueX.Mouth == 'surprised' or RogueX.Mouth == 'open':
+        "images/RogueSprite/Rogue_Sprite_spunk_licking.png"
+    elif RogueX.Mouth == 'tongue':
+        "images/RogueSprite/Rogue_Sprite_spunk_licking.png"
+    else:
+        "images/RogueSprite/Rogue_Sprite_spunk_normal.png"
+    if RogueX.Blush > 1:
+        if RogueX.Brows == 'angry':
+            "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_angry_b.png"
+        elif RogueX.Brows == 'sad':
+            "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_sad_b.png"
+        elif RogueX.Brows == 'surprised':
+            "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_surprised_b.png"
+        elif RogueX.Brows == 'confused':
+            "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_confused_b.png"
+        else:
+            "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_normal_b.png"
+    elif RogueX.Brows == 'angry':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_angry.png"
+    elif RogueX.Brows == 'sad':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_sad.png"
+    elif RogueX.Brows == 'surprised':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_surprised.png"
+    elif RogueX.Brows == 'confused':
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_confused.png"
+    else:
+        "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_brows_normal.png"
+    always:
+        "Rogue Blink"
+    if 'chin' in RogueX.Spunk and not Player.Male:
+        "images/RogueSprite/Rogue_Sprite_face_wet.png"
+    elif Trigger != 'blow' or 'mouth' not in RogueX.Spunk or not Player.Male:
+        Null()
+    elif Speed == 3:
+        "images/RogueSprite/Rogue_Sprite_face_over_sucking_cum.png"
+    elif Speed == 4:
+        "images/RogueSprite/Rogue_Sprite_face_over_sucking_cum.png"
+    if RogueX.Water:
+        Recolor("Rogue", "Hair", "images/RogueSprite/Rogue_Sprite_hair_wet.png")
+    elif RogueX.Hair == 'cosplay':
+        Recolor("Rogue", "Hair", "images/RogueSprite/Rogue_Sprite_hair_cos.png")
+    elif RogueX.Hair == 'wet':
+        Recolor("Rogue", "Hair", "images/RogueSprite/Rogue_Sprite_hair_wet.png")
+    elif not Player.Male and ('hair' in RogueX.Spunk or 'facial' in RogueX.Spunk):
+        Recolor("Rogue", "Hair", "images/RogueSprite/Rogue_Sprite_hair_wet.png")
+    else:
+        Recolor("Rogue", "Hair", "images/RogueSprite/Rogue_Sprite_hair_evo.png")
+    if RogueX.Water:
+        "images/RogueSprite/Rogue_Sprite_wet.png"
+    elif not Player.Male and ('hair' in RogueX.Spunk or 'facial' in RogueX.Spunk):
+        "images/RogueSprite/Rogue_Sprite_wet.png"
+    if 'hair' in RogueX.Spunk and Player.Male:
+        "images/RogueSprite/Rogue_Sprite_spunk_hair.png"
+    elif 'facial' in RogueX.Spunk and Player.Male:
+        "images/RogueSprite/Rogue_Sprite_spunk_facial.png"
+    if RogueX.Mask == 'mask harem':
+        "images/RogueSprite/modification/Rogue_sprite_mask_harem.png"
     zoom .29
-
 image Rogue_HairBack:
     ConditionSwitch(
         #Hair underlay
@@ -750,7 +636,6 @@ image Rogue_HairBack:
             "True", Recolor("Rogue", "Hair", "images/RogueSprite/Rogue_Sprite_hair_evo_back.png"),
             ),
     zoom .29
-
 image Rogue Blink:
     #eyeblinks
     ConditionSwitch(
@@ -775,7 +660,6 @@ image Rogue Blink:
     "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_eyes_closed.png"
     .25
     repeat
-
 image Rogue_Squint:
     "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_eyes_sexy.png",
     choice:
@@ -787,20 +671,16 @@ image Rogue_Squint:
     "images/RogueSprite/[RogueX.skin_image.skin_path]Rogue_Sprite_face_eyes_squint.png",
     .25
     repeat
-
-
 image Rogue_Drip_Mask:
     #This is the mask for her drip pattern
     contains:
         "images/RogueSprite/Rogue_WetMask.png"
         offset (-240,-560)
-
 image Rogue_Drip_MaskP:
     #This is the mask for her drip pattern in panties down mode
     contains:
         "images/RogueSprite/Rogue_WetMaskP.png"
         offset (-240,-560)
-
 image Rogue_Drip_MaskPn:
     #This is the mask for her drip pattern in pants down mode
     contains:
@@ -814,546 +694,486 @@ image Rogue_Drip_MaskPn:
 #\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 #image Rogue_Doggy_Base = LiveComposite(
-image Rogue_Doggy_Animation: #nee Rogue_Doggy
-    LiveComposite(
-        #Base body
-        (420,750),
-        (0,0), ConditionSwitch(
-            #Shows different upper body motion depending on events
-            "not Player.Sprite", "Rogue_Doggy_Body",
-            "Player.Cock == 'anal'", ConditionSwitch(
-                    "Speed > 2", "Rogue_Doggy_Fuck2_Top",
-                    "Speed > 1", "Rogue_Doggy_Fuck_Top",
-                    "Speed", "Rogue_Doggy_Anal_Head_Top",
-                    "True", "Rogue_Doggy_Body",
-                    ),
-            "Player.Cock == 'in'", ConditionSwitch(
-                    "Speed > 2", "Rogue_Doggy_Fuck2_Top",
-                    "Speed > 1", "Rogue_Doggy_Fuck_Top",
-                    "True", "Rogue_Doggy_Body",
-                    ),
-            "True", "Rogue_Doggy_Body",
-            ),
-        (0,0), ConditionSwitch(
-            #Shows different lower body motion depending on events
-            "not Player.Sprite", "Rogue_Doggy_Ass",
-            "Player.Cock == 'anal'", ConditionSwitch(
-                    "Speed > 2", "Rogue_Doggy_Fuck2_Ass",
-                    "Speed > 1", "Rogue_Doggy_Fuck_Ass",
-                    "Speed", "Rogue_Doggy_Anal_Head_Ass",
-                    "True", "Rogue_Doggy_Ass",
-                    ),
-            "Player.Cock == 'in'", ConditionSwitch(
-                    "Speed > 2", "Rogue_Doggy_Fuck2_Ass",
-                    "Speed > 1", "Rogue_Doggy_Fuck_Ass",
-                    "True", "Rogue_Doggy_Ass",
-                    ),
-            "True", "Rogue_Doggy_Ass",
-            ),
-        (0,0), ConditionSwitch(
-            #Shows different lower body motion depending on events
-#            "not Player.Sprite", "Rogue_Doggy_Shins0",
-            "Player.Sprite and Player.Cock == 'foot'", ConditionSwitch(
-                    "Speed > 1", "Rogue_Doggy_Feet2",
-                    "Speed", "Rogue_Doggy_Feet1",
-                    "True", "Rogue_Doggy_Feet0",
-                    ),
-            "ShowFeet", "Rogue_Doggy_Shins0", #"Rogue_Doggy_Feet0",
-            "True", Null(),
-            ),
-        )
+layeredimage Rogue_Doggy_Animation:
+    if not Player.Sprite:
+        "Rogue_Doggy_Body"
+    elif Player.Cock == 'anal':
+        if Speed > 2:
+            "Rogue_Doggy_Fuck2_Top"
+        elif Speed > 1:
+            "Rogue_Doggy_Fuck_Top"
+        elif Speed:
+            "Rogue_Doggy_Anal_Head_Top"
+        else:
+            "Rogue_Doggy_Body"
+    elif Player.Cock == 'in':
+        if Speed > 2:
+            "Rogue_Doggy_Fuck2_Top"
+        elif Speed > 1:
+            "Rogue_Doggy_Fuck_Top"
+        else:
+            "Rogue_Doggy_Body"
+    else:
+        "Rogue_Doggy_Body"
+    if not Player.Sprite:
+        "Rogue_Doggy_Ass"
+    elif Player.Cock == 'anal':
+        if Speed > 2:
+            "Rogue_Doggy_Fuck2_Ass"
+        elif Speed > 1:
+            "Rogue_Doggy_Fuck_Ass"
+        elif Speed:
+            "Rogue_Doggy_Anal_Head_Ass"
+        else:
+            "Rogue_Doggy_Ass"
+    elif Player.Cock == 'in':
+        if Speed > 2:
+            "Rogue_Doggy_Fuck2_Ass"
+        elif Speed > 1:
+            "Rogue_Doggy_Fuck_Ass"
+        else:
+            "Rogue_Doggy_Ass"
+    else:
+        "Rogue_Doggy_Ass"
+    if Player.Sprite and Player.Cock == 'foot':
+        if Speed > 1:
+            "Rogue_Doggy_Feet2"
+        elif Speed:
+            "Rogue_Doggy_Feet1"
+        else:
+            "Rogue_Doggy_Feet0"
+    elif ShowFeet:
+        "Rogue_Doggy_Shins0"
     align (0.6,0.0)
-# End Base / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
-
-image Rogue_Doggy_Body:
-    LiveComposite(                                                                                         #Upper body
-        (420,750),
-#        (0,0), ConditionSwitch(
-#            #Hair underlayer
-#            "RogueX.Water", Null(),
-#            "not Player.Male and ('hair' in RogueX.Spunk or 'facial' in RogueX.Spunk)", Null(),
-#            "RogueX.Hair == 'evo'", Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_HairB.png"),
-#            "True", Null(),
-#            ),
-        (0,0), "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Body.png", #Body base
-        (0,0), ConditionSwitch(
-            #tanktop
-            "not RogueX.Chest", Null(),
-            "RogueX.Chest == 'tube top'", Recolor("Rogue", "Chest", "images/RogueDoggy/Rogue_Doggy_Chest_Tube.png"),
-            "RogueX.Chest == 'tank'", Recolor("Rogue", "Chest", "images/RogueDoggy/Rogue_Doggy_Chest_Tank.png"),
-            "RogueX.Chest == 'buttoned tank'", Recolor("Rogue", "Chest", "images/RogueDoggy/Rogue_Doggy_Chest_ButtonTank.png"),
-            "RogueX.Chest == 'sports bra'", Recolor("Rogue", "Chest", "images/RogueDoggy/Rogue_Doggy_Chest_SportsBra.png"),
-            "RogueX.Chest == 'bikini top'", Recolor("Rogue", "Chest", "images/RogueDoggy/Rogue_Doggy_Chest_Bikini.png"),
-            # Modification mode
-            "RogueX.Chest == 'raven leotard'", "images/RogueDoggy/modification/Rogue_Doggy_Chest_Raven.png",
-            "RogueX.Chest == 'SR7 tank top'", "images/RogueDoggy/modification/Rogue_Doggy_Chest_SR7_tank_top.png",
-            # -----------------
-            "RogueX.Chest", Recolor("Rogue", "Chest", "images/RogueDoggy/Rogue_Doggy_Chest_Bra.png"),
-            "True", Null(),
-            ),
-#        (0,0), ConditionSwitch(
-#            #Wet look
-#            "RogueX.Water", "images/RogueDoggy/Rogue_Doggy_WetTop.png",
-#            "True", Null(),
-#            ),
-        (0,0), ConditionSwitch(
-            #Overshirt
-            "not RogueX.Over", Null(),
-            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_Mesh.png"),
-            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_Pink.png"),
-            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_Hoodie.png"),
-            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_NightyTop.png"),
-            "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_TowelTop.png"),
-            # Modification mode
-            "RogueX.Over == 'dress blue'", "images/RogueDoggy/modification/Rogue_doggy_over_dress_blue_top.png",
-            "RogueX.Over == 'dress red'", "images/RogueDoggy/modification/Rogue_doggy_over_dress_red_top.png",
-            "RogueX.Over == 'top harem'", "images/RogueDoggy/modification/Rogue_doggy_over_harem_top.png",
-            # ----------------
-            "True", Null(),
-            ),
-#        (0,0), ConditionSwitch(
-#            #Hair
-#            "RogueX.Water", Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_HairWet.png"),
-#            "not Player.Male and ('hair' in RogueX.Spunk or 'facial' in RogueX.Spunk)", Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_HairWet.png"),
-#            "RogueX.Hair == 'cosplay'", Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_Hair_Cos.png"),
-#            "RogueX.Hair == 'evo'", Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_HairF.png"),
-#            "True", Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_HairF.png"),
-#            ),
-        (0,0), ConditionSwitch(
-            #Collar
-            "RogueX.Neck == 'spiked collar'", "images/RogueDoggy/Rogue_Doggy_Collar.png",
-            "True", Null(),                #RogueX.Arms == 'gloves' or not RogueX.Arms
-            ),
-        (0,0), ConditionSwitch(
-            #head
-            "RogueX.Facing", "Rogue_Doggy_Head_Fore",
-            "True", "Rogue_Doggy_Head",
-            ),
-        (0,0), ConditionSwitch(
-            #Hood
-            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_Hood.png"),
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #face spunk
-            "not RogueX.Spunk or not Player.Male", Null(),
-            "'hair' in RogueX.Spunk", "images/RogueDoggy/Rogue_Doggy_Spunk_Hair.png",
-            "'facial' in RogueX.Spunk", "images/RogueDoggy/Rogue_Doggy_Spunk_Facial.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #breast fondling animation
-            "Trigger == 'fondle breasts' or Trigger2 == 'fondle breasts'", "Rogue_Doggy_GropeBreast",
-            "True", Null()
-            ),
-        )
-# End Body / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
-image Rogue_Doggy_Head:
-    LiveComposite(                                                                                         #Upper body
-        (420,750),
-        (0,0), ConditionSwitch(
-            #Hair underlayer
-            "RogueX.Water", Null(),
-            "not Player.Male and ('hair' in RogueX.Spunk or 'facial' in RogueX.Spunk)", Null(),
-            "RogueX.Hair == 'evo'", Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_HairB.png"),
-            "True", Null(),
-            ),
-        (0,0), "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Head.png", #head base
-#        (0,0), ConditionSwitch(
-#            #Collar
-#            "RogueX.Neck == 'spiked collar'", "images/RogueDoggy/Rogue_Doggy_Collar.png",
-#            "True", Null(),                #RogueX.Arms == 'gloves' or not RogueX.Arms
-#            ),
-        (0,0), ConditionSwitch(
-            #Mouth
-            "'mouth' in RogueX.Spunk and Player.Male", ConditionSwitch(
-                    "RogueX.Mouth == 'lipbite'", Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_LipbiteW.png"),
-                    "RogueX.Mouth == 'surprised' or RogueX.Mouth == 'open'", Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_SurprisedW.png"),
-                    "RogueX.Mouth == 'sucking'", Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_BlowW.png"),
-                    "RogueX.Mouth == 'sad'", Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_SadW.png"),
-                    "RogueX.Mouth == 'smile'", Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_SmileW.png"),
-                    "RogueX.Mouth == 'tongue'", Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_TongueW.png"),
-                    "True", Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_NormalW.png"),
-                    ),
-            "RogueX.Mouth == 'normal'", Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Normal.png"),
-            "RogueX.Mouth == 'lipbite'", Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Lipbite.png"),
-            "RogueX.Mouth == 'sucking' or RogueX.Mouth == 'open'", Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Blow.png"),
-            "RogueX.Mouth == 'kiss'", Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Surprised.png"),
-            "RogueX.Mouth == 'sad'", Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Sad.png"),
-            "RogueX.Mouth == 'smile'", Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Smile.png"),
-            "RogueX.Mouth == 'grimace'", Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Smile.png"),
-            "RogueX.Mouth == 'surprised'", Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Surprised.png"),
-            "RogueX.Mouth == 'tongue'", Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Tongue.png"),
-            "True", Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Smile.png"),
-            ),
-        (0,0), ConditionSwitch(
-            #Blush
-            "RogueX.Blush", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Blush.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Brows
-            "RogueX.Brows == 'normal'", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Brows_Normal.png",
-            "RogueX.Brows == 'angry'", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Brows_Angry.png",
-            "RogueX.Brows == 'sad'", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Brows_Sad.png",
-            "RogueX.Brows == 'surprised'", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Brows_Surprised.png",
-            "RogueX.Brows == 'confused'", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Brows_Normal.png",
-            "True", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Brows_Normal.png",
-            ),
-        (0,0), "Rogue Doggy Blink",#Eyes
-        (0,0), ConditionSwitch(
-            #Wet look
-            "RogueX.Water", "images/RogueDoggy/Rogue_Doggy_WetTop.png",
-            "True", Null(),
-            ),
-        # Modification mode
-        (0,0), ConditionSwitch(
-            "RogueX.Hair == 'evo' and RogueX.HeadAcc == 'jewel'", "images/RogueDoggy/modification/Rogue_Doggy_Face_Jewel.png",
-            "True", Null(),
-            ),
-        # ----------------
-        (0,0), ConditionSwitch(
-            #Hair
-            "RogueX.Water or RogueX.Hair == 'wet'", Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_HairWet.png"),
-            "not Player.Male and ('hair' in RogueX.Spunk or 'facial' in RogueX.Spunk)", Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_HairWet.png"),
-            "RogueX.Hair == 'cosplay'", Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_Hair_Cos.png"),
-#            "RogueX.Hair == 'evo'", Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_HairF.png"),
-            "True", Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_HairF.png"),
-            ),
-        # Modification mode
-        (0,0), ConditionSwitch(
-            "RogueX.Hair != 'evo' and RogueX.HeadAcc == 'jewel'", "images/RogueDoggy/modification/Rogue_Doggy_Face_Jewel.png",
-            "True", Null(),
-            ),
-        # ----------------
-        (0,0), ConditionSwitch(
-            #Hood
-            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_Hood.png"),
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #face spunk
-            "not RogueX.Spunk or not Player.Male", Null(),
-            "'hair' in RogueX.Spunk", "images/RogueDoggy/Rogue_Doggy_Spunk_Hair.png",
-            "'facial' in RogueX.Spunk", "images/RogueDoggy/Rogue_Doggy_Spunk_Facial.png",
-            "True", Null(),
-            ),
-        # Modification mode
-        (0,0), ConditionSwitch(
-            "RogueX.Mask == 'mask harem'", "images/RogueDoggy/modification/Rogue_doggy_mask_harem.png",
-            "True", Null(),
-        ),
-        # ----------------
-        )
-# End Head / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
-image Rogue_Doggy_Head_Fore:
-    LiveComposite(                                                                                         #Upper body
-        (420,750),
-        (0,0), ConditionSwitch(
-            #Hair
-            "RogueX.Water or RogueX.Hair == 'wet'", Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_Hair_Wet_Fore.png"),
-            "not Player.Male and ('hair' in RogueX.Spunk or 'facial' in RogueX.Spunk)", Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_Hair_Wet_Fore.png"),
-            "RogueX.Hair == 'cosplay'", Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_Hair_Cos_Fore.png"),
-#            "RogueX.Hair == 'evo'", Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_HairF.png"),
-            "True", Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_Hair_Evo_Fore.png"),
-            ),
-        (0,0), ConditionSwitch(
-            #Hood
-            "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_Hood.png"),
-            "True", Null(),
-            ),
-        )
-image Rogue_Doggy_Ass:
-    LiveComposite(                                                                                          #Lower body
-        (420,750), #(210,375), #(419,750),
-        (0,0), ConditionSwitch(
-            #Panties back
-            "not RogueX.PantiesDown or (RogueX.Legs == 'pants' and not RogueX.Upskirt)", Null(),
-            "RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Shorts_Back.png"),
-            "RogueX.Panties == 'green panties'", Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Undies_Back.png"),
-            "RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Panties_Bikini_Back.png"),
-            # Modification mod
-            "RogueX.Panties == 'harness panties'", "images/RogueDoggy/modification/Rogue_doggy_panties_harness_back.png",
-            "RogueX.Panties == 'raven leotard'", Null(),
-            # ----------------
-            "RogueX.Panties", Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Panties_Back.png"),
-            "True", Null(),
-            ),
-#        (0,0), "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Ass.png", #Ass Base
-
-        (0,0), ConditionSwitch(
-            #Ass
-            "Trigger == 'lick pussy'", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Ass_Open.png",
-            "RogueX.Legs and not RogueX.Upskirt", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Ass_Closed.png",
-            "RogueX.Panties and not RogueX.PantiesDown", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Ass_Closed.png",
-            "Player.Sprite and Player.Cock == 'in'", ConditionSwitch(
-#                    "Speed > 2", "Rogue_Pussy_Fucking3",#Speed 3
-#                    "Speed > 1", "Rogue_Pussy_Fucking2",#Speed 2
-#                    "Speed", "Rogue_Pussy_Heading",      #Speed 1
-                    "True", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Ass_Fucking.png",              #Speed 0
-                    ),
-            "'dildo pussy' in (Trigger,Trigger2,RogueX.Offhand)", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Ass_Fucking.png",
-            "'fondle pussy' in (Trigger,Trigger2,RogueX.Offhand) or (Partner and Partner.Offhand == 'girl fondle pussy')", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Ass_Fucking.png",
-            "Trigger == 'insert pussy'", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Ass_Fucking.png",
-            "True", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Ass_Closed.png",
-            ),
-
-        (0,0), ConditionSwitch(
-            #Anus Composite backplate
-            "Player.Sprite and Player.Cock == 'anal'", ConditionSwitch(
-#                    "Speed > 2", "Rogue_Anal_Fucking2", #Speed 3
-#                    "Speed > 1", "Rogue_Anal_Fucking",  #Speed 2
-                    "Speed", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Anal_FullBase.png",      #Speed 1
-                    "True", Null(),               #Speed 0
-                    ),
-            "'insert ass' in (Trigger,Trigger2,RogueX.Offhand) or (Partner and Partner.Offhand == 'girl insert ass')", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Anal_FullBase.png",
-            "'dildo anal' in (Trigger,Trigger2,RogueX.Offhand)", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Anal_FullBase.png",
-            "RogueX.Loose > 2", "Rogue_Gape_Anal",
-            "RogueX.Loose", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Asshole_Loose.png",
-            "True", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Asshole_Tight.png",
-            ),
-
-        (0,0), ConditionSwitch(
-            #ass red
-            "RogueX.Red", "images/RogueDoggy/Rogue_Doggy_Red.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Wet look
-            "RogueX.Water", "images/RogueDoggy/Rogue_Doggy_WetAss.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Hose
-            "RogueX.Hose == 'stockings'", "images/RogueDoggy/Rogue_Doggy_Hose.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Panties if Down
-            "not RogueX.PantiesDown or (RogueX.Legs == 'pants' and not RogueX.Upskirt)", Null(),
-            "RogueX.Panties == 'shorts' and RogueX.Wet > 1", Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Shorts_Down_Wet.png"), #fix turn this on when graphics fixed
-            "RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Shorts_Down.png"),
-            "RogueX.Panties == 'green panties' and RogueX.Wet > 1", Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Undies_Down_Wet.png"),
-            "RogueX.Panties == 'green panties'", Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Undies_Down.png"),
-            "RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Panties_Bikini_Down.png"),
-            # Modification mode
-            "RogueX.Panties == 'harness panties' and RogueX.Wet > 1", "images/RogueDoggy/modification/Rogue_doggy_panties_harness_down_wet.png",
-            "RogueX.Panties == 'harness panties'", "images/RogueDoggy/modification/Rogue_doggy_panties_harness_down.png",
-            "RogueX.Panties == 'raven leotard'", Null(),
-            # -----------------
-            "RogueX.Panties", Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Panties_Down.png"),
-            "True", Null(),
-            ),
-
-#        (0,0), ConditionSwitch(                                                                                 #spunkpussy Layer
-#            "RogueX.Spunk == 'in' and Player.Cock == 'in'", "images/RogueDoggy/Rogue_Doggy_SpunkPussyOpen.png",  #fix for RogueX.Spunk is used later
-#            "RogueX.Spunk == 'in'", "images/RogueDoggy/Rogue_Doggy_SpunkPussyClosed.png",
-#            "RogueX.Wet and Player.Cock == 'in'", "images/RogueDoggy/Rogue_Doggy_WetPussyOpen.png",
-#            "RogueX.Wet", "images/RogueDoggy/Rogue_Doggy_WetPussyClosed.png",
-#            "True", Null(),
-#            ),
-        (0,0), ConditionSwitch(
-            #pubes
-            "not RogueX.Pubes", Null(),
-            "Player.Sprite and Player.Cock == 'in'", Null(),
-            "'dildo pussy' in (Trigger,Trigger2,RogueX.Offhand)", Null(),
-            "'fondle pussy' in (Trigger,Trigger2,RogueX.Offhand) or (Partner and Partner.Offhand == 'girl fondle pussy')",Null(),
-            "Trigger == 'insert pussy'", Null(),
-            "RogueX.Legs == 'pants' and not RogueX.Upskirt", Recolor("Rogue", "Pubes", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Pubes_Panties.png"),
-            "RogueX.PantiesDown", Recolor("Rogue", "Pubes", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Pubes.png"),
-            "RogueX.Panties", Recolor("Rogue", "Pubes", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Pubes_Panties.png"),
-            "RogueX.Hose and (RogueX.Hose == 'pantyhose' or RogueX.Hose == 'tights')", Recolor("Rogue", "Pubes", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Pubes_Panties.png"),
-            "Trigger == 'lick pussy'", Recolor("Rogue", "Pubes", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Pubes_Open.png"),
-            "True", Recolor("Rogue", "Pubes", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Pubes.png"),
-            ),
-        (0,0), ConditionSwitch(
-            #Pussy Piercings
-            "Player.Sprite", Null(),
-            "'dildo pussy' in (Trigger,Trigger2,RogueX.Offhand)", Null(),
-            "'fondle pussy' in (Trigger,Trigger2,RogueX.Offhand) or (Partner and Partner.Offhand == 'girl fondle pussy')",Null(),
-            "Trigger == 'insert pussy'", Null(),
-            "RogueX.Pierce == 'ring'", "images/RogueDoggy/Rogue_Doggy_PussyRing.png",
-            "RogueX.Pierce == 'barbell'", "images/RogueDoggy/Rogue_Doggy_PussyBarbell.png",
-            "True", Null(),
-            ),
-        # Modification mode
-        (0,0), ConditionSwitch(
-            #Plug
-            "RogueX.Plug", "images/PlugIn.png",
-            "True", Null(),
-            ),
-        # -----------------
-        (2,-8), ConditionSwitch(
-            # spunkanal Layer
-            "'anal' not in RogueX.Spunk or Player.Sprite or not Player.Male", Null(),
-#            "Player.Cock == 'anal'", "images/RogueDoggy/Rogue_Doggy_SpunkAnalOpen.png",
-            "RogueX.Loose", "images/RogueDoggy/Rogue_Doggy_SpunkAnalLoose.png",
-            "True", "images/RogueDoggy/Rogue_Doggy_SpunkAnalLoose.png",
-            ),
-
-        (0,0), ConditionSwitch(
-            #Panties if up
-            "RogueX.PantiesDown or not RogueX.Panties", Null(),
-#            "Trigger == 'fondle pussy' or Trigger2 == 'fondle pussy'",Null(),
-#            "Trigger == 'dildo pussy'", Null(),
-            "Player.Sprite and (Player.Cock == 'in' or Player.Cock == 'anal')", Null(),
-            "RogueX.Panties == 'shorts' and RogueX.Wet", Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Shorts_Wet.png"),
-            "RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Shorts.png"),
-            "RogueX.Panties == 'green panties' and RogueX.Wet", Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Undies_Wet.png"),
-            "RogueX.Panties == 'green panties'", Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Undies.png"),
-            "RogueX.Panties == 'lace panties'", Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_PantiesLace.png"),
-            "RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Panties_Bikini.png"),
-            # Modification mode
-            "RogueX.Panties == 'harness panties' and RogueX.Wet", "images/RogueDoggy/modification/Rogue_doggy_panties_harness_wet.png",
-            "RogueX.Panties == 'harness panties'", "images/RogueDoggy/modification/Rogue_doggy_panties_harness.png",
-            "RogueX.Panties == 'raven leotard'", "images/RogueDoggy/modification/Rogue_Doggy_Panties_Raven.png",
-            # -----------------
-            "True", Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Panties.png"),
-            ),
-        (0,0), ConditionSwitch(
-            #full hose/tights
-#            "Player.Sprite and (Player.Cock == 'in' or Player.Cock == 'anal')", Null(),
-#            "Trigger == 'fondle pussy' or Trigger2 == 'fondle pussy'",Null(),
-#            "Trigger == 'dildo pussy'", Null(),
-#            "RogueX.Panties and RogueX.PantiesDown and RogueX.Hose == 'stockings and garterbelt'", Recolor("Rogue", "Hose", "images/RogueDoggy/Rogue_Doggy_Stockings_Loose.png"),
-            "RogueX.Hose == 'garterbelt'", Recolor("Rogue", "Hose", "images/RogueDoggy/Rogue_Doggy_Stockings_Loose.png"),
-            "RogueX.Hose == 'stockings and garterbelt'", Recolor("Rogue", "Hose", "images/RogueDoggy/Rogue_Doggy_Stockings.png"),
-            "RogueX.Panties and RogueX.PantiesDown", Null(),
-            "RogueX.Hose == 'tights' and RogueX.Wet", Recolor("Rogue", "Hose", "images/RogueDoggy/Rogue_Doggy_Tights_Wet.png"),
-            "RogueX.Hose == 'tights'", Recolor("Rogue", "Hose", "images/RogueDoggy/Rogue_Doggy_Tights.png"),
-            "RogueX.Hose == 'pantyhose'", Recolor("Rogue", "Hose", "images/RogueDoggy/Rogue_Doggy_FullHose.png"),
-            "RogueX.Hose == 'ripped pantyhose'", Recolor("Rogue", "Hose", "images/RogueDoggy/Rogue_Doggy_FullHose_Holed.png"),
-            "RogueX.Hose == 'ripped tights'", Recolor("Rogue", "Hose", "images/RogueDoggy/Rogue_Doggy_Tights_Holed.png"),
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Legs Layer
-            "RogueX.Legs == 'pants'", ConditionSwitch(
-                    "RogueX.Upskirt", Recolor("Rogue", "Legs", "images/RogueDoggy/Rogue_Doggy_Legs_Pants_Down.png"),
-                    "RogueX.Wet > 1", Recolor("Rogue", "Legs", "images/RogueDoggy/Rogue_Doggy_Legs_Pants_Wet.png"),
-                    "True", Recolor("Rogue", "Legs", "images/RogueDoggy/Rogue_Doggy_Legs_Pants.png"),
-                    ),
-            "RogueX.Legs == 'skirt'", ConditionSwitch(
-                    "RogueX.Upskirt and Player.Sprite and Player.Cock == 'anal' and Speed" , Recolor("Rogue", "Legs", "images/RogueDoggy/Rogue_Doggy_Legs_Skirt_UpAnal.png"),
-                    "RogueX.Upskirt", Recolor("Rogue", "Legs", "images/RogueDoggy/Rogue_Doggy_Legs_Skirt_Up.png"),
-                    "True", Recolor("Rogue", "Legs", "images/RogueDoggy/Rogue_Doggy_Legs_Skirt.png"),
-                    ),
-            # Modification mode
-            "RogueX.Legs == 'SR7 skirt'", ConditionSwitch(
-                "RogueX.Upskirt and Player.Sprite and Player.Cock == 'anal' and Speed" , "images/RogueDoggy/modification/Rogue_Doggy_Legs_SR7_Skirt_UpAnal.png",
-                "RogueX.Upskirt", "images/RogueDoggy/modification/Rogue_Doggy_Legs_SR7_Skirt_Up.png",
-                "True", "images/RogueDoggy/modification/Rogue_Doggy_Legs_SR7_Skirt.png",
-            ),
-            "RogueX.Legs == 'short skirt'", ConditionSwitch(
-                "RogueX.Upskirt and Player.Sprite and Player.Cock == 'anal' and Speed" , "images/RogueDoggy/modification/Rogue_Doggy_Legs_Short_Skirt_UpAnal.png",
-                "RogueX.Upskirt", "images/RogueDoggy/modification/Rogue_Doggy_Legs_Short_Skirt_Up.png",
-                "True", "images/RogueDoggy/modification/Rogue_Doggy_Legs_Short_Skirt.png",
-            ),
-            "RogueX.Legs == 'bottom harem'", ConditionSwitch(
-                "RogueX.Upskirt and Player.Sprite and Player.Cock == 'anal' and Speed" , "images/RogueDoggy/modification/Rogue_doggy_skirt_harem_bottom_ass_anal_up.png",
-                "RogueX.Upskirt", "images/RogueDoggy/modification/Rogue_doggy_skirt_harem_bottom_ass_up.png",
-                "True", "images/RogueDoggy/modification/Rogue_doggy_skirt_harem_bottom_ass.png",
-            ),
-            # ----------------
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Over Layer
-            "RogueX.Over == 'nighty' and RogueX.Upskirt", Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_NightyAss_Up.png"),
-            "RogueX.Over == 'nighty' and (Player.Cock == 'in' or Player.Cock == 'out')", Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_NightyAss_Up.png"),
-            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_NightyAss.png"),
-            "RogueX.Over == 'towel' and RogueX.Upskirt", Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_TowelAss_Up.png"),
-            "RogueX.Over == 'towel' and (Player.Cock == 'in' or Player.Cock == 'out')", Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_TowelAss_Up.png"),
-            "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_TowelAss.png"),
-            # Modification mode
-            "RogueX.Over == 'dress blue'", ConditionSwitch(
-                "RogueX.Upskirt and Player.Cock == 'anal'", "images/RogueDoggy/modification/Rogue_doggy_over_dress_blue_ass_anal_up.png",
-                "Player.Cock == 'in' or Player.Cock == 'out'", "images/RogueDoggy/modification/Rogue_doggy_over_dress_blue_ass_up.png",
-                "True", "images/RogueDoggy/modification/Rogue_doggy_over_dress_blue_ass.png",
-            ),
-            "RogueX.Over == 'dress red'", ConditionSwitch(
-                "RogueX.Upskirt and Player.Cock == 'anal' and Speed", "images/RogueDoggy/modification/Rogue_doggy_over_dress_red_ass_anal_up.png",
-                "Player.Cock == 'in' or Player.Cock == 'out'", "images/RogueDoggy/modification/Rogue_doggy_over_dress_red_ass_up.png",
-                "True", "images/RogueDoggy/modification/Rogue_doggy_over_dress_red_ass.png",
-            ),
-            # ---------------
-            "True", Null(),
-            ),
-
-        (0,0), ConditionSwitch(
-            #Sweater
-            "RogueX.Acc == 'sweater' and (RogueX.Upskirt or (Player.Sprite and Player.Cock == 'out'))", "images/RogueDoggy/Rogue_Doggy_Acc_Sweater_Up.png",
-            "RogueX.Acc == 'sweater'", "images/RogueDoggy/Rogue_Doggy_Acc_Sweater.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #spunk back Layer
-            "'back' in RogueX.Spunk and Player.Male", "images/RogueDoggy/Rogue_Doggy_SpunkAss.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Pussy Composite
-            "RogueX.Legs and not RogueX.Upskirt",Null(),
-            "RogueX.Panties and not RogueX.PantiesDown", Null(),
-            "Player.Sprite and Player.Cock == 'in'", ConditionSwitch(
-                    "Speed > 2", "Rogue_Pussy_Fucking3",#Speed 3
-                    "Speed > 1", "Rogue_Pussy_Fucking2",#Speed 2
-                    "Speed", "Rogue_Pussy_Heading",      #Speed 1
-                    "True", "Rogue_Pussy_Static",              #Speed 0
-                    ),
-            "'dildo pussy' in (Trigger,Trigger2,RogueX.Offhand)", "Rogue_Pussy_Fucking2",
-            "'fondle pussy' in (Trigger,Trigger2,RogueX.Offhand) or (Partner and Partner.Offhand == 'girl fondle pussy')", "Rogue_Pussy_Fingering",
-            "Trigger == 'insert pussy'", "Rogue_Pussy_Fingering",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Anus Composite
-            "RogueX.Legs and not RogueX.Upskirt",Null(),
-            "RogueX.Panties and not RogueX.PantiesDown", Null(),
-            "Player.Sprite and Player.Cock == 'anal'", ConditionSwitch(
-                    "Speed > 2", "Rogue_Anal_Fucking2", #Speed 3
-                    "Speed > 1", "Rogue_Anal_Fucking",  #Speed 2
-                    "Speed", "Rogue_Anal_Heading",      #Speed 1
-                    "True", "Rogue_Anal",               #Speed 0
-                    ),
-            "'dildo anal' in (Trigger,Trigger2,RogueX.Offhand)", "Rogue_Anal_Fucking",
-            "'insert ass' in (Trigger,Trigger2,RogueX.Offhand) or (Partner and Partner.Offhand == 'girl insert ass')", "Rogue_Anal_Fingering",
-            "RogueX.Plug", "images/PlugIn.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #pussy licking animation
-            "Player.Sprite and Player.Cock", Null(),
-            "Trigger == 'lick pussy'", "Rogue_Doggy_Lick_Pussy",
-            "Trigger == 'lick ass'", "Rogue_Doggy_Lick_Ass",
-            "True", Null()
-            ),
-        (0,0), ConditionSwitch(
-            #Hotdogging underlayer
-            "not Player.Sprite or Player.Cock != 'out'", Null(),
-            "RogueX.Legs == 'skirt' and RogueX.Upskirt", "images/RogueDoggy/Rogue_Doggy_HotdogUpskirtBack.png",
-            "True", "images/RogueDoggy/Rogue_Doggy_HotdogBack.png",
-            ),
-        (0,0), ConditionSwitch(
-            #Hotdogging Cock w/ alpha
-            "not Player.Sprite or Player.Cock != 'out'", Null(),
-            "RogueX.Legs == 'skirt' and RogueX.Upskirt and Speed", AlphaMask("Zero_Hotdog_Moving", "images/RogueDoggy/Rogue_Doggy_HotdogMask_Upskirt.png"),
-            "RogueX.Legs == 'skirt' and RogueX.Upskirt", AlphaMask("Zero_Hotdog_Static", "images/RogueDoggy/Rogue_Doggy_HotdogMask_Upskirt.png"),
-            "Speed", AlphaMask("Zero_Hotdog_Moving", "images/RogueDoggy/Rogue_Doggy_HotdogMask.png"),
-            "True", AlphaMask("Zero_Hotdog_Static", "images/RogueDoggy/Rogue_Doggy_HotdogMask.png"),
-            ),
-#        (0,0), ConditionSwitch(
-#            #UI tool layer
-#            "not UI_Tool", Null(),
-#            "UI_Tool", "Slap_Ass",
-#            "True", Null(),
-#            ),
-        )
-# End Ass / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
+layeredimage Rogue_Doggy_Body:
+    always:
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Body.png"
+    if not RogueX.Chest:
+        Null()
+    elif RogueX.Chest == 'tube top':
+        Recolor("Rogue", "Chest", "images/RogueDoggy/Rogue_Doggy_Chest_Tube.png")
+    elif RogueX.Chest == 'tank':
+        Recolor("Rogue", "Chest", "images/RogueDoggy/Rogue_Doggy_Chest_Tank.png")
+    elif RogueX.Chest == 'buttoned tank':
+        Recolor("Rogue", "Chest", "images/RogueDoggy/Rogue_Doggy_Chest_ButtonTank.png")
+    elif RogueX.Chest == 'sports bra':
+        Recolor("Rogue", "Chest", "images/RogueDoggy/Rogue_Doggy_Chest_SportsBra.png")
+    elif RogueX.Chest == 'bikini top':
+        Recolor("Rogue", "Chest", "images/RogueDoggy/Rogue_Doggy_Chest_Bikini.png")
+    elif RogueX.Chest == 'raven leotard':
+        "images/RogueDoggy/modification/Rogue_Doggy_Chest_Raven.png"
+    elif RogueX.Chest == 'SR7 tank top':
+        "images/RogueDoggy/modification/Rogue_Doggy_Chest_SR7_tank_top.png"
+    elif RogueX.Chest:
+        Recolor("Rogue", "Chest", "images/RogueDoggy/Rogue_Doggy_Chest_Bra.png")
+    if not RogueX.Over:
+        Null()
+    elif RogueX.Over == 'mesh top':
+        Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_Mesh.png")
+    elif RogueX.Over == 'pink top':
+        Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_Pink.png")
+    elif RogueX.Over == 'hoodie':
+        Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_Hoodie.png")
+    elif RogueX.Over == 'nighty':
+        Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_NightyTop.png")
+    elif RogueX.Over == 'towel':
+        Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_TowelTop.png")
+    elif RogueX.Over == 'dress blue':
+        "images/RogueDoggy/modification/Rogue_doggy_over_dress_blue_top.png"
+    elif RogueX.Over == 'dress red':
+        "images/RogueDoggy/modification/Rogue_doggy_over_dress_red_top.png"
+    elif RogueX.Over == 'top harem':
+        "images/RogueDoggy/modification/Rogue_doggy_over_harem_top.png"
+    if RogueX.Neck == 'spiked collar':
+        "images/RogueDoggy/Rogue_Doggy_Collar.png"
+    if RogueX.Facing:
+        "Rogue_Doggy_Head_Fore"
+    else:
+        "Rogue_Doggy_Head"
+    if RogueX.Over == 'hoodie':
+        Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_Hood.png")
+    if not RogueX.Spunk or not Player.Male:
+        Null()
+    elif 'hair' in RogueX.Spunk:
+        "images/RogueDoggy/Rogue_Doggy_Spunk_Hair.png"
+    elif 'facial' in RogueX.Spunk:
+        "images/RogueDoggy/Rogue_Doggy_Spunk_Facial.png"
+    if Trigger == 'fondle breasts' or Trigger2 == 'fondle breasts':
+        "Rogue_Doggy_GropeBreast"
+layeredimage Rogue_Doggy_Head:
+    if RogueX.Water:
+        Null()
+    elif not Player.Male and ('hair' in RogueX.Spunk or 'facial' in RogueX.Spunk):
+        Null()
+    elif RogueX.Hair == 'evo':
+        Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_HairB.png")
+    always:
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Head.png"
+    if 'mouth' in RogueX.Spunk and Player.Male:
+        if RogueX.Mouth == 'lipbite':
+            Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_LipbiteW.png")
+        elif RogueX.Mouth == 'surprised' or RogueX.Mouth == 'open':
+            Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_SurprisedW.png")
+        elif RogueX.Mouth == 'sucking':
+            Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_BlowW.png")
+        elif RogueX.Mouth == 'sad':
+            Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_SadW.png")
+        elif RogueX.Mouth == 'smile':
+            Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_SmileW.png")
+        elif RogueX.Mouth == 'tongue':
+            Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_TongueW.png")
+        else:
+            Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_NormalW.png")
+    elif RogueX.Mouth == 'normal':
+        Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Normal.png")
+    elif RogueX.Mouth == 'lipbite':
+        Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Lipbite.png")
+    elif RogueX.Mouth == 'sucking' or RogueX.Mouth == 'open':
+        Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Blow.png")
+    elif RogueX.Mouth == 'kiss':
+        Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Surprised.png")
+    elif RogueX.Mouth == 'sad':
+        Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Sad.png")
+    elif RogueX.Mouth == 'smile':
+        Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Smile.png")
+    elif RogueX.Mouth == 'grimace':
+        Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Smile.png")
+    elif RogueX.Mouth == 'surprised':
+        Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Surprised.png")
+    elif RogueX.Mouth == 'tongue':
+        Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Tongue.png")
+    else:
+        Recolor("Rogue", "Lips", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Mouth_Smile.png")
+    if RogueX.Blush:
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Blush.png"
+    if RogueX.Brows == 'normal':
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Brows_Normal.png"
+    elif RogueX.Brows == 'angry':
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Brows_Angry.png"
+    elif RogueX.Brows == 'sad':
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Brows_Sad.png"
+    elif RogueX.Brows == 'surprised':
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Brows_Surprised.png"
+    elif RogueX.Brows == 'confused':
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Brows_Normal.png"
+    else:
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Brows_Normal.png"
+    always:
+        "Rogue Doggy Blink"
+    if RogueX.Water:
+        "images/RogueDoggy/Rogue_Doggy_WetTop.png"
+    if RogueX.Hair == 'evo' and RogueX.HeadAcc == 'jewel':
+        "images/RogueDoggy/modification/Rogue_Doggy_Face_Jewel.png"
+    if RogueX.Water or RogueX.Hair == 'wet':
+        Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_HairWet.png")
+    elif not Player.Male and ('hair' in RogueX.Spunk or 'facial' in RogueX.Spunk):
+        Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_HairWet.png")
+    elif RogueX.Hair == 'cosplay':
+        Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_Hair_Cos.png")
+    else:
+        Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_HairF.png")
+    if RogueX.Hair != 'evo' and RogueX.HeadAcc == 'jewel':
+        "images/RogueDoggy/modification/Rogue_Doggy_Face_Jewel.png"
+    if RogueX.Over == 'hoodie':
+        Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_Hood.png")
+    if not RogueX.Spunk or not Player.Male:
+        Null()
+    elif 'hair' in RogueX.Spunk:
+        "images/RogueDoggy/Rogue_Doggy_Spunk_Hair.png"
+    elif 'facial' in RogueX.Spunk:
+        "images/RogueDoggy/Rogue_Doggy_Spunk_Facial.png"
+    if RogueX.Mask == 'mask harem':
+        "images/RogueDoggy/modification/Rogue_doggy_mask_harem.png"
+layeredimage Rogue_Doggy_Head_Fore:
+    if RogueX.Water or RogueX.Hair == 'wet':
+        Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_Hair_Wet_Fore.png")
+    elif not Player.Male and ('hair' in RogueX.Spunk or 'facial' in RogueX.Spunk):
+        Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_Hair_Wet_Fore.png")
+    elif RogueX.Hair == 'cosplay':
+        Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_Hair_Cos_Fore.png")
+    else:
+        Recolor("Rogue", "Hair", "images/RogueDoggy/Rogue_Doggy_Hair_Evo_Fore.png")
+    if RogueX.Over == 'hoodie':
+        Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_Hood.png")
+layeredimage Rogue_Doggy_Ass:
+    if not RogueX.PantiesDown or (RogueX.Legs == 'pants' and not RogueX.Upskirt):
+        Null()
+    elif RogueX.Panties == 'shorts':
+        Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Shorts_Back.png")
+    elif RogueX.Panties == 'green panties':
+        Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Undies_Back.png")
+    elif RogueX.Panties == 'bikini bottoms':
+        Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Panties_Bikini_Back.png")
+    elif RogueX.Panties == 'harness panties':
+        "images/RogueDoggy/modification/Rogue_doggy_panties_harness_back.png"
+    elif RogueX.Panties == 'raven leotard':
+        Null()
+    elif RogueX.Panties:
+        Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Panties_Back.png")
+    if Trigger == 'lick pussy':
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Ass_Open.png"
+    elif RogueX.Legs and not RogueX.Upskirt:
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Ass_Closed.png"
+    elif RogueX.Panties and not RogueX.PantiesDown:
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Ass_Closed.png"
+    elif Player.Sprite and Player.Cock == 'in':
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Ass_Fucking.png"
+    elif 'dildo pussy' in (Trigger,Trigger2,RogueX.Offhand):
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Ass_Fucking.png"
+    elif 'fondle pussy' in (Trigger,Trigger2,RogueX.Offhand) or (Partner and Partner.Offhand == 'girl fondle pussy'):
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Ass_Fucking.png"
+    elif Trigger == 'insert pussy':
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Ass_Fucking.png"
+    else:
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Ass_Closed.png"
+    if Player.Sprite and Player.Cock == 'anal':
+        if Speed:
+            "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Anal_FullBase.png"
+    elif 'insert ass' in (Trigger,Trigger2,RogueX.Offhand) or (Partner and Partner.Offhand == 'girl insert ass'):
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Anal_FullBase.png"
+    elif 'dildo anal' in (Trigger,Trigger2,RogueX.Offhand):
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Anal_FullBase.png"
+    elif RogueX.Loose > 2:
+        "Rogue_Gape_Anal"
+    elif RogueX.Loose:
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Asshole_Loose.png"
+    else:
+        "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Asshole_Tight.png"
+    if RogueX.Red:
+        "images/RogueDoggy/Rogue_Doggy_Red.png"
+    if RogueX.Water:
+        "images/RogueDoggy/Rogue_Doggy_WetAss.png"
+    if RogueX.Hose == 'stockings':
+        "images/RogueDoggy/Rogue_Doggy_Hose.png"
+    if not RogueX.PantiesDown or (RogueX.Legs == 'pants' and not RogueX.Upskirt):
+        Null()
+    elif RogueX.Panties == 'shorts' and RogueX.Wet > 1:
+        Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Shorts_Down_Wet.png")
+    elif RogueX.Panties == 'shorts':
+        Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Shorts_Down.png")
+    elif RogueX.Panties == 'green panties' and RogueX.Wet > 1:
+        Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Undies_Down_Wet.png")
+    elif RogueX.Panties == 'green panties':
+        Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Undies_Down.png")
+    elif RogueX.Panties == 'bikini bottoms':
+        Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Panties_Bikini_Down.png")
+    elif RogueX.Panties == 'harness panties' and RogueX.Wet > 1:
+        "images/RogueDoggy/modification/Rogue_doggy_panties_harness_down_wet.png"
+    elif RogueX.Panties == 'harness panties':
+        "images/RogueDoggy/modification/Rogue_doggy_panties_harness_down.png"
+    elif RogueX.Panties == 'raven leotard':
+        Null()
+    elif RogueX.Panties:
+        Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Panties_Down.png")
+    if not RogueX.Pubes:
+        Null()
+    elif Player.Sprite and Player.Cock == 'in':
+        Null()
+    elif 'dildo pussy' in (Trigger,Trigger2,RogueX.Offhand):
+        Null()
+    elif 'fondle pussy' in (Trigger,Trigger2,RogueX.Offhand) or (Partner and Partner.Offhand == 'girl fondle pussy'):
+        Null()
+    elif Trigger == 'insert pussy':
+        Null()
+    elif RogueX.Legs == 'pants' and not RogueX.Upskirt:
+        Recolor("Rogue", "Pubes", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Pubes_Panties.png")
+    elif RogueX.PantiesDown:
+        Recolor("Rogue", "Pubes", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Pubes.png")
+    elif RogueX.Panties:
+        Recolor("Rogue", "Pubes", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Pubes_Panties.png")
+    elif RogueX.Hose and (RogueX.Hose == 'pantyhose' or RogueX.Hose == 'tights'):
+        Recolor("Rogue", "Pubes", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Pubes_Panties.png")
+    elif Trigger == 'lick pussy':
+        Recolor("Rogue", "Pubes", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Pubes_Open.png")
+    else:
+        Recolor("Rogue", "Pubes", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Pubes.png")
+    if Player.Sprite:
+        Null()
+    elif 'dildo pussy' in (Trigger,Trigger2,RogueX.Offhand):
+        Null()
+    elif 'fondle pussy' in (Trigger,Trigger2,RogueX.Offhand) or (Partner and Partner.Offhand == 'girl fondle pussy'):
+        Null()
+    elif Trigger == 'insert pussy':
+        Null()
+    elif RogueX.Pierce == 'ring':
+        "images/RogueDoggy/Rogue_Doggy_PussyRing.png"
+    elif RogueX.Pierce == 'barbell':
+        "images/RogueDoggy/Rogue_Doggy_PussyBarbell.png"
+    if RogueX.Plug:
+        "images/PlugIn.png"
+    if 'anal' not in RogueX.Spunk or Player.Sprite or not Player.Male:
+        Null()
+    elif RogueX.Loose:
+        "images/RogueDoggy/Rogue_Doggy_SpunkAnalLoose.png" offset (2, -8)
+    else:
+        "images/RogueDoggy/Rogue_Doggy_SpunkAnalLoose.png" offset (2, -8)
+    if RogueX.PantiesDown or not RogueX.Panties:
+        Null()
+    elif Player.Sprite and (Player.Cock == 'in' or Player.Cock == 'anal'):
+        Null()
+    elif RogueX.Panties == 'shorts' and RogueX.Wet:
+        Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Shorts_Wet.png")
+    elif RogueX.Panties == 'shorts':
+        Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Shorts.png")
+    elif RogueX.Panties == 'green panties' and RogueX.Wet:
+        Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Undies_Wet.png")
+    elif RogueX.Panties == 'green panties':
+        Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Undies.png")
+    elif RogueX.Panties == 'lace panties':
+        Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_PantiesLace.png")
+    elif RogueX.Panties == 'bikini bottoms':
+        Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Panties_Bikini.png")
+    elif RogueX.Panties == 'harness panties' and RogueX.Wet:
+        "images/RogueDoggy/modification/Rogue_doggy_panties_harness_wet.png"
+    elif RogueX.Panties == 'harness panties':
+        "images/RogueDoggy/modification/Rogue_doggy_panties_harness.png"
+    elif RogueX.Panties == 'raven leotard':
+        "images/RogueDoggy/modification/Rogue_Doggy_Panties_Raven.png"
+    else:
+        Recolor("Rogue", "Panties", "images/RogueDoggy/Rogue_Doggy_Panties.png")
+    if RogueX.Hose == 'garterbelt':
+        Recolor("Rogue", "Hose", "images/RogueDoggy/Rogue_Doggy_Stockings_Loose.png")
+    elif RogueX.Hose == 'stockings and garterbelt':
+        Recolor("Rogue", "Hose", "images/RogueDoggy/Rogue_Doggy_Stockings.png")
+    elif RogueX.Panties and RogueX.PantiesDown:
+        Null()
+    elif RogueX.Hose == 'tights' and RogueX.Wet:
+        Recolor("Rogue", "Hose", "images/RogueDoggy/Rogue_Doggy_Tights_Wet.png")
+    elif RogueX.Hose == 'tights':
+        Recolor("Rogue", "Hose", "images/RogueDoggy/Rogue_Doggy_Tights.png")
+    elif RogueX.Hose == 'pantyhose':
+        Recolor("Rogue", "Hose", "images/RogueDoggy/Rogue_Doggy_FullHose.png")
+    elif RogueX.Hose == 'ripped pantyhose':
+        Recolor("Rogue", "Hose", "images/RogueDoggy/Rogue_Doggy_FullHose_Holed.png")
+    elif RogueX.Hose == 'ripped tights':
+        Recolor("Rogue", "Hose", "images/RogueDoggy/Rogue_Doggy_Tights_Holed.png")
+    if RogueX.Legs == 'pants':
+        if RogueX.Upskirt:
+            Recolor("Rogue", "Legs", "images/RogueDoggy/Rogue_Doggy_Legs_Pants_Down.png")
+        elif RogueX.Wet > 1:
+            Recolor("Rogue", "Legs", "images/RogueDoggy/Rogue_Doggy_Legs_Pants_Wet.png")
+        else:
+            Recolor("Rogue", "Legs", "images/RogueDoggy/Rogue_Doggy_Legs_Pants.png")
+    elif RogueX.Legs == 'skirt':
+        if RogueX.Upskirt and Player.Sprite and Player.Cock == 'anal' and Speed:
+            Recolor("Rogue", "Legs", "images/RogueDoggy/Rogue_Doggy_Legs_Skirt_UpAnal.png")
+        elif RogueX.Upskirt:
+            Recolor("Rogue", "Legs", "images/RogueDoggy/Rogue_Doggy_Legs_Skirt_Up.png")
+        else:
+            Recolor("Rogue", "Legs", "images/RogueDoggy/Rogue_Doggy_Legs_Skirt.png")
+    elif RogueX.Legs == 'SR7 skirt':
+        if RogueX.Upskirt and Player.Sprite and Player.Cock == 'anal' and Speed:
+            "images/RogueDoggy/modification/Rogue_Doggy_Legs_SR7_Skirt_UpAnal.png"
+        elif RogueX.Upskirt:
+            "images/RogueDoggy/modification/Rogue_Doggy_Legs_SR7_Skirt_Up.png"
+        else:
+            "images/RogueDoggy/modification/Rogue_Doggy_Legs_SR7_Skirt.png"
+    elif RogueX.Legs == 'short skirt':
+        if RogueX.Upskirt and Player.Sprite and Player.Cock == 'anal' and Speed:
+            "images/RogueDoggy/modification/Rogue_Doggy_Legs_Short_Skirt_UpAnal.png"
+        elif RogueX.Upskirt:
+            "images/RogueDoggy/modification/Rogue_Doggy_Legs_Short_Skirt_Up.png"
+        else:
+            "images/RogueDoggy/modification/Rogue_Doggy_Legs_Short_Skirt.png"
+    elif RogueX.Legs == 'bottom harem':
+        if RogueX.Upskirt and Player.Sprite and Player.Cock == 'anal' and Speed:
+            "images/RogueDoggy/modification/Rogue_doggy_skirt_harem_bottom_ass_anal_up.png"
+        elif RogueX.Upskirt:
+            "images/RogueDoggy/modification/Rogue_doggy_skirt_harem_bottom_ass_up.png"
+        else:
+            "images/RogueDoggy/modification/Rogue_doggy_skirt_harem_bottom_ass.png"
+    if RogueX.Over == 'nighty' and RogueX.Upskirt:
+        Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_NightyAss_Up.png")
+    elif RogueX.Over == 'nighty' and (Player.Cock == 'in' or Player.Cock == 'out'):
+        Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_NightyAss_Up.png")
+    elif RogueX.Over == 'nighty':
+        Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_NightyAss.png")
+    elif RogueX.Over == 'towel' and RogueX.Upskirt:
+        Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_TowelAss_Up.png")
+    elif RogueX.Over == 'towel' and (Player.Cock == 'in' or Player.Cock == 'out'):
+        Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_TowelAss_Up.png")
+    elif RogueX.Over == 'towel':
+        Recolor("Rogue", "Over", "images/RogueDoggy/Rogue_Doggy_Over_TowelAss.png")
+    elif RogueX.Over == 'dress blue':
+        if RogueX.Upskirt and Player.Cock == 'anal':
+            "images/RogueDoggy/modification/Rogue_doggy_over_dress_blue_ass_anal_up.png"
+        elif Player.Cock == 'in' or Player.Cock == 'out':
+            "images/RogueDoggy/modification/Rogue_doggy_over_dress_blue_ass_up.png"
+        else:
+            "images/RogueDoggy/modification/Rogue_doggy_over_dress_blue_ass.png"
+    elif RogueX.Over == 'dress red':
+        if RogueX.Upskirt and Player.Cock == 'anal' and Speed:
+            "images/RogueDoggy/modification/Rogue_doggy_over_dress_red_ass_anal_up.png"
+        elif Player.Cock == 'in' or Player.Cock == 'out':
+            "images/RogueDoggy/modification/Rogue_doggy_over_dress_red_ass_up.png"
+        else:
+            "images/RogueDoggy/modification/Rogue_doggy_over_dress_red_ass.png"
+    if RogueX.Acc == 'sweater' and (RogueX.Upskirt or (Player.Sprite and Player.Cock == 'out')):
+        "images/RogueDoggy/Rogue_Doggy_Acc_Sweater_Up.png"
+    elif RogueX.Acc == 'sweater':
+        "images/RogueDoggy/Rogue_Doggy_Acc_Sweater.png"
+    if 'back' in RogueX.Spunk and Player.Male:
+        "images/RogueDoggy/Rogue_Doggy_SpunkAss.png"
+    if RogueX.Legs and not RogueX.Upskirt:
+        Null()
+    elif RogueX.Panties and not RogueX.PantiesDown:
+        Null()
+    elif Player.Sprite and Player.Cock == 'in':
+        if Speed > 2:
+            "Rogue_Pussy_Fucking3"
+        elif Speed > 1:
+            "Rogue_Pussy_Fucking2"
+        elif Speed:
+            "Rogue_Pussy_Heading"
+        else:
+            "Rogue_Pussy_Static"
+    elif 'dildo pussy' in (Trigger,Trigger2,RogueX.Offhand):
+        "Rogue_Pussy_Fucking2"
+    elif 'fondle pussy' in (Trigger,Trigger2,RogueX.Offhand) or (Partner and Partner.Offhand == 'girl fondle pussy'):
+        "Rogue_Pussy_Fingering"
+    elif Trigger == 'insert pussy':
+        "Rogue_Pussy_Fingering"
+    if RogueX.Legs and not RogueX.Upskirt:
+        Null()
+    elif RogueX.Panties and not RogueX.PantiesDown:
+        Null()
+    elif Player.Sprite and Player.Cock == 'anal':
+        if Speed > 2:
+            "Rogue_Anal_Fucking2"
+        elif Speed > 1:
+            "Rogue_Anal_Fucking"
+        elif Speed:
+            "Rogue_Anal_Heading"
+        else:
+            "Rogue_Anal"
+    elif 'dildo anal' in (Trigger,Trigger2,RogueX.Offhand):
+        "Rogue_Anal_Fucking"
+    elif 'insert ass' in (Trigger,Trigger2,RogueX.Offhand) or (Partner and Partner.Offhand == 'girl insert ass'):
+        "Rogue_Anal_Fingering"
+    elif RogueX.Plug:
+        "images/PlugIn.png"
+    if Player.Sprite and Player.Cock:
+        Null()
+    elif Trigger == 'lick pussy':
+        "Rogue_Doggy_Lick_Pussy"
+    elif Trigger == 'lick ass':
+        "Rogue_Doggy_Lick_Ass"
+    if not Player.Sprite or Player.Cock != 'out':
+        Null()
+    elif RogueX.Legs == 'skirt' and RogueX.Upskirt:
+        "images/RogueDoggy/Rogue_Doggy_HotdogUpskirtBack.png"
+    else:
+        "images/RogueDoggy/Rogue_Doggy_HotdogBack.png"
+    if not Player.Sprite or Player.Cock != 'out':
+        Null()
+    elif RogueX.Legs == 'skirt' and RogueX.Upskirt and Speed:
+        AlphaMask("Zero_Hotdog_Moving", "images/RogueDoggy/Rogue_Doggy_HotdogMask_Upskirt.png")
+    elif RogueX.Legs == 'skirt' and RogueX.Upskirt:
+        AlphaMask("Zero_Hotdog_Static", "images/RogueDoggy/Rogue_Doggy_HotdogMask_Upskirt.png")
+    elif Speed:
+        AlphaMask("Zero_Hotdog_Moving", "images/RogueDoggy/Rogue_Doggy_HotdogMask.png")
+    else:
+        AlphaMask("Zero_Hotdog_Static", "images/RogueDoggy/Rogue_Doggy_HotdogMask.png")
 image Rogue Doggy Blink:                                                                                        #Eyes
     ConditionSwitch(
     "RogueX.Eyes == 'sexy'", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Eyes_Sexy.png",
@@ -1378,8 +1198,6 @@ image Rogue Doggy Blink:                                                        
     "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Eyes_Closed.png"
     .25
     repeat
-
-
 image Rogue_Doggy_Feet:
     contains:
             AlphaMask("Rogue_Doggy_Shins", "images/RogueDoggy/[RogueX.skin_image.skin_path]Rogue_Doggy_Toes.png")
@@ -1389,7 +1207,6 @@ image Rogue_Doggy_Feet:
             "'feet' in RogueX.Spunk", "images/RogueDoggy/Rogue_Doggy_Spunk_Feet.png",
             "True", Null(),
             )
-
 image Rogue_Doggy_Shins:
     #Rogue's footjob shins
     contains:
@@ -1421,22 +1238,18 @@ image Rogue_Doggy_Shins:
             "True", Null(),
             )
 #    pos (0,0)
-
 image Rogue_Doggy_Shins0:
         #static animation
         "Rogue_Doggy_Shins"
         offset (0, 50) #(0,0) top
-
 image Rogue_Doggy_Lick_Pussy:
         "Lick_Anim"
         zoom 0.5
         offset (195,540)
-
 image Rogue_Doggy_Lick_Ass:
         "Lick_Anim"
         zoom 0.5
         offset (195,500)
-
 image Rogue_Doggy_GropeBreast:
     contains:
         subpixel True
@@ -1451,7 +1264,6 @@ image Rogue_Doggy_GropeBreast:
             ease 1 rotate 10#60
             ease 1 rotate 0#90
             repeat
-
 image Rogue_Gape_Anal:
         #animation for her asshole growing and shrinking a bit when over 2 Looseness
         contains:
@@ -1477,7 +1289,6 @@ image Rogue_Gape_Anal:
 
 
 #Hotdogging animations / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
 image Zero_Doggy_Up:
     #Cock when out (hotdog)
     contains:
@@ -1493,7 +1304,6 @@ image Zero_Doggy_Up:
             "Player.Wet or Player.Spunk", "images/RogueDoggy/Rogue_Doggy_Cock_U_W.png",
             "True", Null(),
             )
-
 image Zero_Hotdog_Static:
     # The unmoving version of the hotdog cock
     # called in Doggy Ass LC
@@ -1501,7 +1311,6 @@ image Zero_Hotdog_Static:
         "Zero_Doggy_Up"
         alpha 0.8
         pos (175, 370)
-
 image Zero_Hotdog_Moving:
     # The moving version of the hotdog cock
     # called in Doggy Ass LC
@@ -1548,7 +1357,6 @@ image Zero_Doggy_Insert:
             "Player.Wet or Player.Spunk", "images/RogueDoggy/Rogue_Doggy_Cock_In_Wet.png",
             "True", Null(),
             )
-
 image Zero_Doggy_Static:
     # Sex Speed 0 motions
     contains:
@@ -1560,7 +1368,6 @@ image Zero_Doggy_Static:
             pause 1
             ease 3 ypos 545 #out stroke
             repeat
-
 image Zero_Doggy_Heading:
     # Sex Speed 1 motions
     contains:
@@ -1572,7 +1379,6 @@ image Zero_Doggy_Heading:
             pause 1
             ease 3 xpos 171 ypos 545 #out stroke
             repeat
-
 image Zero_Doggy_Fucking2:
     # Sex Speed 2 motions
     contains:
@@ -1583,7 +1389,6 @@ image Zero_Doggy_Fucking2:
             pause .25
             ease 1.75 ypos 500
             repeat
-
 image Zero_Doggy_Fucking3:
     # Sex Speed 3 motions
     contains:
@@ -1594,7 +1399,6 @@ image Zero_Doggy_Fucking3:
             pause .1
             ease .6 ypos 500
             repeat
-
 image Rogue_Pussy_Mask:
     #AlphaMask used to prevent the cock from moving past the pussy
     #Called in "Rogue_Pussy_Moving"
@@ -1609,7 +1413,6 @@ image Rogue_Pussy_Mask:
             pause 1
             ease 3 xzoom .6
             repeat
-
 image Rogue_Pussy_Mask_Static:
     #AlphaMask used to prevent the cock from moving past the pussy in static pose
     #Called in "Rogue_Pussy_Moving"
@@ -1627,7 +1430,6 @@ image Rogue_Pussy_Mask_Static:
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #Pussy fucking animations
-
 image Rogue_Pussy_Static:
     #Full Animation for speed 0
     subpixel True
@@ -1689,7 +1491,6 @@ image Rogue_Pussy_Static:
     contains:
         # expanding pussy flap
         AlphaMask("Rogue_PussyHole_Static", "Rogue_Pussy_Hole_Mask_Static")
-
 image Rogue_Pussy_Hole_Mask_Static:
     # This is the alpha used for the little flap in the heading animation "Rogue_Pussy_Moving"
     contains:
@@ -1704,7 +1505,6 @@ image Rogue_Pussy_Hole_Mask_Static:
             pause 1
             ease 3 xzoom .6
             repeat
-
 image Rogue_PussyHole_Static:
     #This is the image impacted by the mask for the pussy flap in "Rogue_Pussy_Moving"
     contains:
@@ -1719,8 +1519,6 @@ image Rogue_PussyHole_Static:
             pause 1
             ease 3 ypos 515
             repeat
-
-
 image Rogue_Pussy_Heading:
     #Full Animation for speed 1
     subpixel True
@@ -1805,8 +1603,6 @@ image Rogue_Pussy_Heading:
             pause 1.6
             ease 2.5 yzoom .5#.4
             repeat
-
-
 image Rogue_Pussy_Hole_Mask:
     # This is the alpha used for the little flap in the heading animation "Rogue_Pussy_Heading"
     contains:
@@ -1821,7 +1617,6 @@ image Rogue_Pussy_Hole_Mask:
             pause 1
             ease 3 xzoom .6
             repeat
-
 image Rogue_Pussy_Heading_Flap:
     #This is the image impacted by the mask for the pussy flap in "Rogue_Pussy_Heading"
     contains:
@@ -1836,8 +1631,6 @@ image Rogue_Pussy_Heading_Flap:
             pause 1
             ease 3 ypos 515
             repeat
-
-
 image Rogue_Pussy_Fingering:
     #Full Animation for speed 1
     subpixel True
@@ -1923,8 +1716,6 @@ image Rogue_Pussy_Fingering:
             pause 1.6
             ease 2.5 yzoom .5#.4
             repeat
-
-
 image Zero_Pussy_Finger:
     # Sex Speed 1 motions
     contains:
@@ -1939,7 +1730,6 @@ image Zero_Pussy_Finger:
             repeat
 
 # > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
-
 image Rogue_Pussy_Fucking2:
     #Full Animation for speed 2
     contains:
@@ -1981,8 +1771,6 @@ image Rogue_Pussy_Fucking2:
             "'in' in RogueX.Spunk and Player.Male", "images/JubesDoggy/Jubes_Doggy_Spunk_Pussy_Open.png",
             "True", Null(),
             )
-
-
 image Rogue_Pussy_Fucking3:
     #Full Animation for speed 3
     contains:
@@ -2021,7 +1809,6 @@ image Rogue_Pussy_Fucking3:
             "'in' in RogueX.Spunk and Player.Male", "images/JubesDoggy/Jubes_Doggy_Spunk_Pussy_Open.png",
             "True", Null(),
             )
-
 image Doggy_Fucking_Dildo:
     #Animation for speed 2 Cock
     contains:
@@ -2084,7 +1871,6 @@ image Rogue_Anal_Fingering:
             pause .5
             ease 1.5 zoom .6 #.5
             repeat
-
 image Zero_Rogue_Doggy_Anal_Finger:
         #the cock anal heading animation
     contains:
@@ -2096,7 +1882,6 @@ image Zero_Rogue_Doggy_Anal_Finger:
             pause .25
             ease 1.75 ypos 480#500
             repeat
-
 image Rogue_Doggy_Anal_Fingering_Mask:
     #the masking animation for the anal heading
     contains:
@@ -2112,7 +1897,6 @@ image Rogue_Doggy_Anal_Fingering_Mask:
             repeat
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
 image Rogue_Anal:
     #Anal static Loose
     contains:
@@ -2184,8 +1968,6 @@ image Rogue_Anal_Heading:
             pause .5
             ease 1.5 zoom .6 #.5
             repeat
-
-
 image Zero_Doggy_Anal_Heading:
         #the cock anal heading animation
     contains:
@@ -2196,7 +1978,6 @@ image Zero_Doggy_Anal_Heading:
             pause .25
             ease 1.75 ypos 500#505
             repeat
-
 image Zero_Doggy_Anal_HeadingJunk:
     #this is a mask to correct an annoying glitch in the core mask
     contains:
@@ -2207,7 +1988,6 @@ image Zero_Doggy_Anal_HeadingJunk:
             pause .25
             ease 1.75 ypos 600#505
             repeat
-
 image Rogue_Doggy_Anal_Heading_Mask:
     #the masking animation for the anal heading
     contains:
@@ -2219,8 +1999,6 @@ image Rogue_Doggy_Anal_Heading_Mask:
             pause .25
             ease 1.75 ypos 534#518
             repeat
-
-
 image Rogue_Doggy_Anal_Head_Top:
 #animation for anal fucking top half
     contains:
@@ -2233,7 +2011,6 @@ image Rogue_Doggy_Anal_Head_Top:
             easeout 1 ypos 0
             pause .8
             repeat
-
 image Rogue_Doggy_Anal_Head_Ass:
     #animation for anal fucking ass half
     contains:
@@ -2259,8 +2036,6 @@ image Zero_Doggy_Anal1:
             pause .25
             ease 1.75 ypos 460
             repeat
-
-
 image Rogue_Anal_Fucking:
     #Animation for speed 2 Ass
     contains:
@@ -2285,7 +2060,6 @@ image Rogue_Anal_Fucking:
             "'anal' in RogueX.Spunk and Player.Male", "images/JubesDoggy/Jubes_Doggy_Spunk_Anal_Over.png",
             "True", Null(),
             )
-
 image Rogue_Doggy_Anal_Dildo:
     #Animation for speed 2 Cock
     contains:
@@ -2297,8 +2071,6 @@ image Rogue_Doggy_Anal_Dildo:
             pause .25
             ease 1.75 ypos 460
             repeat
-
-
 image Rogue_Doggy_Fuck_Top:
     #animation for anal fucking top half
     contains:
@@ -2311,7 +2083,6 @@ image Rogue_Doggy_Fuck_Top:
             pause .3
             ease 2 ypos 15#28
             repeat
-
 image Rogue_Doggy_Fuck_Ass:
     #animation for anal fucking ass half
     contains:
@@ -2338,7 +2109,6 @@ image Zero_Doggy_Anal2:
             pause .1
             ease .6 ypos 465
             repeat
-
 image Rogue_Anal_Fucking2:
     #Animation for speed 3 Ass
     contains:
@@ -2359,7 +2129,6 @@ image Rogue_Anal_Fucking2:
             "'anal' in RogueX.Spunk and Player.Male", "images/JubesDoggy/Jubes_Doggy_Spunk_Anal_Over.png",
             "True", Null(),
             )
-
 image Rogue_Doggy_Fuck2_Top:
     #animation for anal fucking2 top half
     contains:
@@ -2373,7 +2142,6 @@ image Rogue_Doggy_Fuck2_Top:
             easein .5 ypos 20
             pause .05
             repeat
-
 image Rogue_Doggy_Fuck2_Ass:
     #animation for anal fucking2 ass half
     contains:
@@ -2391,7 +2159,6 @@ image Rogue_Doggy_Fuck2_Ass:
 
 
 # Footjob animations > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
-
 image Rogue_Doggy_Feet0:
     #static animation
     contains:
@@ -2421,7 +2188,6 @@ image Rogue_Doggy_Feet0:
             pause .5
             ease 2 ypos 0
             repeat
-
 image Rogue_Doggy_Feet1:
     #slow animation
     contains:
@@ -2449,7 +2215,6 @@ image Rogue_Doggy_Feet1:
             ease 1.7 ypos 100
             ease 1 ypos 0
             repeat
-
 image Rogue_Doggy_Feet2:
     #fast animation
     contains:
@@ -2480,7 +2245,6 @@ image Rogue_Doggy_Feet2:
 # Footjob animations end > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>             UI Tool animations
-
 label Slap_Anim(Girl=ch_focus,Plug_Mod=[0,0]):
         if Girl is LauraX:
             $ Plug_Mod[0] = 100
@@ -2544,234 +2308,207 @@ label Rogue_Doggy_Reset:
 #\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
-image Rogue_SexSprite:
-    LiveComposite(                                                                                 #Base body
-        (1120,840),
-        (0,0), ConditionSwitch(
-                #Shows different upper body motion depending on events
-                "not Player.Sprite", "Rogue_Sex_Body_Static",
-                "Player.Cock == 'anal'", ConditionSwitch(
-                        #if the top's down. . .
-                        "Speed >= 3", "Rogue_Sex_Body_Anim3",
-                        "Speed >= 2", "Rogue_Sex_Body_Anim2",
-                        "Speed", "Rogue_Sex_Body_Anim1",
-                        "True", "Rogue_Sex_Body_Static",
-                        ),
-                "Player.Cock == 'in'", ConditionSwitch(
-                        #if the top's down. . .
-                        "Speed >= 3", "Rogue_Sex_Body_Anim3",
-                        "Speed >= 2", "Rogue_Sex_Body_Anim2",
-                        "Speed", "Rogue_Sex_Body_Anim1",
-                        "True", "Rogue_Sex_Body_Static",
-                        ),
-                "Player.Cock == 'foot'", ConditionSwitch(
-                        #if the top's down. . .
-                        "Speed >= 2", "Rogue_Sex_Body_FootAnim2",
-                        "Speed", "Rogue_Sex_Body_FootAnim1",
-                        "True", "Rogue_Sex_Body_FootAnimStatic",
-                        ),
-                "Player.Cock == 'out' and Speed >= 2","Rogue_Hotdog_Body_Anim2",
-                "True", "Rogue_Sex_Body_Static",
-                ),
-        (0,0), ConditionSwitch(                                                         #Shows different lower body motion depending on events
-                "not Player.Sprite", "Rogue_Sex_Legs_Static",
-                "Player.Cock == 'anal'", ConditionSwitch(
-                        #if the top's down. . .
-                        "Speed >= 3", "Rogue_Sex_Legs_Anim3",
-                        "Speed >= 2", "Rogue_Sex_Legs_Anim2",
-                        "Speed", "Rogue_Sex_Legs_Anim1",
-                        "True", "Rogue_Sex_Legs_Static",
-                        ),
-                "Player.Cock == 'in'", ConditionSwitch(
-                        #if the top's down. . .
-                        "Speed >= 3", "Rogue_Sex_Legs_Anim3",
-                        "Speed >= 2", "Rogue_Sex_Legs_Anim2",
-                        "Speed", "Rogue_Sex_Legs_Anim1",
-                        "True", "Rogue_Sex_Legs_Static",
-                        ),
-                "Player.Cock == 'foot'", ConditionSwitch(
-                        #if the top's down. . .
-                        "Speed >= 2", "Rogue_Sex_Legs_FootAnim2",
-                        "Speed", "Rogue_Sex_Legs_FootAnim1",
-                        "True", "Rogue_Sex_Legs_FootAnimStatic",
-                        ),
-                "Player.Cock == 'out' and Speed >= 2","Rogue_Hotdog_Legs_Anim2",
-                "True", "Rogue_Sex_Legs_Static",
-                ),
-        )
+layeredimage Rogue_SexSprite:
+    if not Player.Sprite:
+        "Rogue_Sex_Body_Static"
+    elif Player.Cock == 'anal':
+        if Speed >= 3:
+            "Rogue_Sex_Body_Anim3"
+        elif Speed >= 2:
+            "Rogue_Sex_Body_Anim2"
+        elif Speed:
+            "Rogue_Sex_Body_Anim1"
+        else:
+            "Rogue_Sex_Body_Static"
+    elif Player.Cock == 'in':
+        if Speed >= 3:
+            "Rogue_Sex_Body_Anim3"
+        elif Speed >= 2:
+            "Rogue_Sex_Body_Anim2"
+        elif Speed:
+            "Rogue_Sex_Body_Anim1"
+        else:
+            "Rogue_Sex_Body_Static"
+    elif Player.Cock == 'foot':
+        if Speed >= 2:
+            "Rogue_Sex_Body_FootAnim2"
+        elif Speed:
+            "Rogue_Sex_Body_FootAnim1"
+        else:
+            "Rogue_Sex_Body_FootAnimStatic"
+    elif Player.Cock == 'out' and Speed >= 2:
+        "Rogue_Hotdog_Body_Anim2"
+    else:
+        "Rogue_Sex_Body_Static"
+    if not Player.Sprite:
+        "Rogue_Sex_Legs_Static"
+    elif Player.Cock == 'anal':
+        if Speed >= 3:
+            "Rogue_Sex_Legs_Anim3"
+        elif Speed >= 2:
+            "Rogue_Sex_Legs_Anim2"
+        elif Speed:
+            "Rogue_Sex_Legs_Anim1"
+        else:
+            "Rogue_Sex_Legs_Static"
+    elif Player.Cock == 'in':
+        if Speed >= 3:
+            "Rogue_Sex_Legs_Anim3"
+        elif Speed >= 2:
+            "Rogue_Sex_Legs_Anim2"
+        elif Speed:
+            "Rogue_Sex_Legs_Anim1"
+        else:
+            "Rogue_Sex_Legs_Static"
+    elif Player.Cock == 'foot':
+        if Speed >= 2:
+            "Rogue_Sex_Legs_FootAnim2"
+        elif Speed:
+            "Rogue_Sex_Legs_FootAnim1"
+        else:
+            "Rogue_Sex_Legs_FootAnimStatic"
+    elif Player.Cock == 'out' and Speed >= 2:
+        "Rogue_Hotdog_Legs_Anim2"
+    else:
+        "Rogue_Sex_Legs_Static"
     align (0.6,0.0)
     pos (650,200)#(650,230)
     zoom 0.85#0.8
-
 image Rogue_Sex_Body_Static:
     contains:
             "Rogue_Sex_Body"
     pos (650,230)
-
 image Rogue_Sex_Legs_Static:
     contains:
             "Rogue_Sex_Legs"
     pos (650,230)
 
 #image Rogue_Sex_Body = LiveComposite(
-image Rogue_Sex_Body:
-    LiveComposite(
-        #the torso/head used in the sex pose, referenced by Rogue_SexSprite
-        (1120,840),
-#        (0,0), ConditionSwitch(                                                                                 #Hair underlayer, delete once this is working
-#            "RogueX.Water", Null(),
-#            "RogueX.Hair == 'evo'", "images/RogueSex/Rogue_Sex_HairB.png",
-#            "True", Null(),
-#            ),
-        # Modification mode
-        (0,0),ConditionSwitch(
-            "RogueX.Over == 'cape'", "images/RogueSex/modification/Rogue_sex_over_cape_under.png",
-            "True", Null(),
-            ),
-        # -----------------
-        (320,-135), "Rogue_HairBack_Sex",                                                                                      #Hair underlayer
-        (0,0), ConditionSwitch(
-            #Body Base
-            "RogueX.Pierce == 'barbell'", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_Sex_Body_Barbell.png",
-            "RogueX.Pierce == 'ring'", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_Sex_Body_Ring.png",
-            "True", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_Sex_Body.png",
-            ),
-        #(260,-350), "Rogue_Head_Sex",  #check positioning (400,-300)
-        (0,0), ConditionSwitch(
-            #bra layer
-            "not RogueX.Chest", Null(),
-            "RogueX.Uptop", ConditionSwitch(
-                    #if the top's down. . .
-                    "RogueX.Chest == 'tank'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_Tank_Up.png"),
-                    "RogueX.Chest == 'tube top'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_Tube_Up.png"),
-                    "RogueX.Chest == 'buttoned tank'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_ButtonTank_Up.png"),
-                    "RogueX.Chest == 'sports bra'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_SportsBra_Up.png"),
-                    "RogueX.Chest == 'bra'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_Bra_Up.png"),
-                    "RogueX.Chest == 'bikini top'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_Bikini_Up.png"),
-                    "RogueX.Chest == 'lace bra'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_Bra_Up.png"),
-                    # Modification mode
-                    "RogueX.Chest == 'SR7 tank top'", "images/RogueSex/modification/Rogue_Sex_Chest_SR7_tank_top_Up.png",
-                    "RogueX.Chest == 'harness bra'", "images/RogueSex/modification/Rogue_sex_chest_harness_bra_up.png",
-                    # -----------------
-                    "True", Null(),
-                    ),
-            "True", ConditionSwitch(
-                    # if she's not wearing a shirt
-                    "RogueX.Chest == 'tank'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_Tank.png"),
-                    "RogueX.Chest == 'tube top'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_Tube.png"),
-                    "RogueX.Chest == 'buttoned tank'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_ButtonTank.png"),
-                    "RogueX.Chest == 'sports bra'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_SportsBra.png"),
-                    "RogueX.Chest == 'bra'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_Bra.png"),
-                    "RogueX.Chest == 'bikini top'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_Bikini.png"),
-                    "RogueX.Chest == 'lace bra'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_LaceBra.png"),
-                    # Modification mode
-                    "RogueX.Chest == 'SR7 tank top'", "images/RogueSex/modification/Rogue_Sex_Chest_SR7_tank_top.png",
-                    "RogueX.Chest == 'raven leotard'", "images/RogueSex/modification/Rogue_sex_chest_raven.png",
-                    "RogueX.Chest == 'harness bra'", "images/RogueSex/modification/Rogue_sex_chest_harness_bra.png",
-                    # -----------------
-                    "True", Null(),
-                    ),
-            ),
-        (0,0),ConditionSwitch(
-            #Wet look
-            "RogueX.Water", "images/RogueSex/Rogue_Sex_Wet_Body.png",
-            "True", Null(),
-            ),
-
-        (0,0), ConditionSwitch(
-            #shirt layer
-            "not RogueX.Over", Null(),
-            "RogueX.Uptop", ConditionSwitch(
-                    #if the top's down. . .
-                    "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Pink_Up.png"),
-                    "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Mesh_Up.png"),
-                    "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Hoodie_Up.png"),
-                    "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Nighty_Up.png"),
-                    "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Towel_Up.png"),
-                    # Modification mode
-                    "RogueX.Over == 'cape'", "images/RogueSex/modification/Rogue_sex_over_cape.png",
-                    "RogueX.Over == 'top harem'", "images/RogueSex/modification/Rogue_sex_over_harem_top_up.png",
-                    # ----------------
-                    "True", Null(),
-                    ),
-            "True", ConditionSwitch(
-                    # if she's wearing a shirt
-                    "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Pink.png"),
-                    "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Mesh.png"),
-                    "RogueX.Over == 'hoodie'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Hoodie.png"),
-                    "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Nighty.png"),
-                    "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Towel.png"),
-                    # Modification mode
-                    "RogueX.Over == 'cape'", "images/RogueSex/modification/Rogue_sex_over_cape.png",
-                    "RogueX.Over == 'dress blue'", "images/RogueSex/modification/Rogue_sex_over_dress_blue.png",
-                    "RogueX.Over == 'dress red'", "images/RogueSex/modification/Rogue_sex_over_dress_red.png",
-                    "RogueX.Over == 'top harem'", "images/RogueSex/modification/Rogue_sex_over_harem_top.png",
-                    # ----------------
-                    "True", Null(),
-                    ),
-            ),
-        (0,0), ConditionSwitch(
-            #Body Base
-            "RogueX.Uptop or (not RogueX.Over and not RogueX.Chest)", Null(),
-            "RogueX.Pierce == 'barbell'", "images/RogueSex/Rogue_Sex_Pierce_BarbellC.png",
-            "RogueX.Pierce == 'ring'", "images/RogueSex/Rogue_Sex_Pierce_RingC.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #necklace
-            "RogueX.Neck == 'spiked collar'", "images/RogueSex/Rogue_Sex_Neck_Stud.png",
-            "True", Null(),
-            ),
-#        (0,0), ConditionSwitch(
-#            #bra layer over the shirt
-#            "not RogueX.Chest or not RogueX.Over or not RogueX.Uptop", Null(),
-#            # if she's not wearing a shirt
-#            "RogueX.Chest == 'bra'", "images/KittySex/Kitty_Sex_Under_Bra_Up.png",
-#            "RogueX.Chest == 'lace bra'", "images/KittySex/Kitty_Sex_Under_LaceBra_UpS.png",
-#            "True", Null(),
-#            ),
-        (0,0),ConditionSwitch(
-            #Outside Spunk
-            "'belly' in RogueX.Spunk and Player.Male", "images/KittySex/Kitty_Sex_Spunk_Body.png",
-            "True", Null(),
-            ),
-        (0,80),ConditionSwitch(
-            #Outside Spunk
-            "'tits' in RogueX.Spunk and Player.Male", "images/KittySex/Kitty_Sex_Spunk_Tits.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #breast licking animation
-            "Trigger == 'suck breasts' or Trigger2 == 'suck breasts'", "Rogue_Sex_Lick_Breasts",
-            "True", Null()
-            ),
-        (0,0), ConditionSwitch(
-            #breast fondling animation
-            "Trigger == 'fondle breasts' or Trigger2 == 'fondle breasts'", "Rogue_Sex_Fondle_Breasts",
-            "True", Null()
-            ),
-        (320,-135), "Rogue_Head_Sex",  #check positioning (260,-350)
-        )
+layeredimage Rogue_Sex_Body:
+    if RogueX.Over == 'cape':
+        "images/RogueSex/modification/Rogue_sex_over_cape_under.png"
+    always:
+        "Rogue_HairBack_Sex" offset (320, -135)
+    if RogueX.Pierce == 'barbell':
+        "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_Sex_Body_Barbell.png"
+    elif RogueX.Pierce == 'ring':
+        "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_Sex_Body_Ring.png"
+    else:
+        "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_Sex_Body.png"
+    if not RogueX.Chest:
+        Null()
+    elif RogueX.Uptop:
+        if RogueX.Chest == 'tank':
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_Tank_Up.png")
+        elif RogueX.Chest == 'tube top':
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_Tube_Up.png")
+        elif RogueX.Chest == 'buttoned tank':
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_ButtonTank_Up.png")
+        elif RogueX.Chest == 'sports bra':
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_SportsBra_Up.png")
+        elif RogueX.Chest == 'bra':
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_Bra_Up.png")
+        elif RogueX.Chest == 'bikini top':
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_Bikini_Up.png")
+        elif RogueX.Chest == 'lace bra':
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_Bra_Up.png")
+        elif RogueX.Chest == 'SR7 tank top':
+            "images/RogueSex/modification/Rogue_Sex_Chest_SR7_tank_top_Up.png"
+        elif RogueX.Chest == 'harness bra':
+            "images/RogueSex/modification/Rogue_sex_chest_harness_bra_up.png"
+    else:
+        if RogueX.Chest == 'tank':
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_Tank.png")
+        elif RogueX.Chest == 'tube top':
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_Tube.png")
+        elif RogueX.Chest == 'buttoned tank':
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_ButtonTank.png")
+        elif RogueX.Chest == 'sports bra':
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_SportsBra.png")
+        elif RogueX.Chest == 'bra':
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_Bra.png")
+        elif RogueX.Chest == 'bikini top':
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_Bikini.png")
+        elif RogueX.Chest == 'lace bra':
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_Sex_Chest_LaceBra.png")
+        elif RogueX.Chest == 'SR7 tank top':
+            "images/RogueSex/modification/Rogue_Sex_Chest_SR7_tank_top.png"
+        elif RogueX.Chest == 'raven leotard':
+            "images/RogueSex/modification/Rogue_sex_chest_raven.png"
+        elif RogueX.Chest == 'harness bra':
+            "images/RogueSex/modification/Rogue_sex_chest_harness_bra.png"
+    if RogueX.Water:
+        "images/RogueSex/Rogue_Sex_Wet_Body.png"
+    if not RogueX.Over:
+        Null()
+    elif RogueX.Uptop:
+        if RogueX.Over == 'pink top':
+            Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Pink_Up.png")
+        elif RogueX.Over == 'mesh top':
+            Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Mesh_Up.png")
+        elif RogueX.Over == 'hoodie':
+            Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Hoodie_Up.png")
+        elif RogueX.Over == 'nighty':
+            Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Nighty_Up.png")
+        elif RogueX.Over == 'towel':
+            Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Towel_Up.png")
+        elif RogueX.Over == 'cape':
+            "images/RogueSex/modification/Rogue_sex_over_cape.png"
+        elif RogueX.Over == 'top harem':
+            "images/RogueSex/modification/Rogue_sex_over_harem_top_up.png"
+    else:
+        if RogueX.Over == 'pink top':
+            Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Pink.png")
+        elif RogueX.Over == 'mesh top':
+            Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Mesh.png")
+        elif RogueX.Over == 'hoodie':
+            Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Hoodie.png")
+        elif RogueX.Over == 'nighty':
+            Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Nighty.png")
+        elif RogueX.Over == 'towel':
+            Recolor("Rogue", "Over", "images/RogueSex/Rogue_Sex_Over_Towel.png")
+        elif RogueX.Over == 'cape':
+            "images/RogueSex/modification/Rogue_sex_over_cape.png"
+        elif RogueX.Over == 'dress blue':
+            "images/RogueSex/modification/Rogue_sex_over_dress_blue.png"
+        elif RogueX.Over == 'dress red':
+            "images/RogueSex/modification/Rogue_sex_over_dress_red.png"
+        elif RogueX.Over == 'top harem':
+            "images/RogueSex/modification/Rogue_sex_over_harem_top.png"
+    if RogueX.Uptop or (not RogueX.Over and not RogueX.Chest):
+        Null()
+    elif RogueX.Pierce == 'barbell':
+        "images/RogueSex/Rogue_Sex_Pierce_BarbellC.png"
+    elif RogueX.Pierce == 'ring':
+        "images/RogueSex/Rogue_Sex_Pierce_RingC.png"
+    if RogueX.Neck == 'spiked collar':
+        "images/RogueSex/Rogue_Sex_Neck_Stud.png"
+    if 'belly' in RogueX.Spunk and Player.Male:
+        "images/KittySex/Kitty_Sex_Spunk_Body.png"
+    if 'tits' in RogueX.Spunk and Player.Male:
+        "images/KittySex/Kitty_Sex_Spunk_Tits.png" offset (0, 80)
+    if Trigger == 'suck breasts' or Trigger2 == 'suck breasts':
+        "Rogue_Sex_Lick_Breasts"
+    if Trigger == 'fondle breasts' or Trigger2 == 'fondle breasts':
+        "Rogue_Sex_Fondle_Breasts"
+    always:
+        "Rogue_Head_Sex" offset (320, -135)
     zoom 0.9
     offset (50,50)
-
 image Rogue_Sex_Lick_Breasts:
         "Lick_Anim"
         zoom 0.6
         offset (450,270)
-
 image Rogue_Sex_Fondle_Breasts:
         "GropeLeftBreast"
         zoom 1.1
         offset (320,-130)
-
 image Rogue_Head_Sex:
     # The head used for the sex pose, referenced by Rogue_Sex_Body
     "Rogue_Head"#"Rogue_Head"
     zoom 1.28 #0.37
     anchor (0.5,0.5)
     rotate -10
-
 image Rogue_HairBack_Sex:
     # The hair behind the head for the sex pose, referenced by Rogue_Sex_Body
     "Rogue_HairBack"
@@ -2781,201 +2518,172 @@ image Rogue_HairBack_Sex:
 
 
 #image Rogue_Sex_Legs = LiveComposite(
-image Rogue_Sex_Legs:
-    LiveComposite(
-        #the legs used in the sex pose, referenced by Kitty_SexSprite
-        (1120,840),
-        (0,0), "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_Sex_Legs.png",
-        #Legs Base
-        (0,0),ConditionSwitch(
-            #wet look
-            "RogueX.Water", "images/RogueSex/Rogue_Sex_Wet_Legs.png",
-            "True", Null(),
-            ),
-        (0,0), "Rogue_Sex_Anus",
-        #Anus Composite
-
-        (0,0), "Rogue_Sex_Pussy",
-        #Pussy Composite
-
-        (0,0), ConditionSwitch(
-            #Panties if up
-            "not RogueX.Panties or RogueX.PantiesDown", Null(),
-            "Player.Sprite and (Player.Cock == 'sex' or Player.Cock == 'anal')", Null(),  #hide if sexing
-            "RogueX.Panties == 'lace panties'", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Lace.png"),
-            "RogueX.Panties == 'green panties' and RogueX.Wet", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Green_Wet.png"),
-            "RogueX.Panties == 'green panties' or RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Green.png"),
-            "RogueX.Panties == 'shorts' and RogueX.Wet", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Shorts_Wet.png"),
-            "RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Shorts.png"),
-            "RogueX.Wet", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Black_Wet.png"),
-            # Modification mode
-            "RogueX.Panties == 'harness panties' and RogueX.Wet","images/RogueSex/modification/Rogue_sex_panties_harness_wet.png",
-            "RogueX.Panties == 'harness panties'","images/RogueSex/modification/Rogue_sex_panties_harness.png",
-            "RogueX.Panties == 'raven leotard' and RogueX.Wet","images/RogueSex/modification/Rogue_sex_panties_raven_wet.png",
-            "RogueX.Panties == 'raven leotard'","images/RogueSex/modification/Rogue_sex_panties_raven.png",
-            # -----------------
-            "True", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Black.png"),
-            ),
-
-        (0,0), ConditionSwitch(
-            #Hose layer (add panties up dependencies)
-            #"RogueX.PantiesDown", Null(),
-            "RogueX.Hose == 'ripped pantyhose'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Full_Hole.png"),
-            "RogueX.Hose == 'ripped tights'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Tights_Hole.png"),
-            "RogueX.Hose == 'stockings'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Stockings.png"),
-            "RogueX.Hose == 'stockings and garterbelt'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_StockingGarter.png"),
-            "RogueX.Hose == 'garterbelt'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Garter.png"),
-            "RogueX.PantiesDown", Null(),
-            "Player.Sprite and (Player.Cock == 'in' or Player.Cock == 'anal')", Null(),  #hide if sexing
-            "RogueX.Hose == 'pantyhose'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Full.png"),
-            "RogueX.Hose == 'tights' and RogueX.Wet", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Tights_Wet.png"),
-            "RogueX.Hose == 'tights'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Tights.png"),
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Legs Layer
-            "RogueX.Legs == 'skirt'", Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Skirt.png"),
-            "RogueX.Upskirt", Null(),
-            "RogueX.Legs == 'pants' and RogueX.Wet > 1", Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Pants_Wet.png"),
-            "RogueX.Legs == 'pants'",Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Pants.png"),
-            # Modification mode
-            "RogueX.Legs == 'SR7 skirt'", "images/RogueSex/modification/Rogue_Sex_Legs_SR7_Skirt.png",
-            "RogueX.Legs == 'short skirt'", "images/RogueSex/modification/Rogue_Sex_Legs_Short_Skirt.png",
-            "RogueX.Legs == 'bottom harem' and RogueX.Wet > 1", "images/RogueSex/modification/Rogue_sex_skirt_harem_bottom_wet.png",
-            "RogueX.Legs == 'bottom harem'", "images/RogueSex/modification/Rogue_sex_skirt_harem_bottom.png",
-            # ----------------
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Sweater
-            "RogueX.Acc == 'sweater'", "images/RogueSex/Rogue_Sex_Sweater.png",
-            "True", Null(),
-            ),
-#        (0,0), ConditionSwitch(
-#            #Over Layer
-#            "RogueX.Over == 'towel'", "images/KittySex/Kitty_Sex_Towel_Legs.png",
-#            "True", Null(),
-#            ),
-        (0,0),ConditionSwitch(
-            #Outside Spunk
-            "'belly' in RogueX.Spunk and Player.Male", "images/KittySex/Kitty_Sex_Spunk_Pelvis.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #hotdog cock Layer
-            "not Player.Sprite or Player.Cock != 'out'", Null(),
-            "Speed >= 2", "Rogue_Hotdog_Zero_Anim2",
-            "Speed", "Rogue_Hotdog_Zero_Anim1",
-            "True", "Rogue_Hotdog_Zero_Anim0",
-            ),
-
-        (0,0), ConditionSwitch(
-            #pussy licking animation
-            "Player.Sprite", Null(),
-            "Trigger == 'lick pussy'", "Rogue_Sex_Lick_Pussy",
-            "Trigger == 'lick ass'", "Rogue_Sex_Lick_Ass",
-            "RogueX.Offhand == 'fondle pussy' and RogueX.Lust > 60", At("RogueFingerHand", GirlFingerPussyX()),
-            "RogueX.Offhand == 'fondle pussy'", At("RogueMastHand", GirlGropePussyX()),
-            "True", Null()
-            ),
-        (0,0), ConditionSwitch(
-            #footjob cock Layer
-            "not Player.Sprite or Player.Cock != 'foot'", Null(),
-            "Speed >= 2", "Rogue_Footcock_Zero_Anim2",
-            "Speed", "Rogue_Footcock_Zero_Anim1",
-            "True", "Rogue_Footcock_Static",
-            ),
-#        (0,0), ConditionSwitch(
-#               #footjob cock Layer
-#            "not Player.Sprite or Player.Cock != 'foot'", Null(),
-#            "Speed >= 2", At("Kitty_Footcock", Kitty_Footcock_Zero_Anim2A()),
-#            "Speed", At("Kitty_Footcock", Kitty_Footcock_Zero_Anim1A()),
-#            "True", At("Kitty_Footcock", Kitty_Footcock_StaticA()),
-#            ),
-#        (0,0), ConditionSwitch(
-#               #UI tool layer
-#            "not UI_Tool", Null(),
-#            "UI_Tool", "Slap_Ass",
-#            "True", Null(),
-#            ),
-        (0,0), ConditionSwitch(
-            #Shows different lower body motion depending on events
-            "not Speed or Player.Cock == 'foot' or ShowFeet", "Rogue_Sex_Feet",
-            #"Player.Cock == 'anal' or Player.Cock == 'in' or Player.Cock == 'out'", AlphaMask("Rogue_Sex_Feet", "images/KittySex/Kitty_Sex_FeetMask.png"),
-            "True", AlphaMask("Rogue_Sex_Feet","images/RogueSex/Rogue_Sex_FeetMask2.png")
-            ),
-        )
-
-
-image Rogue_Sex_Feet:
-    LiveComposite(
-        #the lower legs used in the sex pose, referenced by Kitty_Sex_Legs
-        (1120,840),
-        (0,0), "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_Sex_Feet.png",                                                         #Legs Base
-        (0,0),ConditionSwitch(
-            #Wet look
-            "RogueX.Water", "images/RogueSex/Rogue_Sex_Wet_Feet.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Panties if up
-            "not RogueX.Panties or not RogueX.PantiesDown", Null(),
-            "RogueX.Legs == 'pants'", Null(),
-            #"Player.Sprite and (Player.Cock == 'sex' or Player.Cock == 'anal')", Null(),  #hide if sexing
-            "RogueX.Panties == 'lace panties'", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Lace_Down.png"),
-            "RogueX.Panties == 'green panties'", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Green_Down.png"),
-            "RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Bikini_Down.png"),
-            "RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Shorts_Down.png"),
-            # Modification mode
-            "RogueX.Panties == 'harness panties'","images/RogueSex/modification/Rogue_sex_panties_harness_down.png",
-            "RogueX.Panties == 'raven leotard'", Null(),
-            # -----------------
-            "True", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Black_Down.png"),
-            ),
-
-        (0,0), ConditionSwitch(
-            #Hose Layer
-            "not RogueX.Hose", Null(),
-            "RogueX.Hose == 'ripped tights'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Feet_Tights_Hole.png"),
-            "RogueX.Hose == 'ripped pantyhose'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Feet_Stocking_Hole.png"),
-            "RogueX.Hose == 'stockings and garterbelt'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Feet_Stocking.png"),
-            "RogueX.Hose == 'stockings'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Feet_Stocking.png"),
-            "RogueX.PantiesDown", Null(),
-            "Player.Sprite and (Player.Cock == 'in' or Player.Cock == 'anal')", Null(),  #hide if sexing
-            "RogueX.Hose == 'tights'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Feet_Tights.png"),
-            "RogueX.Hose == 'garterbelt'", Null(),
-            "True", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Feet_Stocking.png"),
-            ),
-
-        (0,0), ConditionSwitch(
-            #Legs Layer
-            "RogueX.Legs == 'pants' and RogueX.Upskirt", Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Pants_Down.png"),
-            "RogueX.Legs == 'pants'", Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Pants_Feet.png"),
-            # Modification mode
-            "RogueX.Legs == 'bottom harem' and RogueX.Upskirt", "images/RogueSex/modification/Rogue_sex_skirt_harem_bottom_down.png",
-            "RogueX.Legs == 'bottom harem'", "images/RogueSex/modification/Rogue_sex_skirt_harem_bottom_feet.png",
-            # -----------------
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #spunk
-            "'feet' in RogueX.Spunk", "images/RogueSex/Rogue_Sex_Spunk_Feet.png",
-            "True", Null(),
-            ),
-        )
-
-#Start Animations for Rogue's Pussy during Sex / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
+layeredimage Rogue_Sex_Legs:
+    always:
+        "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_Sex_Legs.png"
+    if RogueX.Water:
+        "images/RogueSex/Rogue_Sex_Wet_Legs.png"
+    always:
+        "Rogue_Sex_Anus"
+    always:
+        "Rogue_Sex_Pussy"
+    if not RogueX.Panties or RogueX.PantiesDown:
+        Null()
+    elif Player.Sprite and (Player.Cock == 'sex' or Player.Cock == 'anal'):
+        Null()
+    elif RogueX.Panties == 'lace panties':
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Lace.png")
+    elif RogueX.Panties == 'green panties' and RogueX.Wet:
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Green_Wet.png")
+    elif RogueX.Panties == 'green panties' or RogueX.Panties == 'bikini bottoms':
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Green.png")
+    elif RogueX.Panties == 'shorts' and RogueX.Wet:
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Shorts_Wet.png")
+    elif RogueX.Panties == 'shorts':
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Shorts.png")
+    elif RogueX.Wet:
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Black_Wet.png")
+    elif RogueX.Panties == 'harness panties' and RogueX.Wet:
+        "images/RogueSex/modification/Rogue_sex_panties_harness_wet.png"
+    elif RogueX.Panties == 'harness panties':
+        "images/RogueSex/modification/Rogue_sex_panties_harness.png"
+    elif RogueX.Panties == 'raven leotard' and RogueX.Wet:
+        "images/RogueSex/modification/Rogue_sex_panties_raven_wet.png"
+    elif RogueX.Panties == 'raven leotard':
+        "images/RogueSex/modification/Rogue_sex_panties_raven.png"
+    else:
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Black.png")
+    if RogueX.Hose == 'ripped pantyhose':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Full_Hole.png")
+    elif RogueX.Hose == 'ripped tights':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Tights_Hole.png")
+    elif RogueX.Hose == 'stockings':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Stockings.png")
+    elif RogueX.Hose == 'stockings and garterbelt':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_StockingGarter.png")
+    elif RogueX.Hose == 'garterbelt':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Garter.png")
+    elif RogueX.PantiesDown:
+        Null()
+    elif Player.Sprite and (Player.Cock == 'in' or Player.Cock == 'anal'):
+        Null()
+    elif RogueX.Hose == 'pantyhose':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Full.png")
+    elif RogueX.Hose == 'tights' and RogueX.Wet:
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Tights_Wet.png")
+    elif RogueX.Hose == 'tights':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Tights.png")
+    if RogueX.Legs == 'skirt':
+        Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Skirt.png")
+    elif RogueX.Upskirt:
+        Null()
+    elif RogueX.Legs == 'pants' and RogueX.Wet > 1:
+        Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Pants_Wet.png")
+    elif RogueX.Legs == 'pants':
+        Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Pants.png")
+    elif RogueX.Legs == 'SR7 skirt':
+        "images/RogueSex/modification/Rogue_Sex_Legs_SR7_Skirt.png"
+    elif RogueX.Legs == 'short skirt':
+        "images/RogueSex/modification/Rogue_Sex_Legs_Short_Skirt.png"
+    elif RogueX.Legs == 'bottom harem' and RogueX.Wet > 1:
+        "images/RogueSex/modification/Rogue_sex_skirt_harem_bottom_wet.png"
+    elif RogueX.Legs == 'bottom harem':
+        "images/RogueSex/modification/Rogue_sex_skirt_harem_bottom.png"
+    if RogueX.Acc == 'sweater':
+        "images/RogueSex/Rogue_Sex_Sweater.png"
+    if 'belly' in RogueX.Spunk and Player.Male:
+        "images/KittySex/Kitty_Sex_Spunk_Pelvis.png"
+    if not Player.Sprite or Player.Cock != 'out':
+        Null()
+    elif Speed >= 2:
+        "Rogue_Hotdog_Zero_Anim2"
+    elif Speed:
+        "Rogue_Hotdog_Zero_Anim1"
+    else:
+        "Rogue_Hotdog_Zero_Anim0"
+    if Player.Sprite:
+        Null()
+    elif Trigger == 'lick pussy':
+        "Rogue_Sex_Lick_Pussy"
+    elif Trigger == 'lick ass':
+        "Rogue_Sex_Lick_Ass"
+    elif RogueX.Offhand == 'fondle pussy' and RogueX.Lust > 60:
+        At("RogueFingerHand", GirlFingerPussyX())
+    elif RogueX.Offhand == 'fondle pussy':
+        At("RogueMastHand", GirlGropePussyX())
+    if not Player.Sprite or Player.Cock != 'foot':
+        Null()
+    elif Speed >= 2:
+        "Rogue_Footcock_Zero_Anim2"
+    elif Speed:
+        "Rogue_Footcock_Zero_Anim1"
+    else:
+        "Rogue_Footcock_Static"
+    if not Speed or Player.Cock == 'foot' or ShowFeet:
+        "Rogue_Sex_Feet"
+    else:
+        AlphaMask("Rogue_Sex_Feet","images/RogueSex/Rogue_Sex_FeetMask2.png")
+layeredimage Rogue_Sex_Feet:
+    always:
+        "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_Sex_Feet.png"
+    if RogueX.Water:
+        "images/RogueSex/Rogue_Sex_Wet_Feet.png"
+    if not RogueX.Panties or not RogueX.PantiesDown:
+        Null()
+    elif RogueX.Legs == 'pants':
+        Null()
+    elif RogueX.Panties == 'lace panties':
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Lace_Down.png")
+    elif RogueX.Panties == 'green panties':
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Green_Down.png")
+    elif RogueX.Panties == 'bikini bottoms':
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Bikini_Down.png")
+    elif RogueX.Panties == 'shorts':
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Shorts_Down.png")
+    elif RogueX.Panties == 'harness panties':
+        "images/RogueSex/modification/Rogue_sex_panties_harness_down.png"
+    elif RogueX.Panties == 'raven leotard':
+        Null()
+    else:
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Black_Down.png")
+    if not RogueX.Hose:
+        Null()
+    elif RogueX.Hose == 'ripped tights':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Feet_Tights_Hole.png")
+    elif RogueX.Hose == 'ripped pantyhose':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Feet_Stocking_Hole.png")
+    elif RogueX.Hose == 'stockings and garterbelt':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Feet_Stocking.png")
+    elif RogueX.Hose == 'stockings':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Feet_Stocking.png")
+    elif RogueX.PantiesDown:
+        Null()
+    elif Player.Sprite and (Player.Cock == 'in' or Player.Cock == 'anal'):
+        Null()
+    elif RogueX.Hose == 'tights':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Feet_Tights.png")
+    elif RogueX.Hose == 'garterbelt':
+        Null()
+    else:
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Feet_Stocking.png")
+    if RogueX.Legs == 'pants' and RogueX.Upskirt:
+        Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Pants_Down.png")
+    elif RogueX.Legs == 'pants':
+        Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Pants_Feet.png")
+    elif RogueX.Legs == 'bottom harem' and RogueX.Upskirt:
+        "images/RogueSex/modification/Rogue_sex_skirt_harem_bottom_down.png"
+    elif RogueX.Legs == 'bottom harem':
+        "images/RogueSex/modification/Rogue_sex_skirt_harem_bottom_feet.png"
+    if 'feet' in RogueX.Spunk:
+        "images/RogueSex/Rogue_Sex_Spunk_Feet.png"
 image Rogue_Sex_Lick_Pussy:
         "Lick_Anim"
         zoom 0.7
         offset (530,510)
-
 image Rogue_Sex_Lick_Ass:
         "Lick_Anim"
         zoom 0.7
         offset (535,590)
-
 image GropeBack:
     contains:
         subpixel True
@@ -2989,7 +2697,6 @@ image GropeBack:
             ease 1 rotate 60
             ease 1 rotate 90
             repeat
-
 image Rogue_Sex_Pussy_Fucking0:
     # This is the visual for her pussy during the Speed 0 mode (static).
     contains:
@@ -3004,7 +2711,6 @@ image Rogue_Sex_Pussy_Fucking0:
     contains:
             # The animation of Zero's moving penis, masked by her pussy shape
             AlphaMask("Rogue_Sex_Zero_Anim0", "Rogue_Pussy_Open_Mask")
-
 image Rogue_Sex_Pussy_Fucking1:
     # This is the visual for her pussy during the Speed 1 mode (heading).
     contains:
@@ -3019,7 +2725,6 @@ image Rogue_Sex_Pussy_Fucking1:
     contains:
             # The animation of Zero's moving penis, masked by her pussy shape
             AlphaMask("Rogue_Sex_Zero_Anim1", "Rogue_Pussy_Open_Mask")
-
 image Rogue_Sex_Pussy_Fucking2:
     # This is the visual for her pussy during the Speed 2 mode (slow).
     contains:
@@ -3034,7 +2739,6 @@ image Rogue_Sex_Pussy_Fucking2:
     contains:
             # The animation of Zero's moving penis, masked by her pussy shape
             AlphaMask("Rogue_Sex_Zero_Anim2", "Rogue_Pussy_Fucking_Mask")
-
 image Rogue_Sex_Pussy_Fucking3:  #rename this to 3
     # This is the visual for her pussy during the Speed 3 mode (fast).
     contains:
@@ -3049,25 +2753,20 @@ image Rogue_Sex_Pussy_Fucking3:  #rename this to 3
     contains:
             # The animation of Zero's moving penis, masked by her pussy shape
             AlphaMask("Rogue_Sex_Zero_Anim3", "Rogue_Pussy_Fucking_Mask")
-
 image Rogue_Pussy_Fucking_Mask:
         #This is the mask image for Rogue's wide open pussy
         contains:
             "images/RogueSex/Rogue_Sex_Pussy_Mask.png"
-
-
 image Rogue_Pussy_Open_Mask:
         #This is the mask image for Rogue's wide open pussy
         contains:
             "images/RogueSex/Rogue_Sex_Pussy_Mask.png"
             yoffset 3
-
 image Rogue_Sex_Pussy_Spunk_Heading:
     "images/KittySex/Kitty_Sex_Spunk_Puss_Over.png"
     anchor (0.5,0.5)
     pos (0.5,0.5)
     xzoom 0.8
-
 image Rogue_Sex_Pussy_Hole:
     "images/JubesDoggy/Jubes_Doggy_Pussy_HHole.png"
     transform_anchor True
@@ -3084,8 +2783,6 @@ image Rogue_Sex_Pussy_Hole:
         pause 2
         ease 2  xzoom 0.8
         repeat
-
-
 image Rogue_Sex_Pussy:
     # This is the visual for her pussy during the Speed 0 mode (static).
     contains:
@@ -3169,7 +2866,6 @@ image Rogue_Sex_Pussy:
     #End Rogue Pussy composite
 
 #End Animations for Rogue's Pussy during Sex / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
 image Rogue_Sex_FingerP_Anim1:
         #this is Rogue's fingering animation
         contains:
@@ -3182,7 +2878,6 @@ image Rogue_Sex_FingerP_Anim1:
                 pause .2
                 ease .6 ypos 520
                 repeat
-
 image Rogue_Sex_Dildo_Anim2:
         #this is Rogue's sex animation, Speed 2 (slow)
         contains:
@@ -3204,7 +2899,6 @@ image Rogue_Sex_Zero_Anim0:
             "Zero_Doggy_Insert" # Zero's cock, changes color and properties
             pos (503,530) #X less is left, Y less is up (498,530)
             zoom 1.3#1.4
-
 image Rogue_Sex_Zero_Anim1:
         #this is Rogue's sex animation, Speed 1 (heading)
         contains:
@@ -3217,7 +2911,6 @@ image Rogue_Sex_Zero_Anim1:
                 pause 1
                 ease 3 ypos 525
                 repeat
-
 image Rogue_Sex_Zero_Anim2:
         #this is Rogue's sex animation, Speed 2 (slow)
         contains:
@@ -3230,7 +2923,6 @@ image Rogue_Sex_Zero_Anim2:
                 pause 1
                 ease 3 ypos 490
                 repeat
-
 image Rogue_Sex_Zero_Anim3:
         #this is Rogue's sex animation, Speed 3 (fast)
         contains:
@@ -3259,7 +2951,6 @@ image Rogue_Sex_Legs_Anim1:
                 pause 1
                 ease 2.75 pos (0,0)
                 repeat
-
 image Rogue_Sex_Legs_Anim2:
         #this is the animation for Rogue's lower body during sex, Speed 2 (slow)
         contains:
@@ -3274,7 +2965,6 @@ image Rogue_Sex_Legs_Anim2:
                 pause 1
                 ease 2.75 pos (0,0)
                 repeat
-
 image Rogue_Sex_Legs_Anim3:
         #this is the animation for Rogue's lower body during sex, Speed 3 (fast)
         contains:
@@ -3305,7 +2995,6 @@ image Rogue_Sex_Body_Anim1:
                 pause 1.25
                 ease 2.5 pos (0,0)
                 repeat
-
 image Rogue_Sex_Body_Anim2:
         #this is the animation for Rogue's upper body during sex, Speed 2 (slow)
         contains:
@@ -3320,7 +3009,6 @@ image Rogue_Sex_Body_Anim2:
                 pause 1
                 ease 2.75 pos (0,10)
                 repeat
-
 image Rogue_Sex_Body_Anim3:
         #this is the animation for Rogue's upper body during sex, Speed 3 (fast)
         contains:
@@ -3342,7 +3030,6 @@ image Rogue_Sex_Body_Anim3:
 
 
 #Start Animations for Rogue's Pussy during Anal / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
 image Rogue_Sex_Anus:
     contains:
             #Anus background plate
@@ -3384,7 +3071,6 @@ image Rogue_Sex_Anus:
                 "Speed == 1", "Rogue_Anal_Spunk_Heading_Over",
                 "True", "images/KittySex/Kitty_Sex_Spunk_Anal_Over.png",
                 )
-
 image Rogue_Gape_Anal_Sex:
         #removing an anal plug
         contains:
@@ -3399,7 +3085,6 @@ image Rogue_Gape_Anal_Sex:
                 ease 3 zoom .50 #in.87
                 ease 3 zoom .40 #out
                 repeat
-
 image Rogue_Sex_FingerA_Anim1:
         #this is Rogue's fingering animation
         contains:
@@ -3412,7 +3097,6 @@ image Rogue_Sex_FingerA_Anim1:
                 pause .4
                 ease 1.2 ypos 600#520
                 repeat
-
 image Rogue_Anal_Dildo_Anim2:
         #this is Rogue's sex animation, Speed 2 (slow)
         contains:
@@ -3425,7 +3109,6 @@ image Rogue_Anal_Dildo_Anim2:
                 pause 1
                 ease 3 ypos 570
                 repeat
-
 image Rogue_Sex_Anal_Fucking0:
     # This is the visual for her pussy during the Speed 0 mode (static).
     contains:
@@ -3434,7 +3117,6 @@ image Rogue_Sex_Anal_Fucking0:
     contains:
             # The animation of Zero's moving penis, masked by her pussy shape
             AlphaMask("Rogue_Anal_Zero_Anim0", "Rogue_Anal_Fucking_Mask")
-
 image Rogue_Sex_Anal_Fucking1:
     # This is the visual for her pussy during the Speed 1 mode (heading).
     contains:
@@ -3443,7 +3125,6 @@ image Rogue_Sex_Anal_Fucking1:
     contains:
             # The animation of Zero's moving penis, masked by her pussy shape
             AlphaMask("Rogue_Anal_Zero_Anim1", "Rogue_Anal_Fucking_Mask")
-
 image Rogue_Sex_Anal_Fucking2:
     # This is the visual for her pussy during the Speed 2 mode (slow).
     contains:
@@ -3452,7 +3133,6 @@ image Rogue_Sex_Anal_Fucking2:
     contains:
             # The animation of Zero's moving penis, masked by her pussy shape
             AlphaMask("Rogue_Anal_Zero_Anim2", "Rogue_Anal_Fucking_Mask")
-
 image Rogue_Sex_Anal_Fucking3:
     # This is the visual for her pussy during the Speed 3 mode (fast).
     contains:
@@ -3461,19 +3141,16 @@ image Rogue_Sex_Anal_Fucking3:
     contains:
             # The animation of Zero's moving penis, masked by her pussy shape
             AlphaMask("Kitty_Anal_Zero_Anim3", "Kitty_Anal_Fucking_Mask")
-
 image Rogue_Anal_Fucking_Mask:
         #This is the mask image for Kitty's wide open pussy
         contains:
             "images/KittySex/Kitty_Sex_Hole_Mask.png"
             yoffset 1#0
-
 image Rogue_Anal_Open_Mask:
         #This is the mask image for Kitty's wide open pussy
         contains:
             "images/KittySex/Kitty_Sex_Hole_Mask.png"
             yoffset 3#3
-
 image Rogue_Sex_Anal_Heading:
     "images/KittySex/Kitty_Sex_Hole_Open.png"
     anchor (0.5,0.5)
@@ -3487,7 +3164,6 @@ image Rogue_Sex_Anal_Heading:
         ease .25 xzoom 1.0
         ease 2.25 xzoom 0.6
         repeat
-
 image Rogue_Anal_Spunk_Heading_Over:
     "images/KittySex/Kitty_Sex_Spunk_Anal_Over.png"
     anchor (0.5,0.5)
@@ -3513,7 +3189,6 @@ image Rogue_Anal_Spunk_Heading_Under:
         ease .25 xzoom 1.0
         ease 2.25 xzoom 0.6
         repeat
-
 image Rogue_Sex_Anal_Tip:
     "images/KittySex/Kitty_Sex_Hole_Open.png"
     anchor (0.5,0.5)
@@ -3530,7 +3205,6 @@ image Rogue_Anal_Zero_Anim0:
             "Zero_Doggy_Insert" # Zero's cock, changes color and properties
             pos (505,600) #X less is left, Y less is up (498,520)
             zoom 1.3
-
 image Rogue_Anal_Zero_Anim1:
         #this is Rogue's sex animation, Speed 1 (heading)
         contains:
@@ -3543,7 +3217,6 @@ image Rogue_Anal_Zero_Anim1:
                 pause 1
                 ease 3 ypos 600
                 repeat
-
 image Rogue_Anal_Zero_Anim2:
         #this is Rogue's sex animation, Speed 2 (slow)
         contains:
@@ -3556,7 +3229,6 @@ image Rogue_Anal_Zero_Anim2:
                 pause 1
                 ease 3 ypos 570
                 repeat
-
 image Rogue_Anal_Zero_Anim3:
         #this is Rogue's sex animation, Speed 3 (fast)
         contains:
@@ -3579,7 +3251,6 @@ image Rogue_Hotdog_Zero_Anim0:
             "Zero_Doggy_Insert" # Zero's cock, changes color and properties
             pos (503,570) #X less is left, Y less is up
             zoom 1.3
-
 image Rogue_Hotdog_Zero_Anim1:
         #this is Rogue's sex animation, Speed 1 (heading)
         contains:
@@ -3592,7 +3263,6 @@ image Rogue_Hotdog_Zero_Anim1:
                 pause .5
                 ease 1.5 ypos 500
                 repeat
-
 image Rogue_Hotdog_Zero_Anim2:
         #this is Rogue's sex animation, Speed 3 (fast)
         contains:
@@ -3605,7 +3275,6 @@ image Rogue_Hotdog_Zero_Anim2:
                 pause .5
                 ease 1 ypos 510
                 repeat
-
 image Rogue_Hotdog_Body_Anim2:
         #this is the animation for Rogue's lower body during sex, Speed 3 (fast)
         contains:
@@ -3619,7 +3288,6 @@ image Rogue_Hotdog_Body_Anim2:
                 pause .20
                 ease 1 pos (0,0)
                 repeat
-
 image Rogue_Hotdog_Legs_Anim2:
         #this is the animation for Rogue's lower body during sex, Speed 3 (fast)
         contains:
@@ -3637,7 +3305,6 @@ image Rogue_Hotdog_Legs_Anim2:
 #End Animations for Zero's Cock during Hotdog / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
 #Start Animations for Rogue's Legs during Footjobs / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
 image Rogue_Footcock:
     contains:
             subpixel True
@@ -3651,7 +3318,6 @@ image Rogue_Footcock:
             offset (465,70)
             pos (0,0)
     pos (750,230)
-
 image Rogue_Footcock_Static:
     contains:
             subpixel True
@@ -3659,7 +3325,6 @@ image Rogue_Footcock_Static:
             pos (392,295)
     #pos (750,230)
     offset (0,-100)
-
 image Rogue_Footcock_Zero_Anim1:
     contains:
             subpixel True
@@ -3674,7 +3339,6 @@ image Rogue_Footcock_Zero_Anim1:
                 ease 2.50 ypos 270#285
                 repeat
     offset (0,-100)
-
 image Rogue_Footcock_Zero_Anim2:
     contains:
             subpixel True
@@ -3729,7 +3393,6 @@ image Rogue_Footcock_Zero_Anim2:
 #                pause 1
 #                ease 1.50 yoffset -5
 #                repeat
-
 image Rogue_Sex_Legs_FootAnimStatic:
         #this is the animation for Rogue's lower body during Footjobs, Speed 2 (slow)
         contains:
@@ -3737,7 +3400,6 @@ image Rogue_Sex_Legs_FootAnimStatic:
             "Rogue_Sex_Legs"
             pos (0,0) #X less is left, Y less is up
         offset (0,100)
-
 image Rogue_Sex_Legs_FootAnim1:
         #this is the animation for Rogue's lower body during Footjobs, Speed 2 (slow)
         contains:
@@ -3754,7 +3416,6 @@ image Rogue_Sex_Legs_FootAnim1:
                 repeat
         #pos (750,230)
         offset (0,100)
-
 image Rogue_Sex_Legs_FootAnim2:
         #this is the animation for Rogue's lower body during Footjobs, Speed 2 (slow)
         contains:
@@ -3817,7 +3478,6 @@ image Rogue_Sex_Legs_FootAnim2:
 #End Animations for Rogue's Legs during Footjobs / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
 #Start Animations for Rogue's Body during Footjobs / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
 image Rogue_Sex_Body_FootAnimStatic:
         #this is the animation for Rogue's upper body during Footjobs, Speed 2 (slow)
         contains:
@@ -3825,7 +3485,6 @@ image Rogue_Sex_Body_FootAnimStatic:
             "Rogue_Sex_Body"
             pos (0,0) #X less is left, Y less is up
         offset (0,100)
-
 image Rogue_Sex_Body_FootAnim1:
         #this is the animation for Rogue's upper body during Footjobs, Speed 2 (slow)
         contains:
@@ -3842,7 +3501,6 @@ image Rogue_Sex_Body_FootAnim1:
                 repeat
         #pos (750,230)
         offset (0,100)
-
 image Rogue_Sex_Body_FootAnim2:
         #this is the animation for Rogue's upper body during Footjobs, Speed 2 (slow)
         contains:
@@ -3984,31 +3642,25 @@ label Rogue_Sex_Reset:
 ## Rogue's BJ Scenes / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
 
-image Rogue_BJ_Animation:#BJ_NewTest:                                                                #core BJ animation
-    LiveComposite(
-        (800,950),
-        (0,0), ConditionSwitch( #-270,-160
-            # Rogue's hair backside
-            "Speed == 0", "Rogue_BJ_Anim0",               #Static
-            "Speed == 1", "Rogue_BJ_Anim1",               #Licking
-
-#            "True", "Rogue_BJ_Anim2",               #Heading
-
-            "Speed == 2", "Rogue_BJ_Anim2",               #Heading
-            "Speed == 3", "Rogue_BJ_Anim3",               #Sucking
-            "Speed == 4", "Rogue_BJ_Anim4",               #Deepthroat
-            "Speed == 5", "Rogue_BJ_Anim5",               #Cumming High
-            "Speed == 6", "Rogue_BJ_Anim6",               #Cumming Deep
-            "True", Null(),
-            ),
-        )
-#    zoom 1
-#    anchor (.5,.5)
+layeredimage Rogue_BJ_Animation:
+    if Speed == 0:
+        "Rogue_BJ_Anim0"
+    elif Speed == 1:
+        "Rogue_BJ_Anim1"
+    elif Speed == 2:
+        "Rogue_BJ_Anim2"
+    elif Speed == 3:
+        "Rogue_BJ_Anim3"
+    elif Speed == 4:
+        "Rogue_BJ_Anim4"
+    elif Speed == 5:
+        "Rogue_BJ_Anim5"
+    elif Speed == 6:
+        "Rogue_BJ_Anim6"
     zoom .8 #.7
     transform_anchor True
     anchor (.5,.5)
     offset (-95,85) #(-90,100)
-
 image Rogue_BJ_Backdrop:                                                                        #Her Body under the head
     "Rogue_Sprite"
     zoom 3
@@ -4016,141 +3668,116 @@ image Rogue_BJ_Backdrop:                                                        
 #    offset #(-615, -125)
 
 # image Rogue_BJ_Backdrop # image Rogue_BJ_Backdrop # image Rogue_BJ_Backdrop End # image Rogue_BJ_Backdrop # image Rogue_BJ_Backdrop End
-
-
-
-image Rogue_BJ_Head:
-    #These are all the details of the face, over
-    LiveComposite(
-        (695,695),
-        (-105,300), ConditionSwitch( #(-90,480)
-            "renpy.showing('Rogue_BJ_Animation') and Speed > 1",Null(),
-#            "renpy.showing('Rogue_BJ_Animation') and (Speed == 3 or Speed == 4 or Speed == 6)",Null(),
-            "True", "Rogue_BJ_Head_Under"
-            ),
-
-        (0,0), ConditionSwitch(
-            # Basic Face layer
-            "RogueX.Blush and renpy.showing('Rogue_BJ_Animation') and (Speed == 3 or Speed == 4 or Speed == 6)","images/RogueBJFace/[RogueX.skin_image.skin_path]Rogue_BJ_Head_Over_Blush.png",
-            "renpy.showing('Rogue_BJ_Animation') and (Speed == 3 or Speed == 4 or Speed == 6)","images/RogueBJFace/[RogueX.skin_image.skin_path]Rogue_BJ_Head_Over.png",
-#            "RogueX.Blush and renpy.showing('Rogue_BJ_Animation') and (Speed == 2 or Speed == 5)","images/RogueBJFace/Rogue_BJ_Head_Heading_Blush.png",
-#            "renpy.showing('Rogue_BJ_Animation') and (Speed == 2 or Speed == 5)","images/RogueBJFace/Rogue_BJ_Head_Heading.png",
-#            "True","images/RogueBJFace/Rogue_BJ_Head_Sucking_Overlay.png",
-
-#            "RogueX.Blush == 2", "images/RogueBJFace/Rogue_BJ_Head_Sucking_Over_Blush2.png",
-            "RogueX.Blush", "images/RogueBJFace/[RogueX.skin_image.skin_path]Rogue_BJ_Head_Over_Blush.png",
-            "True", "images/RogueBJFace/[RogueX.skin_image.skin_path]Rogue_BJ_Head_Over.png"
-            ),
-
-        (0,0), ConditionSwitch(
-            #Mouth
-#            "True", Null(), #cumming
-            "Speed and renpy.showing('Rogue_BJ_Animation')", ConditionSwitch(
-                    # If in sucking position
-#                    "Speed == 1", "images/RogueBJFace/Rogue_BJ_Mouth_TongueW.png",  #licking
-                    "Speed == 1", "images/RogueBJFace/Rogue_BJ_Mouth_Tongue.png",  #licking
-#                    "Speed == 2 or Speed == 5", Null(),
-                    "True", "images/RogueBJFace/Rogue_BJ_Mouth_Over.png",                         #heading
-#                    "(Speed == 2 or Speed == 5)", Null(),                          #heading
-#                    "Speed == 3", "images/RogueBJFace/Rogue_BJ_Mouth_Sucking.png", #sucking
-#                    "Speed == 4", "images/RogueBJFace/Rogue_BJ_Mouth_Sucking.png", #deepthroat
-#                    "Speed == 6", "images/RogueBJFace/Rogue_BJ_Mouth_Sucking.png", #cumming
-                    ),
-            "renpy.showing('Rogue_CUN_Animation') and Speed", "images/RogueBJFace/Rogue_BJ_Mouth_Tongue.png",
-            "Speed >= 3 and renpy.showing('Rogue_TJ_Animation')", "images/RogueBJFace/Rogue_BJ_Mouth_Tongue.png",
-#            "RogueX.Mouth == 'normal'", "images/RogueBJFace/Rogue_BJ_Mouth_Smile.png",
-            "RogueX.Mouth == 'lipbite'", "images/RogueBJFace/Rogue_BJ_Mouth_Lipbite.png",
-            "RogueX.Mouth == 'sucking'", "images/RogueBJFace/Rogue_BJ_Mouth_Open.png",
-            "RogueX.Mouth == 'kiss'", "images/RogueBJFace/Rogue_BJ_Mouth_Kiss.png",
-            "RogueX.Mouth == 'sad'", "images/RogueBJFace/Rogue_BJ_Mouth_Sad.png",
-            "RogueX.Mouth == 'smile'", "images/RogueBJFace/Rogue_BJ_Mouth_Smile.png",
-            "RogueX.Mouth == 'smirk'", "images/RogueBJFace/Rogue_BJ_Mouth_Normal.png",
-            "RogueX.Mouth == 'grimace'", "images/RogueBJFace/Rogue_BJ_Mouth_Smile.png",
-            "RogueX.Mouth == 'surprised'", "images/RogueBJFace/Rogue_BJ_Mouth_Sucking.png",
-            "RogueX.Mouth == 'tongue'", "images/RogueBJFace/Rogue_BJ_Mouth_Tongue.png",
-            "True", "images/RogueBJFace/Rogue_BJ_Mouth_Normal.png",
-            ),
-        (0,0), ConditionSwitch(
-            #Spunk layer
-            "'mouth' not in RogueX.Spunk or not Player.Male", Null(),
-            "Speed and renpy.showing('Rogue_BJ_Animation')", ConditionSwitch(
-                    # If in sucking position
-                    "Speed == 1", "images/RogueBJFace/Rogue_BJ_Spunk_Tongue.png",  #licking
-#                    "True", Null(),                          #heading
-                    "(Speed == 2 or Speed == 5)", "images/RogueBJFace/Rogue_BJ_Spunk_Heading.png", #Null(),                          #heading
-                    "Speed == 3", "images/RogueBJFace/Rogue_BJ_Spunk_Sucking.png", #sucking
-                    "Speed == 4", "images/RogueBJFace/Rogue_BJ_Spunk_Sucking.png", #deepthroat
-                    "Speed == 6", "images/RogueBJFace/Rogue_BJ_Spunk_Sucking.png", #cumming
-                    ),
-#            "renpy.showing('Rogue_CUN_Animation') and Speed", "images/RogueBJFace/Rogue_BJ_Mouth_Tongue.png",
-#            "Speed >= 3 and renpy.showing('Rogue_TJ_Animation')", "images/RogueBJFace/Rogue_BJ_Mouth_Tongue.png",
-#            "RogueX.Mouth == 'normal'", "images/RogueBJFace/Rogue_BJ_Mouth_Smile.png",
-#            "RogueX.Mouth == 'lipbite'", "images/RogueBJFace/Rogue_BJ_Mouth_Lipbite.png",
-            "RogueX.Mouth == 'sucking'", "images/RogueBJFace/Rogue_BJ_Spunk_Open.png",
-            "RogueX.Mouth == 'kiss'", "images/RogueBJFace/Rogue_BJ_Spunk_Sad.png",
-            "RogueX.Mouth == 'sad'", "images/RogueBJFace/Rogue_BJ_Spunk_Sad.png",
-#            "RogueX.Mouth == 'smile'", "images/RogueBJFace/Rogue_BJ_Spunk_Smile.png",
-#            "RogueX.Mouth == 'smirk'", "images/RogueBJFace/Rogue_BJ_Mouth_Normal.png",
-#            "RogueX.Mouth == 'grimace'", "images/RogueBJFace/Rogue_BJ_Mouth_Smile.png",
-            "RogueX.Mouth == 'surprised'", "images/RogueBJFace/Rogue_BJ_Spunk_Open.png",
-            "RogueX.Mouth == 'tongue'", "images/RogueBJFace/Rogue_BJ_Spunk_Tongue.png",
-            "True", "images/RogueBJFace/Rogue_BJ_Spunk_Smile.png",
-            ),
-        (0,0), ConditionSwitch(
-            #wet face
-            "Player.Male", Null(),
-            "'mouth' not in RogueX.Spunk and 'chin' not in RogueX.Spunk", Null(),
-#            "'chin' not in RogueX.Spunk and (RogueX.Mouth == 'tongue' or Speed)", "images/RogueBJFace/Rogue_BJ_Wet_Tongue.png",
-            "RogueX.Mouth == 'tongue' or Speed", "images/RogueBJFace/Rogue_BJ_Wet_Tongue.png",
-            "'mouth' in RogueX.Spunk or 'chin' in RogueX.Spunk", "images/RogueBJFace/Rogue_BJ_Wet_Mouth.png",
-            "True", Null(),
-            ),
-
-        (0,0), ConditionSwitch(
-            #Brows
-            "RogueX.Brows == 'angry'", "images/RogueBJFace/[RogueX.skin_image.skin_path]Rogue_BJ_Brows_Angry.png",
-            "RogueX.Brows == 'sad'", "images/RogueBJFace/[RogueX.skin_image.skin_path]Rogue_BJ_Brows_Sad.png",
-            "RogueX.Brows == 'surprised'", "images/RogueBJFace/Rogue_BJ_Brows_Surprised.png",
-            "RogueX.Brows == 'confused'", "images/RogueBJFace/[RogueX.skin_image.skin_path]Rogue_BJ_Brows_Confused.png",
-            "True", "images/RogueBJFace/[RogueX.skin_image.skin_path]Rogue_BJ_Brows_Normal.png",
-            ),
-        (0,0),"Rogue BJ Blink",
-            #Eyes
-        (0,0), ConditionSwitch(
-            #Hair overlay
-            "RogueX.Water or RogueX.Hair == 'wet'", Recolor("Rogue", "Hair", "images/RogueBJFace/Rogue_BJ_Hair_Wet.png"),
-            "not Player.Male and 'facial' in RogueX.Spunk", Recolor("Rogue", "Hair", "images/RogueBJFace/Rogue_BJ_Hair_Wet.png"),
-            "RogueX.Hair == 'cosplay'", Recolor("Rogue", "Hair", "images/RogueBJFace/Rogue_BJ_Hair_Cos.png"),
-            "True", Recolor("Rogue", "Hair", "images/RogueBJFace/Rogue_BJ_Hair_Evo.png"),
-            ),
-
-        (0,0), ConditionSwitch(
-            # water overlay
-            "RogueX.Water", "images/RogueBJFace/Rogue_BJ_Water_Head.png",
-            "not Player.Male and 'facial' in RogueX.Spunk", "images/RogueBJFace/Rogue_BJ_Water_Head.png",
-            "True",Null(),
-            ),
-
-##        (0,0), "Rogue_Tester",
-        (0,0), ConditionSwitch(
-            #cum on the face
-            "'hair' in RogueX.Spunk and Player.Male", "images/RogueBJFace/Rogue_BJ_Spunk_Hair.png",
-            "'facial' in RogueX.Spunk and Player.Male", "images/RogueBJFace/Rogue_BJ_Spunk_Facial.png",
-            "True", Null(),
-            ),
-        (250,400), ConditionSwitch( #(250,400)(-500,-400)
-            #steam
-            "True", "Big_Steam",
-            "RogueX.Lust > 70", "Big_Steam",
-            "True", Null(),
-            ),
-        )
+layeredimage Rogue_BJ_Head:
+    if renpy.showing('Rogue_BJ_Animation') and Speed > 1:
+        Null()
+    else:
+        "Rogue_BJ_Head_Under" offset (-105, 300)
+    if RogueX.Blush and renpy.showing('Rogue_BJ_Animation') and (Speed == 3 or Speed == 4 or Speed == 6):
+        "images/RogueBJFace/[RogueX.skin_image.skin_path]Rogue_BJ_Head_Over_Blush.png"
+    elif renpy.showing('Rogue_BJ_Animation') and (Speed == 3 or Speed == 4 or Speed == 6):
+        "images/RogueBJFace/[RogueX.skin_image.skin_path]Rogue_BJ_Head_Over.png"
+    elif RogueX.Blush:
+        "images/RogueBJFace/[RogueX.skin_image.skin_path]Rogue_BJ_Head_Over_Blush.png"
+    else:
+        "images/RogueBJFace/[RogueX.skin_image.skin_path]Rogue_BJ_Head_Over.png"
+    if Speed and renpy.showing('Rogue_BJ_Animation'):
+        if Speed == 1:
+            "images/RogueBJFace/Rogue_BJ_Mouth_Tongue.png"
+        else:
+            "images/RogueBJFace/Rogue_BJ_Mouth_Over.png"
+    elif renpy.showing('Rogue_CUN_Animation') and Speed:
+        "images/RogueBJFace/Rogue_BJ_Mouth_Tongue.png"
+    elif Speed >= 3 and renpy.showing('Rogue_TJ_Animation'):
+        "images/RogueBJFace/Rogue_BJ_Mouth_Tongue.png"
+    elif RogueX.Mouth == 'lipbite':
+        "images/RogueBJFace/Rogue_BJ_Mouth_Lipbite.png"
+    elif RogueX.Mouth == 'sucking':
+        "images/RogueBJFace/Rogue_BJ_Mouth_Open.png"
+    elif RogueX.Mouth == 'kiss':
+        "images/RogueBJFace/Rogue_BJ_Mouth_Kiss.png"
+    elif RogueX.Mouth == 'sad':
+        "images/RogueBJFace/Rogue_BJ_Mouth_Sad.png"
+    elif RogueX.Mouth == 'smile':
+        "images/RogueBJFace/Rogue_BJ_Mouth_Smile.png"
+    elif RogueX.Mouth == 'smirk':
+        "images/RogueBJFace/Rogue_BJ_Mouth_Normal.png"
+    elif RogueX.Mouth == 'grimace':
+        "images/RogueBJFace/Rogue_BJ_Mouth_Smile.png"
+    elif RogueX.Mouth == 'surprised':
+        "images/RogueBJFace/Rogue_BJ_Mouth_Sucking.png"
+    elif RogueX.Mouth == 'tongue':
+        "images/RogueBJFace/Rogue_BJ_Mouth_Tongue.png"
+    else:
+        "images/RogueBJFace/Rogue_BJ_Mouth_Normal.png"
+    if 'mouth' not in RogueX.Spunk or not Player.Male:
+        Null()
+    elif Speed and renpy.showing('Rogue_BJ_Animation'):
+        if Speed == 1:
+            "images/RogueBJFace/Rogue_BJ_Spunk_Tongue.png"
+        elif (Speed == 2 or Speed == 5):
+            "images/RogueBJFace/Rogue_BJ_Spunk_Heading.png"
+        elif Speed == 3:
+            "images/RogueBJFace/Rogue_BJ_Spunk_Sucking.png"
+        elif Speed == 4:
+            "images/RogueBJFace/Rogue_BJ_Spunk_Sucking.png"
+        elif Speed == 6:
+            "images/RogueBJFace/Rogue_BJ_Spunk_Sucking.png"
+    elif RogueX.Mouth == 'sucking':
+        "images/RogueBJFace/Rogue_BJ_Spunk_Open.png"
+    elif RogueX.Mouth == 'kiss':
+        "images/RogueBJFace/Rogue_BJ_Spunk_Sad.png"
+    elif RogueX.Mouth == 'sad':
+        "images/RogueBJFace/Rogue_BJ_Spunk_Sad.png"
+    elif RogueX.Mouth == 'surprised':
+        "images/RogueBJFace/Rogue_BJ_Spunk_Open.png"
+    elif RogueX.Mouth == 'tongue':
+        "images/RogueBJFace/Rogue_BJ_Spunk_Tongue.png"
+    else:
+        "images/RogueBJFace/Rogue_BJ_Spunk_Smile.png"
+    if Player.Male:
+        Null()
+    elif 'mouth' not in RogueX.Spunk and 'chin' not in RogueX.Spunk:
+        Null()
+    elif RogueX.Mouth == 'tongue' or Speed:
+        "images/RogueBJFace/Rogue_BJ_Wet_Tongue.png"
+    elif 'mouth' in RogueX.Spunk or 'chin' in RogueX.Spunk:
+        "images/RogueBJFace/Rogue_BJ_Wet_Mouth.png"
+    if RogueX.Brows == 'angry':
+        "images/RogueBJFace/[RogueX.skin_image.skin_path]Rogue_BJ_Brows_Angry.png"
+    elif RogueX.Brows == 'sad':
+        "images/RogueBJFace/[RogueX.skin_image.skin_path]Rogue_BJ_Brows_Sad.png"
+    elif RogueX.Brows == 'surprised':
+        "images/RogueBJFace/Rogue_BJ_Brows_Surprised.png"
+    elif RogueX.Brows == 'confused':
+        "images/RogueBJFace/[RogueX.skin_image.skin_path]Rogue_BJ_Brows_Confused.png"
+    else:
+        "images/RogueBJFace/[RogueX.skin_image.skin_path]Rogue_BJ_Brows_Normal.png"
+    always:
+        "Rogue BJ Blink"
+    if RogueX.Water or RogueX.Hair == 'wet':
+        Recolor("Rogue", "Hair", "images/RogueBJFace/Rogue_BJ_Hair_Wet.png")
+    elif not Player.Male and 'facial' in RogueX.Spunk:
+        Recolor("Rogue", "Hair", "images/RogueBJFace/Rogue_BJ_Hair_Wet.png")
+    elif RogueX.Hair == 'cosplay':
+        Recolor("Rogue", "Hair", "images/RogueBJFace/Rogue_BJ_Hair_Cos.png")
+    else:
+        Recolor("Rogue", "Hair", "images/RogueBJFace/Rogue_BJ_Hair_Evo.png")
+    if RogueX.Water:
+        "images/RogueBJFace/Rogue_BJ_Water_Head.png"
+    elif not Player.Male and 'facial' in RogueX.Spunk:
+        "images/RogueBJFace/Rogue_BJ_Water_Head.png"
+    if 'hair' in RogueX.Spunk and Player.Male:
+        "images/RogueBJFace/Rogue_BJ_Spunk_Hair.png"
+    elif 'facial' in RogueX.Spunk and Player.Male:
+        "images/RogueBJFace/Rogue_BJ_Spunk_Facial.png"
+    else:
+        "Big_Steam" offset (250, 400)
+    if RogueX.Lust > 70:
+        "Big_Steam" offset (250, 400)
     zoom 1
     anchor (0.5, 0.5)
     offset (105,-300)#(90,-480)
-
-# image Rogue_BJ_Head End        # image Rogue_BJ_Head End        # image Rogue_BJ_Head End        # image Rogue_BJ_Head End
-
 image Rogue BJ Blink:
         #eyeblinks
         ConditionSwitch(
@@ -4175,68 +3802,49 @@ image Rogue BJ Blink:
         "images/RogueBJFace/Rogue_BJ_Eyes_Closed.png"
         .25
         repeat
-
-image Rogue_BJ_HairBack:
-    LiveComposite(
-        (695,695),
-        (0,0), ConditionSwitch(
-            #Hair overlay
-            "RogueX.Water or RogueX.Hair == 'wet'", Recolor("Rogue", "Hair", "images/RogueBJFace/Rogue_BJ_Hair_Wet_Back.png"),
-            "not Player.Male and 'facial' in RogueX.Spunk", Recolor("Rogue", "Hair", "images/RogueBJFace/Rogue_BJ_Hair_Wet_Back.png"),
-            "RogueX.Hair == 'cosplay'", Recolor("Rogue", "Hair", "images/RogueBJFace/Rogue_BJ_Hair_Cos_Back.png"),
-            "True", Recolor("Rogue", "Hair", "images/RogueBJFace/Rogue_BJ_Hair_Evo_Back.png"),
-            ),
-        )
+layeredimage Rogue_BJ_HairBack:
+    if RogueX.Water or RogueX.Hair == 'wet':
+        Recolor("Rogue", "Hair", "images/RogueBJFace/Rogue_BJ_Hair_Wet_Back.png")
+    elif not Player.Male and 'facial' in RogueX.Spunk:
+        Recolor("Rogue", "Hair", "images/RogueBJFace/Rogue_BJ_Hair_Wet_Back.png")
+    elif RogueX.Hair == 'cosplay':
+        Recolor("Rogue", "Hair", "images/RogueBJFace/Rogue_BJ_Hair_Cos_Back.png")
+    else:
+        Recolor("Rogue", "Hair", "images/RogueBJFace/Rogue_BJ_Hair_Evo_Back.png")
     zoom 1
     anchor (0.5, 0.5)
     offset (105,-300)#(90,-480)
-
-image Rogue_BJ_Head_Under:
-    LiveComposite(
-        (695,695),
-        (0,0), "images/RogueBJFace/[RogueX.skin_image.skin_path]Rogue_BJ_Head.png",
-        (0,0), ConditionSwitch(
-            #Mouth
-#            "True", Null(), #cumming
-            "Speed and renpy.showing('Rogue_BJ_Animation')", ConditionSwitch(
-                    # If in sucking position
-#                    "Speed == 1", "images/RogueBJFace/Rogue_BJ_Mouth_TongueW.png",  #licking
-                    "Speed == 1", "images/RogueBJFace/Rogue_BJ_Mouth_Tongue.png",  #licking
-                    "Speed == 2 or Speed == 5", Null(),  #licking
-                    "True", "images/RogueBJFace/Rogue_BJ_Mouth_Heading.png",                          #heading
-#                    "Speed == 3", "images/RogueBJFace/Rogue_BJ_Mouth_Sucking.png", #sucking
-#                    "Speed == 4", "images/RogueBJFace/Rogue_BJ_Mouth_Sucking.png", #deepthroat
-#                    "Speed == 6", "images/RogueBJFace/Rogue_BJ_Mouth_Sucking.png", #cumming
-                    ),
-            "renpy.showing('Rogue_CUN_Animation') and Speed", "images/RogueBJFace/Rogue_BJ_Mouth_Tongue.png",
-            "Speed >= 3 and renpy.showing('Rogue_TJ_Animation')", "images/RogueBJFace/Rogue_BJ_Mouth_Tongue.png",
-            "True", Null(),
-            "True", "images/RogueBJFace/Rogue_BJ_Mouth_Normal.png",
-            ),
-        (0,0), ConditionSwitch(
-            #Spunk layer chin
-            "'chin' not in RogueX.Spunk or not Player.Male", Null(),
-            "True", "images/RogueBJFace/Rogue_BJ_Spunk_Chin.png",
-            ),
-        )
+layeredimage Rogue_BJ_Head_Under:
+    always:
+        "images/RogueBJFace/[RogueX.skin_image.skin_path]Rogue_BJ_Head.png"
+    if Speed and renpy.showing('Rogue_BJ_Animation'):
+        if Speed == 1:
+            "images/RogueBJFace/Rogue_BJ_Mouth_Tongue.png"
+        elif Speed == 2 or Speed == 5:
+            Null()
+        else:
+            "images/RogueBJFace/Rogue_BJ_Mouth_Heading.png"
+    elif renpy.showing('Rogue_CUN_Animation') and Speed:
+        "images/RogueBJFace/Rogue_BJ_Mouth_Tongue.png"
+    elif Speed >= 3 and renpy.showing('Rogue_TJ_Animation'):
+        "images/RogueBJFace/Rogue_BJ_Mouth_Tongue.png"
+    else:
+        "images/RogueBJFace/Rogue_BJ_Mouth_Normal.png"
+    if 'chin' not in RogueX.Spunk or not Player.Male:
+        Null()
+    else:
+        "images/RogueBJFace/Rogue_BJ_Spunk_Chin.png"
     zoom 1
     anchor (0.5, 0.5)
     offset (105,-300)#(90,-480)
-
-image Rogue_BJ_Heading_Mouth:
-    LiveComposite(
-        (695,695),
-        (0,0), "images/RogueBJFace/Rogue_BJ_Mouth_Heading.png",
-        (0,0), ConditionSwitch(
-            #cum in mouth
-            "'mouth' in RogueX.Spunk and Player.Male", "images/RogueBJFace/Rogue_BJ_Spunk_Sucking.png",
-            "True", Null(),
-            ),
-        )
+layeredimage Rogue_BJ_Heading_Mouth:
+    always:
+        "images/RogueBJFace/Rogue_BJ_Mouth_Heading.png"
+    if 'mouth' in RogueX.Spunk and Player.Male:
+        "images/RogueBJFace/Rogue_BJ_Spunk_Sucking.png"
     zoom 1
     anchor (0.5, 0.5)
     offset (105,-300)#(90,-480)
-
 image Rogue_TJ_ZeroCock:
             #cock used in Rogue's sex pose
             "Zero_Blowcock"
@@ -4246,7 +3854,6 @@ image Rogue_TJ_ZeroCock:
             offset (-5,50)#(45,50)
             rotate 0
 ## End Rogue BJ Body / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
 image Rogue_BJ_Anim0:
         #Static animation
         contains:
@@ -4317,7 +3924,6 @@ image Rogue_BJ_Anim0:
                     pause .9
                     repeat
 #end Rogue_BJ_Anim0 Static
-
 image Rogue_BJ_Anim1:
         #Licking animation
         contains:
@@ -4427,8 +4033,6 @@ image Rogue_BJ_Anim1:
                     pause 1.1
                     repeat
 #end Rogue_BJ_Anim1 Licking
-
-
 image Rogue_BJ_Anim2:
         #Heading animation
         contains:
@@ -4544,8 +4148,6 @@ image Rogue_BJ_Anim2:
 #                    ease .5 rotate 0    #top
 #                    repeat
 #end Rogue_BJ_Anim2 Heading
-
-
 image Rogue_BJ_Anim3:
         #sucking fast animation
         contains:
@@ -4636,7 +4238,6 @@ image Rogue_BJ_Anim3:
 #                    ease .5 rotate 0    #top
 #                    repeat
 ##end Rogue_BJ_Anim3 Sucking
-
 image Rogue_BJ_Anim4:
         #Deep animation
         contains:
@@ -4722,8 +4323,6 @@ image Rogue_BJ_Anim4:
 #                    ease 1.5 rotate 0    #top
 #                    repeat
 #end Rogue_BJ_Anim4 Deep
-
-
 image Rogue_BJ_Anim5:
         #Cum high animation
         contains:
@@ -4821,8 +4420,6 @@ image Rogue_BJ_Anim5:
                     ease 1.5 yoffset -110         #top
                     repeat
 #end Rogue_BJ_Anim5 Cum high
-
-
 image Rogue_BJ_Anim6:
         #Cum Deep animation
         contains:
@@ -4916,7 +4513,6 @@ image Rogue_BJ_Anim6:
 
                                                             #BJ Launchers
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
 label Rogue_BJ_Launch(Line = Trigger):
     # The sequence to launch the Rogue BJ animations
     if renpy.showing("Rogue_BJ_Animation") and RogueX.Pose != "69":
@@ -5030,11 +4626,9 @@ image Blowcock:
     zoom 1.0
     alpha 1.0
     offset (26,350)#(-175,450)
-
 image Ghostcock:
     "Blowcock"
     alpha 0.5
-
 image Zero_Blowcock:
     LiveComposite(                            #The compositived BJ cock
         (175,946),
@@ -5054,8 +4648,6 @@ image Zero_Blowcock:
     anchor (0.5,0.5)
     zoom 1.2
     xoffset 5
-
-
 image Zero_Ghostcock:
     "Zero_Blowcock"
     alpha 0.5
@@ -5063,7 +4655,6 @@ image Zero_Ghostcock:
 
 
 # Core Rogue Titfucking element //////////////////////////////////////////////////////////////////////                                         Core Rogue TJ element
-
 image Rogue_TJ_Under:
     contains:
         "Rogue_BJ_HairBack"
@@ -5083,7 +4674,6 @@ image Rogue_TJ_Under:
         zoom 1.4
         rotate -5
     pos (-60, 200)
-
 image Rogue_TJ_Over:
     contains:
         ConditionSwitch(
@@ -5097,8 +4687,6 @@ image Rogue_TJ_Over:
             "True", Null(),
             ),
     pos (-60, 200)
-
-
 transform Rogue_TJ_Under_1():
     ypos 200
     subpixel True
@@ -5190,7 +4778,6 @@ image Rogue_TJ_Animation:
     anchor (0.6, 0.0)
     offset (-75, 250)
     zoom .55
-
 label Rogue_TJ_Launch(Line = Trigger):
     # The sequence to launch the Rogue Titfuck animations
     if renpy.showing("Rogue_TJ_Animation"):
@@ -5283,13 +4870,10 @@ image Zero_Handcock:
             ),
     anchor (0.5,1.0)  #1.0
     pos (200,400)#(200,400)
-
 image Rogue_HJ_Body:
     "Rogue_Sprite"
     pos (350,-650)#(450,-650)
     zoom 3#4.8
-
-
 transform Rogue_HJ_Body_1():
     subpixel True
 #    pos (700,-1250)#(350,-550)
@@ -5314,13 +4898,10 @@ image Rogue_Hand_Under:
     "images/RogueBJFace/[RogueX.skin_image.skin_path]hand2.png"
     anchor (0.5,0.5)
     pos (0,0)
-
-
 image Rogue_Hand_Over:
     "images/RogueBJFace/[RogueX.skin_image.skin_path]hand1.png"
     anchor (0.5,0.5)
     pos (0,0)
-
 transform Handcock_1():
     subpixel True
     rotate_pad False
@@ -5388,7 +4969,6 @@ image Rogue_HJ_Animation:
     anchor (0.5,0.5)#anchor (0.51, -1.3)
     offset (200,800)
     zoom 0.6
-
 label Rogue_HJ_Launch(Line = Trigger):
     if renpy.showing("Rogue_HJ_Animation"):
         $ Trigger = "hand"
@@ -5481,7 +5061,6 @@ image Zero_Legs:
             ),
     anchor (0.5,0.5)  #1.0
     pos (250,300) #(350,300)
-
 image Zero_Pussy_Full:
     contains:
             #pussy
@@ -5493,22 +5072,19 @@ image Zero_Pussy_Full:
 #    alpha 0.8
 # end image Zero_Pussy_Full
 # end Core Image for Zero's legs < < < < < < < < < < < < < < < < < < < < < < < <
-
-image Rogue_CUN_Animation: #core CUN animation
-    LiveComposite(
-        (787,913),
-        (0,0), ConditionSwitch(                                                                 # back of the hair, which needs to go behind the body
-            "Speed == 0",  "Rogue_CUN_Anim_Static",
-            "Speed == 1",  "Rogue_CUN_Anim_Licking1",
-            "Speed == 2",  "Rogue_CUN_Anim_Licking2",
-            "Speed >= 3",  "Rogue_CUN_Anim_Licking3",
-#            "Speed == 4",  "Rogue_CUN_Anim_Licking1",
-            "True", "Rogue_CUN_Anim_Static",
-            ),
-        )
+layeredimage Rogue_CUN_Animation:
+    if Speed == 0:
+        "Rogue_CUN_Anim_Static"
+    elif Speed == 1:
+        "Rogue_CUN_Anim_Licking1"
+    elif Speed == 2:
+        "Rogue_CUN_Anim_Licking2"
+    elif Speed >= 3:
+        "Rogue_CUN_Anim_Licking3"
+    else:
+        "Rogue_CUN_Anim_Static"
     zoom .55
     anchor (.5,.5)
-
 image Rogue_CUN_Anim_Static:
     #Animation for licking speed 1
     contains:
@@ -5555,8 +5131,6 @@ image Rogue_CUN_Anim_Static:
     #        ease 1 yoffset 490
     #        ease 1 yoffset 480
     #        repeat
-
-
 image Rogue_CUN_Anim_Licking1:
     #Animation for licking speed 1
     contains:
@@ -5617,7 +5191,6 @@ image Rogue_CUN_Anim_Licking1:
             easeout 1 yoffset 5 #510 bottom
             repeat
 #End Rogue Licking 1
-
 image Rogue_CUN_Anim_Licking2:
     #Animation for licking speed 2
     contains:
@@ -5675,7 +5248,6 @@ image Rogue_CUN_Anim_Licking2:
             pause .2
             repeat
 #End Rogue Licking 2
-
 image Rogue_CUN_Anim_Licking3:
     #Animation for licking speed 3
     contains:
@@ -5730,7 +5302,6 @@ image Rogue_CUN_Anim_Licking3:
 
 #BJ Launchers
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
 label Rogue_CUN_Launch(Line = Trigger):
     # The sequence to launch the Rogue CUN animations
     if renpy.showing("Rogue_CUN_Animation") and RogueX.Pose != "69":
@@ -5822,7 +5393,6 @@ image Rogue_Finger_Animation:
     offset (400,945)#700,1190
     zoom 0.8
     # end Core Animation for Fingering Zero's pussy < < < < < < < < < < < < < < < < < < < < < < < <
-
 image Rogue_Finger_0:
     # Animation for Fingering Zero's pussy, static < < < < < < < < < < < < < < < < < < < < < < < <
     contains:
@@ -5846,7 +5416,6 @@ image Rogue_Finger_0:
             pos (20,40)
 #            "Rogue_Finger_Over"
     # end Animation for Fingering Zero's pussy, static < < < < < < < < < < < < < < < < < < < < < < < <
-
 image Rogue_Finger_1:
     # Animation for Fingering Zero's pussy, slow < < < < < < < < < < < < < < < < < < < < < < < <
     contains:
@@ -5899,7 +5468,6 @@ image Rogue_Finger_1:
                 ease 1.0 pos (10,40) rotate -5 #((20,-60) Top                 pause 0.1
                 repeat
     # end Animation for Fingering Zero's pussy, slow < < < < < < < < < < < < < < < < < < < < < < < <
-
 image Rogue_Finger_2:
     # Animation for Fingering Zero's pussy, fast < < < < < < < < < < < < < < < < < < < < < < < <
     contains:
@@ -5953,7 +5521,6 @@ image Rogue_Finger_2:
                 pause 0.1
                 repeat
     # end Animation for Fingering Zero's pussy, fast < < < < < < < < < < < < < < < < < < < < < < < <
-
 label Rogue_Finger_Launch(Line = Trigger):
     if renpy.showing("Rogue_Finger_Animation"):
         $ Trigger = "finger"
@@ -6029,494 +5596,320 @@ label Rogue_Finger_Reset: # The sequence to the Rogue animations from handjob to
 # ////////////////////////////////                                                                                      ///////////////////////////////
 # ////////////////////////////////                                                                                      ///////////////////////////////
 
-image Rogue_69_Animation:
-    LiveComposite(                                                                                 #Base body
-        (1120,840),
-        (0,0), ConditionSwitch(
-                #Shows different upper body motion depending on events
-#                "True", "Rogue_69_Anim1",
-                "Speed == 2", "Rogue_69_Anim2",
-                "Speed == 3", "Rogue_69_Anim3",
-                "Speed == 4", "Rogue_69_Anim4",
-                "Speed == 5", "Rogue_69_Anim5",
-                "Speed == 6", "Rogue_69_Anim6",
-                "Speed", "Rogue_69_Anim1",
-                "True", "Rogue_69_Static",
-                ),
-        )
+layeredimage Rogue_69_Animation:
+    if Speed == 2:
+        "Rogue_69_Anim2"
+    elif Speed == 3:
+        "Rogue_69_Anim3"
+    elif Speed == 4:
+        "Rogue_69_Anim4"
+    elif Speed == 5:
+        "Rogue_69_Anim5"
+    elif Speed == 6:
+        "Rogue_69_Anim6"
+    elif Speed:
+        "Rogue_69_Anim1"
+    else:
+        "Rogue_69_Static"
     align (0.6,0.0)
     pos (475,-800)#(475,-700)
     zoom 1.8#1/3
-
-#Start Animations for Rogue's 69 pose / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
-
-# Start Rogue 69 Pose Body / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-image Rogue_69_Body:
-    LiveComposite(
-        #the torso/head used in the sex pose, referenced by Rogue_SexSprite
-        (1120,840),
-
-        (0,0),ConditionSwitch(
-            #Outside Spunk
-            "'tits' in RogueX.Spunk and Player.Male", "images/RogueSex/Rogue_69_Spunk_Tits.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #bra layer if up
-            "not RogueX.Uptop", Null(),
-            #if top's up
-            "RogueX.Chest == 'bikini top'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Bikini.png"),
-            "RogueX.Chest == 'sports bra'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Sports_Up.png"),
-#            "RogueX.Chest == 'bra'", "images/RogueSex/Rogue_69_Chest_Bra.png",
-            "RogueX.Chest == 'lace bra'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Lace.png"),
-            "RogueX.Chest == 'tube top'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Tube_Up.png"),
-            "RogueX.Chest == 'tank'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Tank_Up.png"),
-            "RogueX.Chest == 'buttoned tank'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Tank_Up.png"),
-            "RogueX.Over == 'mesh top' and RogueX.Uptop", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Over_Mesh_Up.png"),
-            "RogueX.Over == 'nighty' and RogueX.Uptop", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Over_Mesh_Up.png"),
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #body
-#            "RogueX.Arms", "images/RogueSex/Rogue_69_BodyG.png",
-            "True", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Body.png",
-            ),
-#        (0,0), ConditionSwitch(
-#            #Wet look
-#            "RogueX.Water", "images/RogueSex/Rogue_69_Water_Body.png",
-#            "True", Null(),
-#            ),
-        (0,0), ConditionSwitch(
-            #bra layer
-            "RogueX.Uptop", Null(),
-            #if the top's down. . .
-            "RogueX.Chest == 'bikini top'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Bikini.png"),
-            "RogueX.Chest == 'sports bra'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Sports.png"),
-#            "RogueX.Chest == 'bra'", "images/RogueSex/Rogue_69_Chest_Bra.png",
-            "RogueX.Chest == 'lace bra'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Lace.png"),
-            "RogueX.Chest == 'tube top'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Tube.png"),
-            "RogueX.Chest == 'tank'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Tank.png"),
-            "RogueX.Chest == 'buttoned tank'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Tank2.png"),
-            "True", Null(),
-            ),
-
-        (0,0), ConditionSwitch(
-            #shirt layer
-            "RogueX.Over == 'pink top' and RogueX.Uptop", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Over_Pink_Up.png"),
-            "RogueX.Uptop", Null(),
-            "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Over_Towel.png"),
-            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Over_Pink.png"),
-            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Over_Mesh.png"),
-            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Over_Nighty.png"),
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #piercings
-            "not RogueX.Pierce", Null(),
-            "RogueX.Pierce == 'ring'", ConditionSwitch(
-                    # ring pierce
-                    "RogueX.Uptop", "images/RogueSex/Rogue_69_Pierce_Tits_R.png",
-
-                    "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_R_Nighty.png"),
-
-                    "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_R_Pink.png"),
-                    "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_R_Towel.png"),
-                    "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_R_Mesh.png"),
-
-                    "RogueX.Chest == 'sports bra'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_R_Sports.png"),
-                    "RogueX.Chest == 'tube top'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_R_Tube.png"),
-                    "RogueX.Chest == 'bikini top'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_R_Bikini.png"),
-                    "RogueX.Chest == 'lace bra'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_R_Lace.png"),
-                    "RogueX.Chest", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_R_Tank.png"),
-
-                    "True", "images/RogueSex/Rogue_69_Pierce_Tits_R.png",
-                    ),
-            "RogueX.Uptop", "images/RogueSex/Rogue_69_Pierce_Tits_B.png",
-
-            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_B_Nighty.png"),
-
-            "RogueX.Over == 'pink top'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_B_Pink.png"),
-            "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_B_Towel.png"),
-            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_B_Mesh.png"),
-
-            "RogueX.Chest == 'sports bra'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_B_Sports.png"),
-            "RogueX.Chest == 'tube top'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_B_Tube.png"),
-            "RogueX.Chest == 'bikini top'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_B_Bikini.png"),
-            "RogueX.Chest == 'lace bra'", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_B_Lace.png"),
-            "RogueX.Chest", Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_B_Tank.png"),
-
-            "True", "images/RogueSex/Rogue_69_Pierce_Tits_B.png",
-            ),
-        (0,0), ConditionSwitch(
-            #piercings
-            "not RogueX.Pierce", Null(),
-            "RogueX.Uptop", Null(),
-            "RogueX.Pierce == 'ring'", ConditionSwitch(
-                    # ring pierce
-                    "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_R_Mesh.png"),
-                    "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_R_Nighty.png"),
-                    "True", Null(),
-                    ),
-            "RogueX.Over == 'mesh top'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_B_Mesh.png"),
-            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_B_Nighty.png"),
-            "True", Null(),
-            ),
-
-        (0,0),ConditionSwitch(
-            #Outside Spunk
-            "'belly' in RogueX.Spunk and Player.Male", "images/RogueSex/Rogue_69_Spunk_Belly.png",
-            "True", Null(),
-            ),
-#        (0,0), "images/RogueSex/Rogue_Sex_HeadRef.png",
-        )
+layeredimage Rogue_69_Body:
+    if 'tits' in RogueX.Spunk and Player.Male:
+        "images/RogueSex/Rogue_69_Spunk_Tits.png"
+    if not RogueX.Uptop:
+        Null()
+    elif RogueX.Chest == 'bikini top':
+        Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Bikini.png")
+    elif RogueX.Chest == 'sports bra':
+        Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Sports_Up.png")
+    elif RogueX.Chest == 'lace bra':
+        Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Lace.png")
+    elif RogueX.Chest == 'tube top':
+        Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Tube_Up.png")
+    elif RogueX.Chest == 'tank':
+        Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Tank_Up.png")
+    elif RogueX.Chest == 'buttoned tank':
+        Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Tank_Up.png")
+    elif RogueX.Over == 'mesh top' and RogueX.Uptop:
+        Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Over_Mesh_Up.png")
+    elif RogueX.Over == 'nighty' and RogueX.Uptop:
+        Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Over_Mesh_Up.png")
+    "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Body.png"
+    if RogueX.Uptop:
+        Null()
+    elif RogueX.Chest == 'bikini top':
+        Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Bikini.png")
+    elif RogueX.Chest == 'sports bra':
+        Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Sports.png")
+    elif RogueX.Chest == 'lace bra':
+        Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Lace.png")
+    elif RogueX.Chest == 'tube top':
+        Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Tube.png")
+    elif RogueX.Chest == 'tank':
+        Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Tank.png")
+    elif RogueX.Chest == 'buttoned tank':
+        Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Chest_Tank2.png")
+    if RogueX.Over == 'pink top' and RogueX.Uptop:
+        Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Over_Pink_Up.png")
+    elif RogueX.Uptop:
+        Null()
+    elif RogueX.Over == 'towel':
+        Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Over_Towel.png")
+    elif RogueX.Over == 'pink top':
+        Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Over_Pink.png")
+    elif RogueX.Over == 'mesh top':
+        Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Over_Mesh.png")
+    elif RogueX.Over == 'nighty':
+        Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Over_Nighty.png")
+    if not RogueX.Pierce:
+        Null()
+    elif RogueX.Pierce == 'ring':
+        if RogueX.Uptop:
+            "images/RogueSex/Rogue_69_Pierce_Tits_R.png"
+        elif RogueX.Over == 'nighty':
+            Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_R_Nighty.png")
+        elif RogueX.Over == 'pink top':
+            Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_R_Pink.png")
+        elif RogueX.Over == 'towel':
+            Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_R_Towel.png")
+        elif RogueX.Over == 'mesh top':
+            Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_R_Mesh.png")
+        elif RogueX.Chest == 'sports bra':
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_R_Sports.png")
+        elif RogueX.Chest == 'tube top':
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_R_Tube.png")
+        elif RogueX.Chest == 'bikini top':
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_R_Bikini.png")
+        elif RogueX.Chest == 'lace bra':
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_R_Lace.png")
+        elif RogueX.Chest:
+            Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_R_Tank.png")
+        else:
+            "images/RogueSex/Rogue_69_Pierce_Tits_R.png"
+    elif RogueX.Uptop:
+        "images/RogueSex/Rogue_69_Pierce_Tits_B.png"
+    elif RogueX.Over == 'nighty':
+        Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_B_Nighty.png")
+    elif RogueX.Over == 'pink top':
+        Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_B_Pink.png")
+    elif RogueX.Over == 'towel':
+        Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_B_Towel.png")
+    elif RogueX.Over == 'mesh top':
+        Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_B_Mesh.png")
+    elif RogueX.Chest == 'sports bra':
+        Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_B_Sports.png")
+    elif RogueX.Chest == 'tube top':
+        Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_B_Tube.png")
+    elif RogueX.Chest == 'bikini top':
+        Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_B_Bikini.png")
+    elif RogueX.Chest == 'lace bra':
+        Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_B_Lace.png")
+    elif RogueX.Chest:
+        Recolor("Rogue", "Chest", "images/RogueSex/Rogue_69_Pierce_Tits_B_Tank.png")
+    else:
+        "images/RogueSex/Rogue_69_Pierce_Tits_B.png"
+    if not RogueX.Pierce:
+        Null()
+    elif RogueX.Uptop:
+        Null()
+    elif RogueX.Pierce == 'ring':
+        if RogueX.Over == 'mesh top':
+            Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_R_Mesh.png")
+        elif RogueX.Over == 'nighty':
+            Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_R_Nighty.png")
+    elif RogueX.Over == 'mesh top':
+        Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_B_Mesh.png")
+    elif RogueX.Over == 'nighty':
+        Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Pierce_Tits_B_Nighty.png")
+    if 'belly' in RogueX.Spunk and Player.Male:
+        "images/RogueSex/Rogue_69_Spunk_Belly.png"
     zoom .8
     offset (145,150)#(250,210)#(175,175)
-#    yoffset -163
-# End Rogue 69 Pose Body / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
-
-# Start Rogue 69 Pose Head / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-image Rogue_69_Head:
-    LiveComposite(
-        #the torso/head used in the sex pose, referenced by Rogue_SexSprite
-        (1120,840),
-        (0,0), ConditionSwitch(
-            #tongue
-            "renpy.showing('Rogue_69_CUN') and Speed != 3", "images/RogueSex/Rogue_69_Tongue.png",
-            "Speed == 1", "images/RogueSex/Rogue_69_Tongue.png",
-            "True", Null(),
-            ),
-        (0,0), "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Head.png",
-        (0,0),ConditionSwitch(
-            #Outside Spunk
-            "'mouth' in RogueX.Spunk and Player.Male", "images/RogueSex/Rogue_69_Spunk_Mouth.png",
-            "True", Null(),
-            ),
-
-        (0,0), ConditionSwitch(
-            #Hair over
-            "Speed == 1 and Player.Male", Null(),
-            "Speed == 4 and Player.Male", Null(),
-            "Speed == 6 and Player.Male", Null(),
-#            "RogueX.Hair == 'blonde'", "images/RogueSex/Rogue_69_Hair_Blonde_Over.png",
-#            "RogueX.Hair == 'long' or RogueX.Hair == 'wetlong'", "images/RogueSex/Rogue_69_Hair_Long_Over.png",
-            "True", Recolor("Rogue", "Hair", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Hair_Over.png"),
-            ),
-        (0,0), ConditionSwitch(
-            #collar
-            "RogueX.Neck", "images/RogueSex/Rogue_69_Collar.png",
-            "True", Null(),
-            ),
-        )
+layeredimage Rogue_69_Head:
+    if renpy.showing('Rogue_69_CUN') and Speed != 3:
+        "images/RogueSex/Rogue_69_Tongue.png"
+    elif Speed == 1:
+        "images/RogueSex/Rogue_69_Tongue.png"
+    always:
+        "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Head.png"
+    if 'mouth' in RogueX.Spunk and Player.Male:
+        "images/RogueSex/Rogue_69_Spunk_Mouth.png"
+    if Speed == 1 and Player.Male:
+        Null()
+    elif Speed == 4 and Player.Male:
+        Null()
+    elif Speed == 6 and Player.Male:
+        Null()
+    else:
+        Recolor("Rogue", "Hair", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Hair_Over.png")
+    if RogueX.Neck:
+        "images/RogueSex/Rogue_69_Collar.png"
     zoom .8
     offset (145,150)
-#    offset (0,0)#(175,135)#(175,175)
-#    yoffset -163
-# End Rogue 69 Pose Head / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
-
-# Start Rogue 69 Pose Hair Over / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-image Rogue_69_HairOver:
-    LiveComposite(
-        #the torso/head used in the sex pose, referenced by Rogue_SexSprite
-        (1120,840),
-
-        (0,0), ConditionSwitch(
-            #Hair over
-#            "renpy.showing('Rogue_TJ_Animation')", Null(),
-#            "RogueX.Hair == 'blonde'", "images/RogueSex/Rogue_69_Hair_Blonde_Lick.png",
-#            "RogueX.Hair == 'long' or RogueX.Hair == 'wetlong'", "images/RogueSex/Rogue_69_Hair_Long_Lick.png",
-            "True", Recolor("Rogue", "Hair", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Hair_Over.png"),
-            ),
-        (0,0), ConditionSwitch(
-            #collar
-            "RogueX.Neck", "images/RogueSex/Rogue_69_Collar.png",     # == 'spiked collar'
-            "True", Null(),
-            ),
-        )
+layeredimage Rogue_69_HairOver:
+    Recolor("Rogue", "Hair", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Hair_Over.png")
+    if RogueX.Neck:
+        "images/RogueSex/Rogue_69_Collar.png"
     zoom .8
     offset (145,150)
-#    offset (0,0)#(175,135)#(180,100)
-#    yoffset -163
-# End Rogue 69 Pose Head / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
-# Start Rogue 69 Pose Head / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-image Rogue_69_HairBack:
-    LiveComposite(
-        #the torso/head used in the sex pose, referenced by Rogue_SexSprite
-        (1120,840),
-#        (0,0), "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Head.png",
-        (0,0), ConditionSwitch(
-            #Hair over
-#            "renpy.showing('Rogue_TJ_Animation')", Null(),
-#            "RogueX.Hair == 'blonde'", "images/RogueSex/Rogue_69_Hair_Blonde_Under.png",
-#            "RogueX.Hair == 'long' or RogueX.Hair == 'wetlong'", "images/RogueSex/Rogue_69_Hair_Long_Under.png",
-#            "RogueX.Hair == 'wet' or RogueX.Hair == 'wetlong' or RogueX.Water", "images/RogueSex/Rogue_69_Hair_Long.png",
-#            "not Player.Male and 'facial' in RogueX.Spunk","images/RogueSex/Rogue_Sprite_Hair_Wet.png",
-            "True", Recolor("Rogue", "Hair", "images/RogueSex/Rogue_69_Hair_Under.png"),
-            ),
-        )
+layeredimage Rogue_69_HairBack:
+    Recolor("Rogue", "Hair", "images/RogueSex/Rogue_69_Hair_Under.png")
     zoom .8
     offset (145,150)#(175,135)#(175,175)
-#    yoffset -163
-# End Rogue 69 Pose Head / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
-
-
-# Start Rogue 69 Pose Legs / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-image Rogue_69_Legs:
-    LiveComposite(
-        #the legs used in the sex pose, referenced by Rogue_SexSprite
-        (1120,880),
-#        (0,0), ConditionSwitch(
-#            #scarf
-#            "RogueX.Acc", "images/RogueSex/Rogue_69_Scarf.png",
-#            "True", Null(),
-#            ),
-#        (0,0), ConditionSwitch(
-#            #back of skirt Layer
-#            "RogueX.Legs == 'skirt'", Recolor("Rogue", "Legs", "images/RogueSex/Rogue_69_Legs_Skirt.png"),
-#            "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Legs_Towel.png"),
-#            "True", Null(),
-#            ),
-
-        (0,0), ConditionSwitch(
-            #Over Layer
-            "RogueX.Uptop", Null(),
-            "RogueX.Over == 'nighty'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Legs_Nighty.png"),
-            "RogueX.Over == 'towel'", Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Legs_Towel.png"),
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Legs
-#            "Player.Sprite and Player.Cock == 'in' and Speed >= 2", "images/RogueSex/Rogue_Sex_FBase.png",
-#            "Player.Sprite and Player.Cock == 'in' and Speed", "images/RogueSex/Rogue_Sex_FBase.png",
-#            "Player.Sprite and Player.Cock == 'in' and Speed", "Rogue_Sex_Heading_Pussy",
-#            "Player.Sprite and Speed and (Player.Cock == 'in' or Player.Cock == 'out')", "images/RogueSex/Rogue_Sex_Ass.png",
-#            "Trigger == 'lick pussy'", "images/RogueSex/Rogue_Sex_Ass.png",
-            "True", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Legs.png",
-            ),
-
-#        (0,0), ConditionSwitch(
-#            "Player.Sprite and Player.Cock == 'anal'", "images/RogueSex/Rogue_Sex_Anus_Cover.png",
-#            "True", Null(),
-#            ),
-
-#        (0,0), ConditionSwitch(
-#            #Wet look
-#            "not RogueX.Water", Null(),
-#            "True", "images/RogueSex/Rogue_69_Water_Legs.png",
-#            ),
-
-        (0,0), "Rogue_69_Anus",
-            #Anus Composite  (0,-10)
-
-        (0,0), "Rogue_69_Pussy",
-            #Pussy Composite
-
-
-        (0,0), ConditionSwitch(    #165,560
-            #Personal Wetness
-            "not RogueX.Wet", Null(),
-            "(RogueX.Legs == 'yoga pants' or RogueX.Legs == 'shorts') and not RogueX.Upskirt", Null(),
-            "RogueX.Panties and not RogueX.PantiesDown", Null(),
-            "RogueX.Wet == 1", AlphaMask("Wet_Drip_69","images/BetsySex/Betsy_69_Mask_Pussy.png"), #"Wet_Drip_69",
-            "True", AlphaMask("Wet_Drip2_69","images/BetsySex/Betsy_69_Mask_Pussy.png"), #"Wet_Drip2_69",
-            ),
-
-        (0,0), ConditionSwitch(    #-695,-480
-            #anal Spunk
-            "'anal' not in RogueX.Spunk or not Player.Male", Null(),
-            "(RogueX.Legs == 'yoga pants' or RogueX.Legs == 'shorts') and not RogueX.Upskirt", Null(),
-#            "True", "Spunk_Drip2_69", #"Spunk_Drip_69",
-            "True", AlphaMask("Spunk_Drip_69_Anal","images/BetsySex/Betsy_69_Mask_Ass.png"), #"Spunk_Drip_69",
-            ),
-        (0,0), ConditionSwitch(
-            #anal Spunk
-            "'anal' in RogueX.Spunk", "images/BetsySex/Betsy_69_Spunk_Ass.png",
-            "True", Null(),
-            ),
-
-
-        (0,0), ConditionSwitch(
-            #Panties if up
-            "RogueX.PantiesDown", Null(),
-            "RogueX.Panties == 'shorts' and RogueX.Wet > 1", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Legs_Shorts_Wet.png"),
-            "RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Legs_Shorts.png"),
-            "RogueX.Panties == 'lace panties'", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Panties_Lace.png"),
-            "RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Panties_Green.png"),
-            "RogueX.Panties == 'green panties' and RogueX.Wet", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Panties_Green_Wet.png"),
-            "RogueX.Panties == 'green panties'", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Panties_Green.png"),
-            "RogueX.Panties and RogueX.Wet", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Panties_Black_Wet.png"),
-            "RogueX.Panties", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Panties_Black.png"),
-            "True", Null(),
-            ),
-
-        (0,0), ConditionSwitch(
-            #hose layer
-            "RogueX.Hose == 'stockings and garterbelt'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_69_Hose_StockingsGarter.png"),
-            "RogueX.Hose == 'garterbelt'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_69_Hose_Garter.png"),
-            "RogueX.Hose == 'stockings'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_69_Hose_Stockings.png"),
-            "True", Null(),
-            ),
-
-        (0,0), ConditionSwitch(
-            #pantyhose layer
-            "RogueX.Panties and RogueX.PantiesDown", Null(),
-            "RogueX.Hose == 'tights'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_69_Hose_Tights.png"),
-            "RogueX.Hose == 'ripped tights'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_69_Hose_Tights_Holed.png"),
-            "RogueX.Hose == 'pantyhose'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_69_Hose_Pantyhose.png"),
-            "RogueX.Hose == 'ripped pantyhose'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_69_Hose_Pantyhose_Holed.png"),
-            "True", Null(),
-            ),
-
-        (0,0), ConditionSwitch(
-            #Sweater Layer
-            "RogueX.Acc == 'sweater'", "images/RogueSex/Rogue_69_Sweater.png",
-            "True", Null(),
-            ),
-
-        (0,0), ConditionSwitch(
-            #Legs Layer
-#            "RogueX.Legs == 'skirt' and RogueX.Upskirt", "images/RogueSex/Rogue_Sex_Legs_Skirt_Up.png",
-            "RogueX.Legs == 'skirt'", Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Skirt.png"),
-            "RogueX.Upskirt", Null(),
-#            "RogueX.Legs == 'skirt'", Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Skirt.png"),
-            "RogueX.Legs == 'pants' and RogueX.Wet > 1", Recolor("Rogue", "Legs", "images/RogueSex/Rogue_69_Legs_Pants_Wet.png"),
-            "RogueX.Legs == 'pants'", Recolor("Rogue", "Legs", "images/RogueSex/Rogue_69_Legs_Pants.png"),
-            "True", Null(),
-            ),
-
-        (0,0), ConditionSwitch(
-            #Piercings over pants and pantyhose
-            "not RogueX.Pierce", Null(),
-            "RogueX.Pierce == 'ring'",ConditionSwitch(
-                    #If she has panties down. . .
-                    "Player.Sprite and Player.Cock == 'in'", "images/RogueSex/Rogue_Sex_Pussy_RingF.png",
-                    "(RogueX.Hose == 'pantyhose' or RogueX.Hose == 'tights') and not (RogueX.Panties and RogueX.PantiesDown)", Null(),
-                    "RogueX.Legs == 'pants' and not RogueX.Upskirt", Recolor("Rogue", "Legs", "images/RogueSex/Rogue_69_Pierce_Pussy_R_Black.png"),
-
-                    "RogueX.PantiesDown", "images/RogueSex/Rogue_Sex_Pussy_Ring.png",
-                    "RogueX.Panties == 'bikini bottoms' or RogueX.Panties == 'green panties'", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Pierce_Pussy_R_Green.png"),
-                    "RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Pierce_Pussy_R_Yellow.png"),
-                    "RogueX.Panties == 'lace panties'", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Pierce_Pussy_R_Lace.png"),
-                    "RogueX.Panties", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Pierce_Pussy_R_Black.png"),
-                    "True", "images/RogueSex/Rogue_Sex_Pussy_Ring.png",
-
-                    "True", Null(),
-                    ),
-            #else, it's barbell
-            "Player.Sprite and Player.Cock == 'in'", "images/RogueSex/Rogue_Sex_Pussy_BarbellF.png",
-            "RogueX.Legs == 'shorts' and not RogueX.Upskirt", Recolor("Rogue", "Legs", "images/RogueSex/Rogue_69_Pierce_Pussy_B_Clothed.png"),
-            "RogueX.Legs == 'pants' and not RogueX.Upskirt", Recolor("Rogue", "Legs", "images/RogueSex/Rogue_69_Pierce_Pussy_B_Clothed.png"),
-            "(RogueX.Hose == 'pantyhose' or RogueX.Hose == 'tights') and not (RogueX.Panties and RogueX.PantiesDown)", Null(),
-
-            "RogueX.PantiesDown", "images/RogueSex/Rogue_Sex_Pussy_Barbell.png",
-            "RogueX.Panties == 'lace panties'", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Pierce_Pussy_B_Lace.png"),
-            "RogueX.Panties", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Pierce_Pussy_B_Clothed.png"),
-            "True", "images/RogueSex/Rogue_Sex_Pussy_Barbell.png",
-            ),
-
-#        (0,0), ConditionSwitch(                                                                                 #hotdog cock Layer
-#            "not Player.Sprite or Player.Cock != 'out'", Null(),
-#            "Speed >= 2", "Rogue_Hotdog_Zero_Anim2",
-#            "Speed", "Rogue_Hotdog_Zero_Anim1",
-#            "True", "Rogue_Hotdog_Zero_Anim0",
-#            ),
-        (0,0), ConditionSwitch(
-            #pussy licking animation
-#            "Player.Sprite and Player.Cock", Null(),
-            "Trigger == 'lick pussy' or Trigger2 == 'lick pussy'", "Rogue_69_Lick_Pussy",
-            "Trigger == 'lick ass' or Trigger2 == 'lick ass'", "Rogue_69_Lick_Ass",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #pussy fondling animation
-            "RogueX.Offhand == 'fondle pussy' and RogueX.Lust > 60 and not (Player.Sprite)",  At("RogueFingerHand", GirlFingerPussyX()), #"Rogue_Sex_Mast2",
-            "RogueX.Offhand == 'fondle pussy'", At("RogueMastHand", GirlGropePussyX()), #"Rogue_Sex_Mast",
-            "Player.Sprite and Player.Cock", Null(),
-            "Trigger == 'fondle pussy' or Trigger2 == 'fondle pussy'", "Rogue_Sex_Fondle_Pussy",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Footjob overlay
-            "Player.Cock == 'foot'", Null(),
-            "Player.Sprite and Player.Cock == 'anal'",AlphaMask("Rogue_69_Feet", "images/RogueSex/Rogue_69_Feet_Mask.png"),
-            "renpy.showing('Anal_Plug_In_Sex') or renpy.showing('Anal_Plug_Out_Sex')",AlphaMask("Rogue_69_Feet", "images/RogueSex/Rogue_69_Feet_Mask.png"),
-#            "True", "Rogue_69_Feet",
-            "ShowFeet", "Rogue_69_Feet",
-#            "Player.Sprite", AlphaMask("Rogue_Sex_Feet", "images/RogueSex/Rogue_Sex_Feet_Mask.png"),
-#            "Trigger == 'lick pussy'", AlphaMask("Rogue_Sex_Feet", "images/RogueSex/Rogue_Sex_Feet_Mask.png"),
-#            "Trigger == 'lick ass'", AlphaMask("Rogue_Sex_Feet", "images/RogueSex/Rogue_Sex_Feet_Mask.png"),
-            "True", AlphaMask("Rogue_69_Feet", "images/RogueSex/Rogue_69_Feet_Mask.png"),
-            ),
-
-#        (0,0), ConditionSwitch(                                                                                 #UI tool layer
-#            "not UI_Tool", Null(),
-#            "UI_Tool", "Slap_Ass",
-#            "True", Null(),
-#            ),
-#        (0,0), ConditionSwitch(                                                         #Shows different lower body motion depending on events
-#            "not Speed", "Rogue_Sex_Feet",
-#            "Player.Cock == 'anal' or Player.Cock == 'in' or Player.Cock == 'out'", AlphaMask("Rogue_Sex_Feet", "images/RogueSex/Rogue_Sex_FeetMask.png"),
-#            "True", "Rogue_Sex_Feet",
-#            ),
-        )
-    #offset (0,-20)#(0,20)
-# End Rogue 69 Pose Legs / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
-image Rogue_69_Feet:
-    LiveComposite(
-        #the lower legs used in the sex pose, referenced by Rogue_Sex_Legs
-        (1120,840),
-#        (0,0), "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_Sex_Feet.png",                                                         #Legs Base
-        (0,0), ConditionSwitch(
-            #hose layer
-            "True", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_Sex_Feet.png",   #Null(),
-            ),
-
-        (0,0), ConditionSwitch(
-            #hose layer
-            "(RogueX.Hose == 'pantyhose' or RogueX.Hose == 'ripped pantyhose') and RogueX.Panties and RogueX.PantiesDown", Recolor("Rogue", "Hose", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Feet.png"),
-            "(RogueX.Hose == 'tights' or RogueX.Hose == 'ripped tights') and RogueX.Panties and RogueX.PantiesDown", Recolor("Rogue", "Hose", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Feet.png"),
-            "RogueX.Hose == 'ripped tights'", Recolor("Rogue", "Hose", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Feet_Tights_Holed.png"),
-            "RogueX.Hose == 'tights'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_69_Feet_Tights.png"),
-            "RogueX.Hose == 'ripped pantyhose'", Recolor("Rogue", "Hose", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Feet_Hose_Holed.png"),
-            "RogueX.Hose and RogueX.Hose != 'garterbelt'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_69_Feet_Hose.png"),
-            "True", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_Sex_Feet.png",   #Null(),
-            ),
-
-#        (0,0), ConditionSwitch(
-#            #Wet look
-#            "not RogueX.Water", Null(),
-#            "True", "images/RogueSex/Rogue_69_Water_Feet.png",
-#            ),
-#        (0,0), ConditionSwitch(
-#            #panties if down
-#            "not RogueX.PantiesDown", Null(),
-#            "RogueX.Panties == 'lace panties'", "images/RogueSex/Rogue_69_Panties_Lace_Down.png",
-#            "RogueX.Panties == 'swimsuit' or RogueX.Chest == 'swimsuit'", Null(),
-#            "RogueX.Panties", "images/RogueSex/Rogue_69_Panties_Blue_Down.png",
-#            "True", Null(),
-#            ),
-        (0,0), ConditionSwitch(
-            #Legs Layer
-            "RogueX.Legs == 'pants' and RogueX.Upskirt", Recolor("Rogue", "Legs", "images/RogueSex/Rogue_69_Feet_Pants_Down.png"),
-            "RogueX.Legs == 'pants'", Recolor("Rogue", "Legs", "images/RogueSex/Rogue_69_Feet_Pants.png"),
-            "True", Null(),
-            ),
-#        (0,0), ConditionSwitch(
-#            #spunk
-#            "'feet' in RogueX.Spunk", "images/RogueSex/Rogue_Sex_Spunk_Feet.png",
-#            "True", Null(),
-#            ),
-        )
-
-
-
-
-# Start Rogue 69 Pose Pussy / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+layeredimage Rogue_69_Legs:
+    if RogueX.Uptop:
+        Null()
+    elif RogueX.Over == 'nighty':
+        Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Legs_Nighty.png")
+    elif RogueX.Over == 'towel':
+        Recolor("Rogue", "Over", "images/RogueSex/Rogue_69_Legs_Towel.png")
+    "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Legs.png"
+    always:
+        "Rogue_69_Anus"
+    always:
+        "Rogue_69_Pussy"
+    if not RogueX.Wet:
+        Null()
+    elif (RogueX.Legs == 'yoga pants' or RogueX.Legs == 'shorts') and not RogueX.Upskirt:
+        Null()
+    elif RogueX.Panties and not RogueX.PantiesDown:
+        Null()
+    elif RogueX.Wet == 1:
+        AlphaMask("Wet_Drip_69","images/BetsySex/Betsy_69_Mask_Pussy.png")
+    else:
+        AlphaMask("Wet_Drip2_69","images/BetsySex/Betsy_69_Mask_Pussy.png")
+    if 'anal' not in RogueX.Spunk or not Player.Male:
+        Null()
+    elif (RogueX.Legs == 'yoga pants' or RogueX.Legs == 'shorts') and not RogueX.Upskirt:
+        Null()
+    else:
+        AlphaMask("Spunk_Drip_69_Anal","images/BetsySex/Betsy_69_Mask_Ass.png")
+    if 'anal' in RogueX.Spunk:
+        "images/BetsySex/Betsy_69_Spunk_Ass.png"
+    if RogueX.PantiesDown:
+        Null()
+    elif RogueX.Panties == 'shorts' and RogueX.Wet > 1:
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Legs_Shorts_Wet.png")
+    elif RogueX.Panties == 'shorts':
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Legs_Shorts.png")
+    elif RogueX.Panties == 'lace panties':
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Panties_Lace.png")
+    elif RogueX.Panties == 'bikini bottoms':
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Panties_Green.png")
+    elif RogueX.Panties == 'green panties' and RogueX.Wet:
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Panties_Green_Wet.png")
+    elif RogueX.Panties == 'green panties':
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Panties_Green.png")
+    elif RogueX.Panties and RogueX.Wet:
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Panties_Black_Wet.png")
+    elif RogueX.Panties:
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Panties_Black.png")
+    if RogueX.Hose == 'stockings and garterbelt':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_69_Hose_StockingsGarter.png")
+    elif RogueX.Hose == 'garterbelt':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_69_Hose_Garter.png")
+    elif RogueX.Hose == 'stockings':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_69_Hose_Stockings.png")
+    if RogueX.Panties and RogueX.PantiesDown:
+        Null()
+    elif RogueX.Hose == 'tights':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_69_Hose_Tights.png")
+    elif RogueX.Hose == 'ripped tights':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_69_Hose_Tights_Holed.png")
+    elif RogueX.Hose == 'pantyhose':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_69_Hose_Pantyhose.png")
+    elif RogueX.Hose == 'ripped pantyhose':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_69_Hose_Pantyhose_Holed.png")
+    if RogueX.Acc == 'sweater':
+        "images/RogueSex/Rogue_69_Sweater.png"
+    if RogueX.Legs == 'skirt':
+        Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Skirt.png")
+    elif RogueX.Upskirt:
+        Null()
+    elif RogueX.Legs == 'pants' and RogueX.Wet > 1:
+        Recolor("Rogue", "Legs", "images/RogueSex/Rogue_69_Legs_Pants_Wet.png")
+    elif RogueX.Legs == 'pants':
+        Recolor("Rogue", "Legs", "images/RogueSex/Rogue_69_Legs_Pants.png")
+    if not RogueX.Pierce:
+        Null()
+    elif RogueX.Pierce == 'ring':
+        if Player.Sprite and Player.Cock == 'in':
+            "images/RogueSex/Rogue_Sex_Pussy_RingF.png"
+        elif (RogueX.Hose == 'pantyhose' or RogueX.Hose == 'tights') and not (RogueX.Panties and RogueX.PantiesDown):
+            Null()
+        elif RogueX.Legs == 'pants' and not RogueX.Upskirt:
+            Recolor("Rogue", "Legs", "images/RogueSex/Rogue_69_Pierce_Pussy_R_Black.png")
+        elif RogueX.PantiesDown:
+            "images/RogueSex/Rogue_Sex_Pussy_Ring.png"
+        elif RogueX.Panties == 'bikini bottoms' or RogueX.Panties == 'green panties':
+            Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Pierce_Pussy_R_Green.png")
+        elif RogueX.Panties == 'shorts':
+            Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Pierce_Pussy_R_Yellow.png")
+        elif RogueX.Panties == 'lace panties':
+            Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Pierce_Pussy_R_Lace.png")
+        elif RogueX.Panties:
+            Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Pierce_Pussy_R_Black.png")
+        else:
+            "images/RogueSex/Rogue_Sex_Pussy_Ring.png"
+    elif Player.Sprite and Player.Cock == 'in':
+        "images/RogueSex/Rogue_Sex_Pussy_BarbellF.png"
+    elif RogueX.Legs == 'shorts' and not RogueX.Upskirt:
+        Recolor("Rogue", "Legs", "images/RogueSex/Rogue_69_Pierce_Pussy_B_Clothed.png")
+    elif RogueX.Legs == 'pants' and not RogueX.Upskirt:
+        Recolor("Rogue", "Legs", "images/RogueSex/Rogue_69_Pierce_Pussy_B_Clothed.png")
+    elif (RogueX.Hose == 'pantyhose' or RogueX.Hose == 'tights') and not (RogueX.Panties and RogueX.PantiesDown):
+        Null()
+    elif RogueX.PantiesDown:
+        "images/RogueSex/Rogue_Sex_Pussy_Barbell.png"
+    elif RogueX.Panties == 'lace panties':
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Pierce_Pussy_B_Lace.png")
+    elif RogueX.Panties:
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_69_Pierce_Pussy_B_Clothed.png")
+    else:
+        "images/RogueSex/Rogue_Sex_Pussy_Barbell.png"
+    if Trigger == 'lick pussy' or Trigger2 == 'lick pussy':
+        "Rogue_69_Lick_Pussy"
+    elif Trigger == 'lick ass' or Trigger2 == 'lick ass':
+        "Rogue_69_Lick_Ass"
+    if RogueX.Offhand == 'fondle pussy' and RogueX.Lust > 60 and not (Player.Sprite):
+        At("RogueFingerHand", GirlFingerPussyX())
+    elif RogueX.Offhand == 'fondle pussy':
+        At("RogueMastHand", GirlGropePussyX())
+    elif Player.Sprite and Player.Cock:
+        Null()
+    elif Trigger == 'fondle pussy' or Trigger2 == 'fondle pussy':
+        "Rogue_Sex_Fondle_Pussy"
+    if Player.Cock == 'foot':
+        Null()
+    elif Player.Sprite and Player.Cock == 'anal':
+        AlphaMask("Rogue_69_Feet", "images/RogueSex/Rogue_69_Feet_Mask.png")
+    elif renpy.showing('Anal_Plug_In_Sex') or renpy.showing('Anal_Plug_Out_Sex'):
+        AlphaMask("Rogue_69_Feet", "images/RogueSex/Rogue_69_Feet_Mask.png")
+    elif ShowFeet:
+        "Rogue_69_Feet"
+    else:
+        AlphaMask("Rogue_69_Feet", "images/RogueSex/Rogue_69_Feet_Mask.png")
+layeredimage Rogue_69_Feet:
+    "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_Sex_Feet.png"
+    if (RogueX.Hose == 'pantyhose' or RogueX.Hose == 'ripped pantyhose') and RogueX.Panties and RogueX.PantiesDown:
+        Recolor("Rogue", "Hose", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Feet.png")
+    elif (RogueX.Hose == 'tights' or RogueX.Hose == 'ripped tights') and RogueX.Panties and RogueX.PantiesDown:
+        Recolor("Rogue", "Hose", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Feet.png")
+    elif RogueX.Hose == 'ripped tights':
+        Recolor("Rogue", "Hose", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Feet_Tights_Holed.png")
+    elif RogueX.Hose == 'tights':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_69_Feet_Tights.png")
+    elif RogueX.Hose == 'ripped pantyhose':
+        Recolor("Rogue", "Hose", "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_69_Feet_Hose_Holed.png")
+    elif RogueX.Hose and RogueX.Hose != 'garterbelt':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_69_Feet_Hose.png")
+    else:
+        "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_Sex_Feet.png"
+    if RogueX.Legs == 'pants' and RogueX.Upskirt:
+        Recolor("Rogue", "Legs", "images/RogueSex/Rogue_69_Feet_Pants_Down.png")
+    elif RogueX.Legs == 'pants':
+        Recolor("Rogue", "Legs", "images/RogueSex/Rogue_69_Feet_Pants.png")
 image Rogue_69_Pussy:
     # This is the visual for her pussy during the Speed 0 mode (static).
 
@@ -6617,33 +6010,27 @@ image Rogue_69_Pussy:
 #                )
 
     #End Rogue Pussy composite
-
 image Spunk_Drip_69:
     contains:
         "Spunk_Drip2"
         rotate 180
         offset(-700,-500)
-
 image Spunk_Drip_69_Anal:
     contains:
 #        Solid("#159457", xysize=(1120,840))
         "Spunk_Drip2"
         rotate 180
         offset(-695,-450)
-
 image Wet_Drip_69:
     contains:
         "Wet_Drip"
         rotate 180
         offset(-700,-500)
-
 image Wet_Drip2_69:
     contains:
         "Wet_Drip2"
         rotate 180
         offset(-700,-500)
-
-
 image Rogue_69_Lick_Pussy:
         "Lick_AnimF"
         zoom 0.7
@@ -6654,7 +6041,6 @@ image Rogue_69_Lick_Ass:
         zoom 0.7
         rotate 180
         offset (535,580)#(535,550)
-
 image Rogue_69_Fondle_Pussy:
         "GropePussy_Rogue"
         xzoom -1.5
@@ -6666,7 +6052,6 @@ image Rogue_69_Fondle_Pussy:
 #            ease 1 offset(0,-1000) #(535,500)
 #            ease 1 offset(0,0) #(535,500)
 #            repeat
-
 image Rogue_69_Anus:
     contains:
             #Anus background plate
@@ -7406,26 +6791,18 @@ image Rogue_69_Anim6:
 # ////////////////////////////////                                                                                      ///////////////////////////////
 
 #Start Animations for Rogue's 69 Cunnalingus pose / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
-image Rogue_69_CUN:
-    LiveComposite(                                                                                 #Base body
-        (1120,840),
-        (0,0), ConditionSwitch(
-#                "True", "Rogue_69_Anim1",
-                "Speed == 2",   "Rogue_69_Cun2",
-                "Speed == 3",   "Rogue_69_Cun3",
-                "Speed",        "Rogue_69_Cun1",
-                "True",         "Rogue_69_Cun0",
-                ),
-        )
+layeredimage Rogue_69_CUN:
+    if Speed == 2:
+        "Rogue_69_Cun2"
+    elif Speed == 3:
+        "Rogue_69_Cun3"
+    elif Speed:
+        "Rogue_69_Cun1"
+    else:
+        "Rogue_69_Cun0"
     align (0.6,0.0)
     pos (475,-700)
     zoom 1.8#1/3
-
-#Start Animations for Rogue's 69 pose / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
-
-#Start Animations for Rogue's Body during 69 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 image Rogue_69_Cun0:
         #this is the animation for Rogue's hairback during 69, Speed 0 (static)
         contains:
@@ -7886,111 +7263,83 @@ image Rogue_69_Cun3:
 #End Rogue 69 Animations
 
 # Start Rogue Scissor Pose content / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
-image Rogue_SC_Sprite:
-    LiveComposite(                                                                                 #Base body
-        (1120,840),
-        (0,0), ConditionSwitch(
-                #if the top's down. . .
-                "Speed >= 2", "Rogue_SC_Anim_2",
-                "Speed", "Rogue_SC_Anim_1",
-                "True", "Rogue_SC_Anim_0",
-                ),
-        )
+layeredimage Rogue_SC_Sprite:
+    if Speed >= 2:
+        "Rogue_SC_Anim_2"
+    elif Speed:
+        "Rogue_SC_Anim_1"
+    else:
+        "Rogue_SC_Anim_0"
     align (0.6,0.0)
     pos (650,300)#(650,200)(925,740)#(910,850)
     zoom 0.85#0.8
-
-# End Rogue Sex Pose Speed 2 Scissor / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
-
-#image Rogue_Sex_Legs = LiveComposite(
-image Rogue_SC_Legs:
-    LiveComposite(
-        #the legs used in the sex pose, referenced by Kitty_SexSprite
-        (1120,840),
-        (0,0), "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_Sex_Legs.png",
-        #Legs Base
-        (0,0),ConditionSwitch(
-            #wet look
-            "RogueX.Water", "images/RogueSex/Rogue_Sex_Wet_Legs.png",
-            "True", Null(),
-            ),
-#        (0,0), "Rogue_Sex_Anus",
-        #Anus Composite
-
-        (0,0), "Rogue_SC_Pussy",
-        #Pussy Composite
-
-        (0,0), ConditionSwitch(
-            #Panties if up
-            "not RogueX.Panties or RogueX.PantiesDown", Null(),
-            "Player.Sprite and (Player.Cock == 'sex' or Player.Cock == 'anal')", Null(),  #hide if sexing
-            "RogueX.Panties == 'lace panties'", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Lace.png"),
-            "RogueX.Panties == 'green panties' and RogueX.Wet", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Green_Wet.png"),
-            "RogueX.Panties == 'green panties' or RogueX.Panties == 'bikini bottoms'", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Green.png"),
-            "RogueX.Panties == 'shorts' and RogueX.Wet", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Shorts_Wet.png"),
-            "RogueX.Panties == 'shorts'", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Shorts.png"),
-            "RogueX.Wet", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Black_Wet.png"),
-            "True", Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Black.png"),
-            ),
-
-        (0,0), ConditionSwitch(
-            #Hose layer (add panties up dependencies)
-            #"RogueX.PantiesDown", Null(),
-            "RogueX.Hose == 'ripped pantyhose'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Full_Hole.png"),
-            "RogueX.Hose == 'ripped tights'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Tights_Hole.png"),
-            "RogueX.Hose == 'stockings'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Stockings.png"),
-            "RogueX.Hose == 'stockings and garterbelt'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_StockingGarter.png"),
-            "RogueX.Hose == 'garterbelt'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Garter.png"),
-            "RogueX.PantiesDown", Null(),
-            "Player.Sprite and (Player.Cock == 'in' or Player.Cock == 'anal')", Null(),  #hide if sexing
-            "RogueX.Hose == 'pantyhose'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Full.png"),
-            "RogueX.Hose == 'tights' and RogueX.Wet", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Tights_Wet.png"),
-            "RogueX.Hose == 'tights'", Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Tights.png"),
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Legs Layer
-            "RogueX.Legs == 'skirt'", Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Skirt.png"),
-            "RogueX.Upskirt", Null(),
-            "RogueX.Legs == 'pants' and RogueX.Wet > 1", Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Pants_Wet.png"),
-            "RogueX.Legs == 'pants'",Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Pants.png"),
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #Sweater
-            "RogueX.Acc == 'sweater'", "images/RogueSex/Rogue_Sex_Sweater.png",
-            "True", Null(),
-            ),
-#        (0,0), ConditionSwitch(
-#            #Over Layer
-#            "RogueX.Over == 'towel'", "images/KittySex/Kitty_Sex_Towel_Legs.png",
-#            "True", Null(),
-#            ),
-        (0,0),ConditionSwitch(
-            #Outside Spunk
-            "'belly' in RogueX.Spunk and Player.Male", "images/KittySex/Kitty_Sex_Spunk_Pelvis.png",
-            "True", Null(),
-            ),
-        (0,0), ConditionSwitch(
-            #pussy licking animation
-            "Player.Sprite", Null(),
-            "Trigger == 'lick pussy'", "Rogue_Sex_Lick_Pussy",
-            "Trigger == 'lick ass'", "Rogue_Sex_Lick_Ass",
-            "RogueX.Offhand == 'fondle pussy' and RogueX.Lust > 60", At("RogueFingerHand", GirlFingerPussyX()),
-            "RogueX.Offhand == 'fondle pussy'", At("RogueMastHand", GirlGropePussyX()),
-            "True", Null()
-            ),
-#        (0,0), ConditionSwitch(
-#            #Shows different lower body motion depending on events
-#            "not Speed or Player.Cock == 'foot' or ShowFeet", "Rogue_Sex_Feet",
-#            #"Player.Cock == 'anal' or Player.Cock == 'in' or Player.Cock == 'out'", AlphaMask("Rogue_Sex_Feet", "images/KittySex/Kitty_Sex_FeetMask.png"),
-#            "True", AlphaMask("Rogue_Sex_Feet","images/RogueSex/Rogue_Sex_FeetMask2.png")
-#            ),
-        )
-
-
+layeredimage Rogue_SC_Legs:
+    always:
+        "images/RogueSex/[RogueX.skin_image.skin_path]Rogue_Sex_Legs.png"
+    if RogueX.Water:
+        "images/RogueSex/Rogue_Sex_Wet_Legs.png"
+    always:
+        "Rogue_SC_Pussy"
+    if not RogueX.Panties or RogueX.PantiesDown:
+        Null()
+    elif Player.Sprite and (Player.Cock == 'sex' or Player.Cock == 'anal'):
+        Null()
+    elif RogueX.Panties == 'lace panties':
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Lace.png")
+    elif RogueX.Panties == 'green panties' and RogueX.Wet:
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Green_Wet.png")
+    elif RogueX.Panties == 'green panties' or RogueX.Panties == 'bikini bottoms':
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Green.png")
+    elif RogueX.Panties == 'shorts' and RogueX.Wet:
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Shorts_Wet.png")
+    elif RogueX.Panties == 'shorts':
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Shorts.png")
+    elif RogueX.Wet:
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Black_Wet.png")
+    else:
+        Recolor("Rogue", "Panties", "images/RogueSex/Rogue_Sex_Panties_Black.png")
+    if RogueX.Hose == 'ripped pantyhose':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Full_Hole.png")
+    elif RogueX.Hose == 'ripped tights':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Tights_Hole.png")
+    elif RogueX.Hose == 'stockings':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Stockings.png")
+    elif RogueX.Hose == 'stockings and garterbelt':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_StockingGarter.png")
+    elif RogueX.Hose == 'garterbelt':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Garter.png")
+    elif RogueX.PantiesDown:
+        Null()
+    elif Player.Sprite and (Player.Cock == 'in' or Player.Cock == 'anal'):
+        Null()
+    elif RogueX.Hose == 'pantyhose':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Full.png")
+    elif RogueX.Hose == 'tights' and RogueX.Wet:
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Tights_Wet.png")
+    elif RogueX.Hose == 'tights':
+        Recolor("Rogue", "Hose", "images/RogueSex/Rogue_Sex_Hose_Legs_Tights.png")
+    if RogueX.Legs == 'skirt':
+        Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Skirt.png")
+    elif RogueX.Upskirt:
+        Null()
+    elif RogueX.Legs == 'pants' and RogueX.Wet > 1:
+        Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Pants_Wet.png")
+    elif RogueX.Legs == 'pants':
+        Recolor("Rogue", "Legs", "images/RogueSex/Rogue_Sex_Legs_Pants.png")
+    if RogueX.Acc == 'sweater':
+        "images/RogueSex/Rogue_Sex_Sweater.png"
+    if 'belly' in RogueX.Spunk and Player.Male:
+        "images/KittySex/Kitty_Sex_Spunk_Pelvis.png"
+    if Player.Sprite:
+        Null()
+    elif Trigger == 'lick pussy':
+        "Rogue_Sex_Lick_Pussy"
+    elif Trigger == 'lick ass':
+        "Rogue_Sex_Lick_Ass"
+    elif RogueX.Offhand == 'fondle pussy' and RogueX.Lust > 60:
+        At("RogueFingerHand", GirlFingerPussyX())
+    elif RogueX.Offhand == 'fondle pussy':
+        At("RogueMastHand", GirlGropePussyX())
 image Rogue_SC_Pussy:
     # This is the visual for her pussy during the Speed 0 mode (static).
     contains:
@@ -8050,7 +7399,6 @@ image Rogue_SC_Pussy:
 
 #End Animations for Rogue's Pussy during SC / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 # End Rogue Scissor Pose Legs / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
 image Rogue_SC_Anim_0:
         #this is the animation for Rogue's lower body during Scissoring, Speed 0 (static)
         contains:
@@ -8119,8 +7467,6 @@ image Rogue_SC_Anim_0:
                 ease 2 rotate 35
                 repeat
         #end animation for Rogue's lower body during Scissoring, Speed 0 (static) / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
-
 image Rogue_SC_Anim_1:
         #this is the animation for Rogue's lower body during Scissoring, Speed 1 (slow)
         contains:
@@ -8207,7 +7553,6 @@ image Rogue_SC_Anim_1:
                 pause .5
                 repeat
         #End animation for Rogue's lower body during Scissoring, Speed 1 (slow) / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
 image Rogue_SC_Anim_2:
         #this is the animation for Rogue's lower body during Scissoring, Speed 2 (fast)
         contains:
@@ -8450,7 +7795,6 @@ image UI_Vibrator:
             "Vibration", At("UI_VibB", Vibrate()),
             ),
         )
-
 image GropeLeftBreast:
     contains:
         subpixel True
@@ -8464,7 +7808,6 @@ image GropeLeftBreast:
             ease 1 rotate 60
             ease 1 rotate 90
             repeat
-
 image GropeRightBreast:
     contains:
         subpixel True
@@ -8479,7 +7822,6 @@ image GropeRightBreast:
             ease 1 rotate -30
             ease 1 rotate -60
             repeat
-
 image LickRightBreast:
     contains:
         subpixel True
@@ -8495,7 +7837,6 @@ image LickRightBreast:
             pause .5
             ease 1.5 rotate 30 pos (160,400)
             repeat
-
 image LickLeftBreast:
     contains:
         subpixel True
@@ -8511,7 +7852,6 @@ image LickLeftBreast:
             pause .5
             ease 1.5 rotate 30 pos (280,410)#(160,400)
             repeat
-
 image GropeThigh:
     contains:
         subpixel True
@@ -8533,7 +7873,6 @@ image GropeThigh:
             ease .5 xpos 213
             ease .5 xpos 210
             repeat
-
 image GropePussy:
     contains:
         subpixel True
@@ -8552,7 +7891,6 @@ image GropePussy:
                 pause .25
                 ease 1 rotate 170 pos (220,635)
             repeat
-
 image FingerPussy:
     contains:
         subpixel True
@@ -8581,7 +7919,6 @@ image FingerPussy:
                 ease .25 rotate 40 pos (240,685)
                 ease .25 rotate 50 pos (230,720)
             repeat
-
 image Lickpussy:
     contains:
         subpixel True
@@ -8597,7 +7934,6 @@ image Lickpussy:
             linear .5 rotate -60 pos (220,660)
             easein 1 rotate 10 pos (250,670)
             repeat
-
 image VibratorRightBreast:
     contains:
         subpixel True
@@ -8613,7 +7949,6 @@ image VibratorRightBreast:
             ease 1 rotate 55 ypos 380
             pause .25
             repeat
-
 image VibratorLeftBreast:
     contains:
         subpixel True
@@ -8629,7 +7964,6 @@ image VibratorLeftBreast:
             ease 1 rotate 55 ypos 400
             pause .25
             repeat
-
 image VibratorPussy:
     contains:
         subpixel True
@@ -8645,7 +7979,6 @@ image VibratorPussy:
             ease 1 rotate 70 xpos 240 ypos 665
             pause .25
             repeat
-
 image VibratorAnal:
     contains:
         subpixel True
@@ -8661,7 +7994,6 @@ image VibratorAnal:
             ease 1 rotate 10 xpos 270 ypos 665
             pause .25
             repeat
-
 image VibratorPussyInsert:
     contains:
         subpixel True
@@ -8671,7 +8003,6 @@ image VibratorPussyInsert:
         anchor (0.5,0.5)
         alpha 0.5
         rotate 0
-
 image VibratorAnalInsert:
     contains:
         subpixel True
@@ -8681,7 +8012,6 @@ image VibratorAnalInsert:
         anchor (0.5,0.5)
         alpha 0.3
         rotate 0
-
 image TestUIAnimation:
     contains:
         subpixel True
@@ -8712,7 +8042,6 @@ image GirlGropeLeftBreast:
             ease 1 rotate -40 pos (280,390)
             ease 1 rotate -20 pos (300,400)
             repeat
-
 image GirlGropeRightBreast:
     contains:
         subpixel True
@@ -8727,7 +8056,6 @@ image GirlGropeRightBreast:
             ease 1 rotate -30 pos (160,410)
             ease 1 rotate -10 pos (160,380)
             repeat
-
 image GirlGropeThigh:
     contains:
         subpixel True
@@ -8749,7 +8077,6 @@ image GirlGropeThigh:
             ease .5 xpos 213
             ease .5 xpos 210
             repeat
-
 image GirlGropePussy:
     contains:
         subpixel True
@@ -8783,7 +8110,6 @@ image GirlGropePussy:
                 ease .3 rotate 205 pos (225,620)
                 ease .3 rotate 200 pos (225,630)
             repeat
-
 image GirlFingerPussy:
     contains:
         subpixel True
@@ -8817,7 +8143,6 @@ image GirlFingerPussy:
                 ease .3 rotate 205 pos (230,635)
                 ease .3 rotate 200 pos (230,645)
             repeat
-
 transform GirlGropePussyX():
         #used in the sex poses for the girl masturbating
         subpixel True
@@ -8887,13 +8212,11 @@ image RogueMastHand:
         zoom 0.9
         rotate 240
         offset (365,220)
-
 image RogueFingerHand:
         "images/UI_GirlFinger_Rogue.png"
         zoom 0.9
         rotate 220
         offset (333,300)
-
 image Lick_Anim:
     anchor (0.5, 0.5)
     parallel: #total 2.6
@@ -8918,8 +8241,6 @@ image Lick_Anim:
         pause .3
         easein .8 yoffset 0
         repeat
-
-
 image Lick_AnimF:
     anchor (0.5, 0.5)
     parallel: #total 2.6
@@ -8944,7 +8265,6 @@ image Lick_AnimF:
         pause .3
         easein .8 yoffset -15
         repeat
-
 label Close_Launch(GirlA=0,GirlB=0,XLoc=0,YLoc=0,XZoom=0,BO=[]):  #rkeljsvg
     # Launches the girls close to player
     # Girl is the lead, Partner is the other girl
@@ -9197,7 +8517,6 @@ image Anal_Plug_In_Doggy:
             block:
                 ease 2.5 yoffset -160 #in (-6,-145)
         pos (1076+Plug_Mod[0],1330+Plug_Mod[1]) #(1100,1300)
-
 image Anal_Plug_Tip_Insert_Doggy:
             #the anal plug insert
 #        contains:
@@ -9216,7 +8535,6 @@ image Anal_Plug_Tip_Insert_Doggy:
             parallel:
                 pause 2.2
                 ease .3 zoom .5 #out
-
 image Anal_Plug_Tip_Mask_Insert_Doggy:
         #the masking animation for the anal plug insert
         contains:
@@ -9264,8 +8582,6 @@ image Anal_Plug_Out_Doggy:
                 ease 2.5 yoffset -120 #out (-6,-110)
                 ease 1 yoffset -70 alpha 0
         pos (1076+Plug_Mod[0],1330+Plug_Mod[1]) #(1100,1300)
-
-
 image Anal_Plug_Tip_Out_Doggy:
             #the anal plug being removed
         contains:
@@ -9281,7 +8597,6 @@ image Anal_Plug_Tip_Out_Doggy:
             parallel:
                 ease .3 zoom 1 #in
                 pause 2.2
-
 image Anal_Plug_Tip_Mask_Out_Doggy:
         #the masking animation for the anal plug removal
         contains:
@@ -9297,7 +8612,6 @@ image Anal_Plug_Tip_Mask_Out_Doggy:
 
 
 # Start Anal Plug in/out Sex (Rogue,Kitty,Laura,Jubes)< < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < <
-
 image Anal_Plug_In_Sex:
         #inserting an anal plug
         contains:
@@ -9328,7 +8642,6 @@ image Anal_Plug_In_Sex:
         pos (990+Plug_Mod[0],1347+Plug_Mod[1])        #(1076+Plug_Mod,1330)
         zoom 0.85
 #        pos (500,500)
-
 image Anal_Plug_Tip_Insert_Sex:
             #the anal plug insert
 #        contains:
@@ -9348,7 +8661,6 @@ image Anal_Plug_Tip_Insert_Sex:
             parallel:
                 pause 2.2
                 ease .3 zoom .5 #out
-
 image Anal_Plug_Tip_Mask_Insert_Sex:
         #the masking animation for the anal plug insert
         contains:
@@ -9395,7 +8707,6 @@ image Anal_Plug_Out_Sex:
                 ease 1 yoffset -70 alpha 0
         pos (990+Plug_Mod[0],1347+Plug_Mod[1])        #(1076+Plug_Mod,1330)
         zoom 0.85
-
 image Anal_Plug_Tip_Out_Sex:
             #the anal plug being removed
 #        contains:
@@ -9416,7 +8727,6 @@ image Anal_Plug_Tip_Out_Sex:
             parallel:
                 ease .3 zoom .85 #out
                 pause 2.2
-
 image Anal_Plug_Tip_Mask_Out_Sex:
         #the masking animation for the anal plug removal
         contains:
@@ -9432,7 +8742,6 @@ image Anal_Plug_Tip_Mask_Out_Sex:
 #End Anal Plug Sex removal animations (Rogue,Kitty,Laura,Jubes) < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < <
 
 # Start Anal Plug in/out Sex (Emma, Jean, Storm)< < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < <
-
 image Anal_Plug_In_Sex_Back:
         #inserting an anal plug
         contains:
@@ -9451,7 +8760,6 @@ image Anal_Plug_In_Sex_Back:
         pos (990+Plug_Mod[0],1347+Plug_Mod[1])        #(1076+Plug_Mod,1330)
         zoom 0.85
 #        pos (500,500)
-
 image Anal_Plug_Tip_Insert_Sex_Back:
             #the anal plug insert
 #        contains:
@@ -9493,7 +8801,6 @@ image Anal_Plug_Out_Sex_Back:
             offset (0,0)
         pos (990+Plug_Mod[0],1347+Plug_Mod[1])        #(1076+Plug_Mod,1330)
         zoom 0.85
-
 image Anal_Plug_Tip_Out_Sex_Back:
             #the anal plug being removed
 #        contains:
@@ -9522,7 +8829,6 @@ image Anal_Plug_Tip_Out_Sex_Back:
 
 
 #Start Anal Plug removal labels < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < <
-
 label Insert_Anal_Plug(Girl=0): #rkeljsvgb
         #this is called to initiate the anal plug sequence.
         if "plug" not in Girl.Inventory:
@@ -10097,7 +9403,6 @@ image Spunk_Drip:
                     easeout .9 ypos 350
                     alpha 0
                 repeat
-
 image Spunk_Drip2:
         #Dripping spunk
         contains:
@@ -10149,7 +9454,6 @@ image Spunk_Drip2:
                 easeout .9 ypos 350
                 alpha 0
                 repeat
-
 image Wet_Drip:
         #the minor dripping animation
         contains:
@@ -10191,7 +9495,6 @@ image Wet_Drip:
                     easeout .9 ypos 350
                     alpha 0
                 repeat
-
 image Wet_Drip2:
         #The dripping wetness animation at 2x speed
         contains:
@@ -10258,7 +9561,6 @@ image Zero_Chibicock:
             ),
         )
     anchor (0.5,0.5)
-
 image Chibi_Null:
     #The Blank Chibi-cock
     contains:
@@ -10269,7 +9571,6 @@ image Chibi_Null:
         xzoom 1
     pos (75,675)
     zoom 0.5
-
 image Chibi_Jackin:
     #the jackin it chibi cock
     contains:
@@ -10290,7 +9591,6 @@ image Chibi_Jackin:
                 repeat
     pos (75,675)
     zoom 0.5
-
 image Chibi_Handy:
     #the girl handy chibicock
     contains:
@@ -10315,11 +9615,9 @@ image Chibi_Handy:
                 repeat
     pos (75,675)
     zoom 0.5
-
 image Chibi_Mouth_Mask:
     "images/Chibi_Mouth_Mask.png"
     anchor (0.5,0.5)
-
 image Chibi_Mouth_Rogue:
     "images/Chibi_Mouth_R.png"
     anchor (0.5,0.5)
@@ -10332,13 +9630,11 @@ image Chibi_Mouth_Emma:
 image Chibi_Mouth_Storm:
     "images/Chibi_Mouth_S.png"
     anchor (0.5,0.5)
-
 image Chibi_Sucking:
     # The core sucking image
     contains:
         "Chibi_SuckingB"
     pos (75,675)
-
 image Chibi_SuckingB: #rkeljsvg
     #The composited Chibi UI cock
     LiveComposite(
@@ -10362,7 +9658,6 @@ image Chibi_SuckingB: #rkeljsvg
         easeout .5 rotate 0 pos (2,48) xzoom 1 #middle
         easein .5 rotate 0 pos (5,0) xzoom 0.71 #top
         repeat
-
 image Chibi_Sucking_Cock:
     #The animation for the cock used in the sucking cock animation
     contains:
@@ -10382,7 +9677,6 @@ image Chibi_Sucking_Cock:
 
 
 #>>>>>>>>>>
-
 image Chibi_UI:
     # The basic chibi-UI image that is called
     contains:
@@ -10397,13 +9691,10 @@ image Chibi_UI:
 #    pos (75,675)
 
 # End chibicock stuff  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
 image Cellphone:
     "images/Cellphone.png"
     xoffset 0 #-250
     yoffset 100
-
-
 image PhoneSex:
     #this is the phone displayed during phone sex
     contains:
@@ -10428,8 +9719,6 @@ image PhoneSex:
             "Ch_Focus is WandaX",AlphaMask("PhoneScreen_Wanda", "images/PhoneMask.png"),
             )
     offset (300,50)
-
-
 image PhoneBG:  #rkeljsvgb
     #this is the screen displayed on "PhoneSex", alpha-masked
     contains:
@@ -10452,12 +9741,10 @@ image PhoneBG:  #rkeljsvgb
             )
         offset (-800,-300)
         zoom 1.5
-
 image PhoneRG:
     #Rogue's room for the phone (to make sure the bed is framed properly)
     "bg_rogue"
     xoffset 500
-
 image PhoneScreen_Rogue:
         #this is the screen displayed on "PhoneSex", alpha-masked
         contains:
@@ -10475,7 +9762,6 @@ image PhoneScreen_Rogue:
             ConditionSwitch(
                 "Girl.Pose == 'doggy' or Girl.Pose == 'sex'", Null(),
                 "True", "Rogue_Sprite"),  pos (0,0) offset (290,50) anchor (0.6,0) zoom 1.1
-
 image PhoneScreen_Kitty:
         contains:
             ConditionSwitch(
@@ -10489,7 +9775,6 @@ image PhoneScreen_Kitty:
             ConditionSwitch(
                 "Girl.Pose == 'doggy' or Girl.Pose == 'sex'", Null(),
                 "True", "Kitty_Sprite"), pos (0,0) offset (290,50) anchor (0.6,0) zoom 1.1
-
 image PhoneScreen_Emma:
         contains:
             ConditionSwitch(
@@ -10507,7 +9792,6 @@ image PhoneScreen_Emma:
             ConditionSwitch(
                 "Ch_Focus.Loc == 'bg teacher'", "bg_class",
                 "True", Null()), offset (-2100,-500) zoom 3.5
-
 image PhoneScreen_Laura:
         contains:
             ConditionSwitch(
@@ -10521,7 +9805,6 @@ image PhoneScreen_Laura:
             ConditionSwitch(
                 "Girl.Pose == 'doggy' or Girl.Pose == 'sex'", Null(),
                 "True", "Laura_Sprite"), pos (0,0) offset (290,50) anchor (0.6,0) zoom 1.1
-
 image PhoneScreen_Jean:
         contains:
             ConditionSwitch(
@@ -10535,7 +9818,6 @@ image PhoneScreen_Jean:
             ConditionSwitch(
                 "Girl.Pose == 'doggy' or Girl.Pose == 'sex'", Null(),
                 "True", "Jean_Sprite"), pos (0,0) offset (290,50) anchor (0.6,0) zoom 1.1
-
 image PhoneScreen_Storm:
         contains:
             ConditionSwitch(
@@ -10553,7 +9835,6 @@ image PhoneScreen_Storm:
             ConditionSwitch(
                 "Ch_Focus.Loc == 'bg teacher'", "bg_class",
                 "True", Null()), offset (-2100,-500) zoom 3.5
-
 image PhoneScreen_Jubes:
         contains:
             ConditionSwitch(
@@ -10567,7 +9848,6 @@ image PhoneScreen_Jubes:
             ConditionSwitch(
                 "Girl.Pose == 'doggy' or Girl.Pose == 'sex'", Null(),
                 "True", "Jubes_Sprite"), pos (0,0) offset (290,50) anchor (0.6,0) zoom 1.1
-
 image PhoneScreen_Gwen:
         contains:
             ConditionSwitch(
@@ -10581,7 +9861,6 @@ image PhoneScreen_Gwen:
             ConditionSwitch(
                 "Girl.Pose == 'doggy' or Girl.Pose == 'sex'", Null(),
                 "True", "Gwen_Sprite"), pos (0,0) offset (290,50) anchor (0.6,0) zoom 1.1
-
 image PhoneScreen_Betsy:
         contains:
             ConditionSwitch(
@@ -10595,7 +9874,6 @@ image PhoneScreen_Betsy:
             ConditionSwitch(
                 "Girl.Pose == 'doggy' or Girl.Pose == 'sex'", Null(),
                 "True", "Betsy_Sprite"), pos (0,0) offset (290,50) anchor (0.6,0) zoom 1.1
-
 image PhoneScreen_Doreen:
         contains:
             ConditionSwitch(
@@ -10609,8 +9887,6 @@ image PhoneScreen_Doreen:
             ConditionSwitch(
                 "Girl.Pose == 'doggy' or Girl.Pose == 'sex'", Null(),
                 "True", "Doreen_Sprite"), pos (0,0) offset (290,50) anchor (0.6,0) zoom 1.1
-
-
 image PhoneScreen_Wanda:
         contains:
             ConditionSwitch(
@@ -10624,8 +9900,6 @@ image PhoneScreen_Wanda:
             ConditionSwitch(
                 "Girl.Pose == 'doggy' or Girl.Pose == 'sex'", Null(),
                 "True", "Wanda_Sprite"), pos (0,0) offset (290,50) anchor (0.6,0) zoom 1.1
-
-
 image DressScreen:
     #this is dressing screen displayed during wardrobe
     contains:
@@ -10636,7 +9910,6 @@ image DressScreen:
         AlphaMask("images/DressScreenShadow.png","DressShadow")
     zoom 1
     offset (375,225)
-
 image DressShadow: #rkeljsvgb
     #this is the shadow projected on that screen
     contains:
@@ -10658,20 +9931,16 @@ image DressShadow: #rkeljsvgb
             )
         offset (210,-170)
         zoom 1
-
 image BlueScreen:
     #used by Historia
     alpha .1
     contains:
         Solid("#00B3D6", xysize=(1024, 768))
-
 image SilhouetteBase:
     #used by silhouettes
     alpha .95
     contains:
         Solid("#14142d", xysize=(1024, 768))
-
-
 image Silhouettes:
     #this is dressing screen displayed during wardrobe
 
@@ -10681,7 +9950,6 @@ image Silhouettes:
     contains:
 #        #screen
         AlphaMask("SilhouetteBase","Storm_Sprite") #tried to use master layer as a mask?
-
 image Steam:
         #multiple steam clouds, intended to be used in sex poses
         contains:
@@ -10698,7 +9966,6 @@ image Steam:
             rotate -300
         zoom .5
         alpha .2
-
 image Big_Steam:
         #multiple steam clouds, intended to be used in sex poses
         contains:
@@ -10716,7 +9983,6 @@ image Big_Steam:
         zoom 1
         alpha .4
 #        rotate 180
-
 image Shower_Steam:
         # mutliple steam clouds along the ground
         contains:
@@ -10732,7 +9998,6 @@ image Shower_Steam:
             offset (-150,-15)
             rotate -300
         zoom 2
-
 image Steamy:
         #small steam cloud
         "images/Steam.png"
@@ -10785,7 +10050,6 @@ image Professor:
     anchor (0.5, 0.0)
     offset (0,150)#200)
     zoom 1.1
-
 image Xavier Blink:
     ConditionSwitch(
     "X_Eyes == 'concentrate'", "images/NPC/Xavier_eyes_closed.png",
@@ -10806,7 +10070,6 @@ image Xavier Blink:
 
 
 ## Xavier Faces ///////////////////////////////
-
 label XavierFace (Face = X_Emote):
         if Face == "psychic":
                 $ X_Mouth = "concentrate"
@@ -10861,7 +10124,6 @@ image setting:
         "True",                         "images/Crossroads_Day.jpg",
         ),
     )
-
 label Display_Background(Entry = 0): #rkeljsvgbdw
         # call Display_Background(1)
         #Displays the current background
@@ -10930,8 +10192,6 @@ image bg_player:
                 )
         contains:
                 "images/playerroom.png"
-
-
 image bg_rogue:
         LiveComposite(
             (1024,768),
@@ -10943,7 +10203,6 @@ image bg_rogue:
                 ),
             (0,0), "images/rogueroom.png"
             )
-
 image bg_kitty:
         contains: #see if this works, if not remove it
             ConditionSwitch(
@@ -10953,7 +10212,6 @@ image bg_kitty:
                 )
         contains:
                 "images/kittyroom.png"
-
 image bg_emma:
         contains: #see if this works, if not remove it
             ConditionSwitch(
@@ -10963,7 +10221,6 @@ image bg_emma:
                 )
         contains:
                 "images/emmaroom.png"
-
 image bg_laura: #rkeljsvg
         contains: #see if this works, if not remove it
             ConditionSwitch(
@@ -10973,7 +10230,6 @@ image bg_laura: #rkeljsvg
                 )
         contains:
                 "images/lauraroom.png"
-
 image bg_jean: #rkeljsvg
         contains: #see if this works, if not remove it
             ConditionSwitch(
@@ -10983,7 +10239,6 @@ image bg_jean: #rkeljsvg
                 )
         contains:
                 "images/jeanroom.png"
-
 image bg_storm: #rkeljsvg
         contains: #see if this works, if not remove it
             ConditionSwitch(
@@ -10991,11 +10246,9 @@ image bg_storm: #rkeljsvg
                 "Time_Count == 2", "images/stormroom_evening.png",
                 "True", "images/stormroom_day.png",
                 )
-
 image bg_jubes: #rkeljsvg
         contains: #see if this works, if not remove it
              "images/jubesroom.png"
-
 image bg_gwen: #rkeljsvg
         contains: #see if this works, if not remove it
             ConditionSwitch(
@@ -11005,7 +10258,6 @@ image bg_gwen: #rkeljsvg
                 )
         contains:
                 "images/gwenroom.png"
-
 image bg_betsy: #rkeljsvgb
         contains: #see if this works, if not remove it
             ConditionSwitch(
@@ -11015,7 +10267,6 @@ image bg_betsy: #rkeljsvgb
                 )
         contains:
                 "images/betsyroom.png"
-
 image bg_doreen: #rkeljsvg
         contains:
             ConditionSwitch(
@@ -11027,8 +10278,6 @@ image bg_doreen: #rkeljsvg
                 "Time_Count == 2", "images/doreenroom_evening.png",
                 "True", "images/doreenroom_day.png",
                 )
-
-
 image bg_wanda: #rkeljsvgb
         contains: #see if this works, if not remove it
             ConditionSwitch(
@@ -11038,8 +10287,6 @@ image bg_wanda: #rkeljsvgb
                 )
         contains:
                 "images/wandaroom.png"
-
-
 image bg_campus:
         contains: #see if this works, if not remove it
             ConditionSwitch(
@@ -11047,7 +10294,6 @@ image bg_campus:
                 "Time_Count == 2",    "images/Campus_Evening.png",
                 "True",                         "images/Campus_Day.png",
                 )
-
 image bg_pool:
         contains: #see if this works, if not remove it
             ConditionSwitch(
@@ -11055,7 +10301,6 @@ image bg_pool:
                 "Time_Count == 2",    "images/pool_evening.png",
                 "True",                         "images/pool_day.png",
                 )
-
 image bg_class:
         contains:
             "images/Classroom.jpg"
@@ -11077,15 +10322,12 @@ image bg_class:
                 "Time_Count >= 2 or Weekday >= 5", Null(),
                 "True", "images/ClassroomPupils.png",
                 )
-
 image bg_classzoom:
         contains:
             "images/ClassZoom.jpg"
-
 image empty_class:
         contains:
             "images/Classroom.jpg"
-
 image bg_study:
         contains: #see if this works, if not remove it
             ConditionSwitch(
@@ -11356,7 +10598,6 @@ image DeskMask:
             alpha 1
             yoffset -150
             xoffset -50
-
 transform ClassSeated(XPOS=800,YPOS=500,ZM=0.55,Spin=0,Flip=1):
         #this positions girls in a small state
         alpha 1
@@ -11410,17 +10651,12 @@ image Doreen_Seated:
 image Wanda_Seated:
         contains:
             AlphaMask("Wanda_Doggy_Body", "DeskMask")
-
-
 image Doreen_Seated_Basic:
     #makes her slightly larger and higher up
     contains:
         "Doreen_Doggy_Body"
         yoffset -100
         zoom 1.1
-
-
-
 label Girl_Kissing_Launch(Girl=Ch_Focus,T = Trigger,Set=1):
         # call Girl_Kissing_Launch(RogueX)
         call Girl_Hide(Girl) #call Rogue_Hide
