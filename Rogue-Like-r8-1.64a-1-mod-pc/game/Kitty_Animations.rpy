@@ -2292,6 +2292,7 @@ image Kitty_Doggy_Feet2:
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #Doggy Launch/Reset
 label Kitty_Doggy_Launch(Line = Trigger):
+    $ renpy.start_predict("images/KittyDoggy/*.*")
     if renpy.showing("Kitty_Doggy_Animation"):
         return
     $ Speed = 0
@@ -3618,6 +3619,7 @@ transform Kitty_Sex_Body_FootAnimStaticA():
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                                     Sex Launch/Reset
 label Kitty_Sex_Launch(Line = Trigger):
+    $ renpy.start_predict("images/KittySex/*.*")
     $ KittyX.Offhand = 0 if KittyX.Offhand == "hand" else KittyX.Offhand
 
 #    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
@@ -4573,6 +4575,7 @@ image Kitty_BJ_Anim6:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Kitty_BJ_Launch(Line = Trigger):    # The sequence to launch the Kitty BJ animations
+    $ renpy.start_predict("images/KittyBJFace/*.*")
     if renpy.showing("Kitty_BJ_Animation") and KittyX.Pose != "69":
         return
     elif renpy.showing("Kitty_69_Animation") and KittyX.Pose == "69":
@@ -5286,6 +5289,7 @@ image Kitty_TJ_Body_5:
 
 
 label Kitty_TJ_Launch(Line = Trigger):    # The sequence to launch the Kitty Titfuck animations
+    $ renpy.start_predict("images/KittyBJFace/*.*")
     if renpy.showing("Kitty_TJ_Animation"):
         return
     call Girl_Hide(KittyX)
@@ -5462,6 +5466,7 @@ image Kitty_HJ_Animation:
 
 
 label Kitty_HJ_Launch(Line = Trigger):
+    $ renpy.start_predict("images/KittyBJFace/*.*")
     if renpy.showing("Kitty_HJ_Animation"):
         $ Trigger = "hand"
         return
@@ -5821,6 +5826,7 @@ image Kitty_CUN_Anim_Licking3:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Kitty_CUN_Launch(Line = Trigger):
+    $ renpy.start_predict("images/KittyBJFace/*.*")
     # The sequence to launch the Kitty CUN animations
     if renpy.showing("Kitty_CUN_Animation") and KittyX.Pose != "69":
         return
@@ -6043,6 +6049,7 @@ image Kitty_Finger_2:
     # end Animation for Fingering Zero's pussy, fast < < < < < < < < < < < < < < < < < < < < < < < <
 
 label Kitty_Finger_Launch(Line = Trigger):
+    $ renpy.start_predict("images/KittyBJFace/*.*")
     if renpy.showing("Kitty_Finger_Animation"):
         $ Trigger = "finger"
         return

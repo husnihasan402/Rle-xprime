@@ -2328,6 +2328,7 @@ image Jubes_Doggy_Feet2:
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #Doggy Launch/Reset
 label Jubes_Doggy_Launch(Line = Trigger):
+    $ renpy.start_predict("images/JubesDoggy/*.*")
     if renpy.showing("Jubes_Doggy_Animation"):
         return
     $ Speed = 0
@@ -4055,6 +4056,7 @@ image Jubes_Sex_FJ_Speed2:
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                                     Sex Launch/Reset
 label Jubes_Sex_Launch(Line = Trigger):
+    $ renpy.start_predict("images/JubesSex/*.*")
     $ JubesX.Offhand = 0 if JubesX.Offhand == "hand" else JubesX.Offhand
 
 ##    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
@@ -5029,6 +5031,7 @@ image Jubes_BJ_Anim6:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Jubes_BJ_Launch(Line = Trigger):    # The sequence to launch the Jubes BJ animations
+    $ renpy.start_predict("images/JubesBJFace/*.*")
     if renpy.showing("Jubes_BJ_Animation"):
         return
 
@@ -6053,6 +6056,7 @@ image Jubes_TJ_5:
 # Jubes's TJ animations end / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
 label Jubes_TJ_Launch(Line = Trigger):    # The sequence to launch the Jubes Titfuck animations
+    $ renpy.start_predict("images/JubesBJFace/*.*")
     if renpy.showing("Jubes_TJ_Animation"):
         return
 
@@ -6274,6 +6278,7 @@ image Jubes_HJ_Animation:
 
 
 label Jubes_HJ_Launch(Line = Trigger):
+    $ renpy.start_predict("images/JubesBJFace/*.*")
     if renpy.showing("Jubes_HJ_Animation"):
         $ Trigger = "hand"
         return
@@ -6562,6 +6567,7 @@ image Jubes_CUN_Anim_Licking3:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Jubes_CUN_Launch(Line = Trigger):
+    $ renpy.start_predict("images/JubesBJFace/*.*")
     # The sequence to launch the Jubes CUN animations
     if renpy.showing("Jubes_CUN_Animation"):
         return
@@ -6780,6 +6786,7 @@ image Jubes_Finger_2:
     # end Animation for Fingering Zero's pussy, fast < < < < < < < < < < < < < < < < < < < < < < < <
 
 label Jubes_Finger_Launch(Line = Trigger):
+    $ renpy.start_predict("images/JubesBJFace/*.*")
     if renpy.showing("Jubes_Finger_Animation"):
         $ Trigger = "finger"
         return

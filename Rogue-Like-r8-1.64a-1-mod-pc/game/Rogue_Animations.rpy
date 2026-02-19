@@ -2513,6 +2513,7 @@ image Slap_Ass:
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #Doggy Launch/Reset
 label Rogue_Doggy_Launch(Line = Trigger):
+    $ renpy.start_predict("images/RogueDoggy/*.*")
     if renpy.showing("Rogue_Doggy_Animation"):
         return
     $ Speed = 0
@@ -3907,6 +3908,7 @@ image Rogue_Sex_Body_FootAnim2:
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                                     Sex Launch/Reset
 label Rogue_Sex_Launch(Line = Trigger):
+    $ renpy.start_predict("images/RogueSex/*.*")
     $ RogueX.Offhand = 0 if RogueX.Offhand == "hand" else RogueX.Offhand
 
     $ Line = "solo" if not Line else Line
@@ -4918,6 +4920,7 @@ image Rogue_BJ_Anim6:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Rogue_BJ_Launch(Line = Trigger):
+    $ renpy.start_predict("images/RogueBJFace/*.*")
     # The sequence to launch the Rogue BJ animations
     if renpy.showing("Rogue_BJ_Animation") and RogueX.Pose != "69":
         return
@@ -5192,6 +5195,7 @@ image Rogue_TJ_Animation:
     zoom .55
 
 label Rogue_TJ_Launch(Line = Trigger):
+    $ renpy.start_predict("images/RogueBJFace/*.*")
     # The sequence to launch the Rogue Titfuck animations
     if renpy.showing("Rogue_TJ_Animation"):
         return
@@ -5390,6 +5394,7 @@ image Rogue_HJ_Animation:
     zoom 0.6
 
 label Rogue_HJ_Launch(Line = Trigger):
+    $ renpy.start_predict("images/RogueBJFace/*.*")
     if renpy.showing("Rogue_HJ_Animation"):
         $ Trigger = "hand"
         return
@@ -5732,6 +5737,7 @@ image Rogue_CUN_Anim_Licking3:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Rogue_CUN_Launch(Line = Trigger):
+    $ renpy.start_predict("images/RogueBJFace/*.*")
     # The sequence to launch the Rogue CUN animations
     if renpy.showing("Rogue_CUN_Animation") and RogueX.Pose != "69":
         return
@@ -5955,6 +5961,7 @@ image Rogue_Finger_2:
     # end Animation for Fingering Zero's pussy, fast < < < < < < < < < < < < < < < < < < < < < < < <
 
 label Rogue_Finger_Launch(Line = Trigger):
+    $ renpy.start_predict("images/RogueBJFace/*.*")
     if renpy.showing("Rogue_Finger_Animation"):
         $ Trigger = "finger"
         return

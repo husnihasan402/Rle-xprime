@@ -2430,6 +2430,7 @@ image Yana_Doggy_Foot2_Ass:
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #Doggy Launch/Reset
 label Yana_Doggy_Launch(Line = Trigger):
+    $ renpy.start_predict("images/YanaDoggy/*.*")
 ##    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
     return
 ##    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
@@ -4307,6 +4308,7 @@ image Yana_Sex_FJ_Speed2:
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                                     Sex Launch/Reset
 label Yana_Sex_Launch(Line = Trigger):
+    $ renpy.start_predict("images/YanaSex/*.*")
     $ YanaX.Offhand = 0 if YanaX.Offhand == "hand" else YanaX.Offhand
 
 ##    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
@@ -5365,6 +5367,7 @@ image Yana_BJ_Anim6:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Yana_BJ_Launch(Line = Trigger):    # The sequence to launch the Yana BJ animations
+    $ renpy.start_predict("images/YanaBJFace/*.*")
 ##    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
     return
 ##    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
@@ -6713,6 +6716,7 @@ image Yana_TJ_5:
 
 
 label Yana_TJ_Launch(Line = Trigger):    # The sequence to launch the Yana Titfuck animations
+    $ renpy.start_predict("images/YanaBJFace/*.*")
 #    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
     return
 #    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
@@ -6933,6 +6937,7 @@ image Yana_HJ_Animation:
 
 
 label Yana_HJ_Launch(Line = Trigger):
+    $ renpy.start_predict("images/YanaBJFace/*.*")
     if renpy.showing("Yana_HJ_Animation"):
         $ Trigger = "hand"
         return
@@ -7246,6 +7251,7 @@ image Yana_CUN_Anim_Licking3:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 label Yana_CUN_Launch(Line = Trigger):
+    $ renpy.start_predict("images/YanaBJFace/*.*")
     # The sequence to launch the Yana CUN animations
 ##    #temporary      #temporary      #temporary      #temporary      #temporary      #temporary
     return
@@ -7478,6 +7484,7 @@ image Yana_Finger_2:
     # end Animation for Fingering Zero's pussy, fast < < < < < < < < < < < < < < < < < < < < < < < <
 
 label Yana_Finger_Launch(Line = Trigger):
+    $ renpy.start_predict("images/YanaBJFace/*.*")
     if renpy.showing("Yana_Finger_Animation"):
         $ Trigger = "finger"
         return
